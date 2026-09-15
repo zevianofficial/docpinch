@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+/* =========================
+   PAGE
+========================= */
+
 html {
     scroll-behavior: smooth;
 }
@@ -21,7 +25,7 @@ body {
 ========================= */
 
 header {
-    background: white;
+    background: #ffffff;
     padding: 25px 20px;
     border-bottom: 1px solid #e5e7eb;
 }
@@ -59,7 +63,7 @@ header p {
 
 .navbar a {
     text-decoration: none;
-    color: #002B54;
+    color: #002b54;
     font-size: 16px;
     font-weight: 700;
 }
@@ -86,6 +90,18 @@ main h2 {
 }
 
 /* =========================
+   TOOLS INTRO
+========================= */
+
+.tools-intro {
+    max-width: 720px;
+    margin: -10px auto 25px;
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* =========================
    TOOLS GRID
 ========================= */
 
@@ -104,7 +120,8 @@ main h2 {
     padding: 22px;
     border: none;
     border-radius: 14px;
-    background: white;
+    background: #ffffff;
+    color: #222;
     font-size: 17px;
     font-weight: bold;
     cursor: pointer;
@@ -126,6 +143,100 @@ main h2 {
 }
 
 /* =========================
+   SEO TOOL SECTIONS
+========================= */
+
+.seo-tools {
+    width: 100%;
+    margin-top: 40px;
+    padding: 30px 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.seo-tools h2 {
+    margin: 25px 0 12px;
+    color: #002b54;
+    font-size: 24px;
+}
+
+.seo-tools h2:first-child {
+    margin-top: 0;
+}
+
+.seo-tools p {
+    max-width: 750px;
+    margin: 0 auto 15px;
+    color: #64748b;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.seo-tools a {
+    display: inline-block;
+    margin: 6px 8px;
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.seo-tools a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   INDIVIDUAL TOOL SEO
+========================= */
+
+.tool-seo {
+    width: 100%;
+    margin-top: 30px;
+    padding: 25px 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.tool-seo h2 {
+    margin-bottom: 12px;
+    color: #002b54;
+    font-size: 24px;
+}
+
+.tool-seo p {
+    max-width: 750px;
+    margin: 0 auto;
+    color: #64748b;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* =========================
+   TOOL INFO
+========================= */
+
+.tool-info {
+    width: 100%;
+    margin-top: 20px;
+    padding: 24px 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.tool-info h3 {
+    margin-bottom: 10px;
+    color: #002b54;
+}
+
+.tool-info p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* =========================
    ABOUT SECTION
 ========================= */
 
@@ -133,7 +244,7 @@ main h2 {
     width: 100%;
     margin-top: 50px;
     padding: 30px 20px;
-    background: white;
+    background: #ffffff;
     border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
@@ -177,7 +288,7 @@ footer {
     margin-top: 50px;
     padding: 20px;
     background: #111827;
-    color: white;
+    color: #ffffff;
 }
 
 .footer-tagline {
@@ -229,6 +340,45 @@ footer {
         width: 100%;
         padding: 20px 15px;
         font-size: 16px;
+    }
+
+    .tools-intro {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .seo-tools {
+        margin-top: 30px;
+        padding: 25px 15px;
+    }
+
+    .seo-tools h2 {
+        font-size: 22px;
+    }
+
+    .seo-tools p {
+        font-size: 15px;
+    }
+
+    .seo-tools a {
+        margin: 5px 6px;
+        font-size: 15px;
+    }
+
+    .tool-seo {
+        padding: 22px 15px;
+    }
+
+    .tool-seo h2 {
+        font-size: 22px;
+    }
+
+    .tool-seo p {
+        font-size: 15px;
+    }
+
+    .tool-info {
+        padding: 22px 15px;
     }
 
     .about {
