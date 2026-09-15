@@ -1,0 +1,269 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: white;
+    padding: 25px 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+header p {
+    font-size: 16px;
+    color: #64748b;
+    margin-top: 10px;
+}
+
+/* =========================
+   DOCPINCH LOGO
+========================= */
+
+.brand img {
+    width: 310px;
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #002B54;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+main h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+/* =========================
+   TOOLS GRID
+========================= */
+
+.tools {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+/* =========================
+   TOOL BUTTONS
+========================= */
+
+.tools button {
+    width: 100%;
+    padding: 22px;
+    border: none;
+    border-radius: 14px;
+    background: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+}
+
+.tools button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.tools button:active {
+    transform: scale(0.98);
+}
+
+.tools button:focus {
+    outline: none;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about {
+    width: 100%;
+    margin-top: 50px;
+    padding: 30px 20px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.about h2 {
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+.about p {
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: #64748b;
+    font-size: 16px;
+}
+
+/* =========================
+   IMAGES & CANVAS
+========================= */
+
+img,
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* =========================
+   FILE INPUT
+========================= */
+
+input[type="file"] {
+    max-width: 100%;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    background: #111827;
+    color: white;
+}
+
+.footer-tagline {
+    margin-top: 8px;
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 20px 15px;
+    }
+
+    .brand img {
+        width: 240px;
+        max-width: 95%;
+    }
+
+    .navbar {
+        gap: 18px;
+    }
+
+    .navbar a {
+        font-size: 15px;
+    }
+
+    main {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        margin: 25px auto;
+    }
+
+    main h2 {
+        font-size: 24px;
+    }
+
+    .tools {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tools button {
+        width: 100%;
+        padding: 20px 15px;
+        font-size: 16px;
+    }
+
+    .about {
+        margin-top: 35px;
+        padding: 25px 15px;
+    }
+
+    .about h2 {
+        font-size: 23px;
+    }
+
+    .about p {
+        font-size: 15px;
+    }
+
+    img,
+    canvas {
+        width: auto;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    main > div,
+    main > section {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    input[type="file"] {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}

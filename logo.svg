@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 250" width="100%" height="100%">
+  <defs>
+    <!-- Drop shadow for the PDF document -->
+    <filter id="pdf-shadow" x="-20%" y="-20%" width="150%" height="150%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#001428" flood-opacity="0.35" />
+    </filter>
+
+    <!-- Linear gradient for paper fold flap -->
+    <linearGradient id="fold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="70%" stop-color="#E2E8F0" />
+      <stop offset="100%" stop-color="#CBD5E1" />
+    </linearGradient>
+  </defs>
+
+  <!-- ICON GROUP -->
+  <g id="logo-icon">
+    <!-- Main Outer Blue Container -->
+    <rect x="40" y="35" width="180" height="180" rx="36" fill="#002B54" />
+
+    <!-- Top Handle/Pill above Photo Frame -->
+    <rect x="160" y="52" width="22" height="6" rx="3" fill="#FFFFFF" />
+
+    <!-- PHOTO / IMAGE FRAME (BACKGROUND LAYER) -->
+    <g id="photo-frame">
+      <!-- Frame Box -->
+      <rect x="114" y="68" width="88" height="118" rx="3" fill="#002B54" stroke="#FFFFFF" stroke-width="3" />
+
+      <!-- Photo Frame Crop Nodes / Corner Handles -->
+      <rect x="111" y="65" width="6" height="6" fill="#FFFFFF" />
+      <rect x="199" y="65" width="6" height="6" fill="#FFFFFF" />
+      <rect x="111" y="183" width="6" height="6" fill="#FFFFFF" />
+      <rect x="199" y="183" width="6" height="6" fill="#FFFFFF" />
+      <rect x="155" y="65" width="6" height="6" fill="#FFFFFF" />
+      <rect x="155" y="183" width="6" height="6" fill="#FFFFFF" />
+      <rect x="111" y="124" width="6" height="6" fill="#FFFFFF" />
+      <rect x="199" y="124" width="6" height="6" fill="#FFFFFF" />
+
+      <!-- Graphics Inside Photo Frame -->
+      <!-- Sun -->
+      <circle cx="176" cy="94" r="7" fill="#FFFFFF" />
+
+      <!-- Mountains -->
+      <path d="M 124 132 L 150 98 L 176 132 Z" fill="#FFFFFF" />
+      <path d="M 152 132 L 172 106 L 192 132 Z" fill="#FFFFFF" />
+
+      <!-- Divider Line -->
+      <line x1="122" y1="138" x2="194" y2="138" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
+
+      <!-- Text Placeholder Lines in Photo Frame -->
+      <line x1="124" y1="149" x2="176" y2="149" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <line x1="124" y1="159" x2="154" y2="159" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+    </g>
+
+    <!-- PDF DOCUMENT (FOREGROUND LAYER) -->
+    <g id="pdf-document" filter="url(#pdf-shadow)">
+      <!-- Main White Sheet with Top-Left Fold Cutout -->
+      <path d="M 92 60 
+               L 128 60 
+               A 14 14 0 0 1 142 74 
+               L 142 178 
+               A 14 14 0 0 1 128 192 
+               L 66 192 
+               A 14 14 0 0 1 52 178 
+               L 52 100 
+               Z" 
+            fill="#FFFFFF" />
+
+      <!-- Fold Crease Shadow -->
+      <path d="M 52 100 L 92 60 L 92 92 A 8 8 0 0 1 84 100 Z" fill="#001428" opacity="0.15" />
+
+      <!-- Folded Flap -->
+      <path d="M 52 100 
+               C 52 100, 62 100, 82 100 
+               A 10 10 0 0 0 92 90 
+               L 92 60 
+               Z" 
+            fill="url(#fold-grad)" 
+            stroke="#CBD5E1" 
+            stroke-width="0.5" />
+
+      <!-- Document Lines -->
+      <line x1="70" y1="120" x2="112" y2="120" stroke="#CBD5E1" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="70" y1="131" x2="98" y2="131" stroke="#CBD5E1" stroke-width="3.5" stroke-linecap="round" />
+
+      <!-- PDF Text -->
+      <text x="97" y="174" 
+            font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-weight="900" 
+            font-size="29" 
+            fill="#002B54" 
+            text-anchor="middle" 
+            letter-spacing="-0.5">PDF</text>
+    </g>
+  </g>
+
+  <!-- TEXT GROUP -->
+  <g id="logo-text">
+    <!-- Brand Name: DocPinch -->
+    <text x="245" y="132" 
+          font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+          font-weight="800" 
+          font-size="70" 
+          fill="#002B54" 
+          letter-spacing="-1">DocPinch</text>
+
+    <!-- Subtitle: PDF & IMAGE TOOLS -->
+    <text x="247" y="171" 
+          font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+          font-weight="700" 
+          font-size="23.5" 
+          fill="#002B54" 
+          letter-spacing="2.8">PDF &amp; IMAGE TOOLS</text>
+  </g>
+</svg>
