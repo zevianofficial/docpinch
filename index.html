@@ -128,10 +128,6 @@
 
 <body>
 
-    <!-- TOP ANCHOR -->
-    <div id="top"></div>
-
-
     <!-- =========================
          HEADER
     ========================== -->
@@ -149,28 +145,53 @@
         </div>
 
 
-        <!-- NAVIGATION -->
+        <!-- =========================
+             NAVIGATION
+        ========================== -->
+
         <nav
             class="navbar"
             aria-label="Main navigation"
         >
 
-            <!-- IMPORTANT:
-                 index.html reloads homepage
-                 before jumping to section.
-                 This also works after a tool
-                 has replaced <main>.
-            -->
-
-            <a href="index.html">
+            <!-- HOME -->
+            <a
+                href="index.html"
+                onclick="
+                    window.location.href = 'index.html';
+                    return false;
+                "
+            >
                 Home
             </a>
 
-            <a href="index.html#tools">
+
+            <!-- TOOLS -->
+            <a
+                href="index.html#tools"
+                onclick="
+                    window.location.href = 'index.html#tools';
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 10);
+                    return false;
+                "
+            >
                 Tools
             </a>
 
-            <a href="index.html#about">
+
+            <!-- ABOUT -->
+            <a
+                href="index.html#about"
+                onclick="
+                    window.location.href = 'index.html#about';
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 10);
+                    return false;
+                "
+            >
                 About
             </a>
 
@@ -186,16 +207,20 @@
     <main>
 
         <!-- MAIN SEO HEADING -->
+
         <h1>
             Free PDF & Image Tools Online
         </h1>
 
 
         <!-- SEO INTRO -->
+
         <p class="tools-intro">
+
             DocPinch provides free online PDF and image tools to
             compress, convert, merge, resize, crop, rotate, scan
             and enhance your documents and images.
+
         </p>
 
 
@@ -367,7 +392,7 @@
 
 
         <!-- =========================
-             ABOUT SECTION
+             ABOUT
         ========================== -->
 
         <section
