@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,10 +10,15 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <!-- Primary SEO Title -->
     <title>DocPinch – Free PDF & Image Tools Online</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="favicon.svg"
+    >
 
     <!-- SEO Description -->
     <meta
@@ -20,10 +26,10 @@
         content="DocPinch offers free online PDF and image tools to compress, convert, merge, resize, crop, rotate, scan and enhance documents and images."
     >
 
-    <!-- Referrer -->
-    <meta
-        name="referrer"
-        content="strict-origin-when-cross-origin"
+    <!-- Canonical URL -->
+    <link
+        rel="canonical"
+        href="https://zevianofficial.github.io/docpinch/"
     >
 
     <!-- Search Engine -->
@@ -32,115 +38,313 @@
         content="index, follow"
     >
 
+    <!-- Referrer -->
+    <meta
+        name="referrer"
+        content="strict-origin-when-cross-origin"
+    >
+
+    <!-- Open Graph -->
+    <meta
+        property="og:title"
+        content="DocPinch – Free PDF & Image Tools Online"
+    >
+
+    <meta
+        property="og:description"
+        content="Free online tools for PDF and image compression, conversion, merging, resizing, cropping, rotating, scanning and enhancement."
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="https://zevianofficial.github.io/docpinch/"
+    >
+
+    <meta
+        property="og:image"
+        content="https://zevianofficial.github.io/docpinch/logo.svg"
+    >
+
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
     <!-- PDF.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
+    ></script>
 
     <!-- jsPDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+    ></script>
 
     <!-- PDF-LIB -->
-    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script
+        src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"
+    ></script>
 
     <!-- OpenCV.js -->
-    <script async src="https://docs.opencv.org/4.x/opencv.js"></script>
+    <script
+        async
+        src="https://docs.opencv.org/4.x/opencv.js"
+    ></script>
 
 </head>
 
+
 <body>
 
-    <!-- HEADER -->
+    <!-- =========================
+         HEADER
+    ========================== -->
+
     <header>
 
         <!-- LOGO -->
         <div class="brand">
+
             <img
                 src="logo.svg"
-                alt="DocPinch Logo"
+                alt="DocPinch PDF and Image Tools Logo"
             >
+
         </div>
 
-        <!-- NAVIGATION -->
-        <nav class="navbar">
-            <a href="index.html">Home</a>
 
-            <a href="index.html?nav=tools#tools">
+        <!-- NAVIGATION -->
+        <nav
+            class="navbar"
+            aria-label="Main navigation"
+        >
+
+            <a href="#top">
+                Home
+            </a>
+
+            <a href="#tools">
                 Tools
             </a>
 
-            <a href="index.html?nav=about#about">
+            <a href="#about">
                 About
             </a>
+
         </nav>
 
     </header>
 
 
-    <!-- MAIN -->
+    <!-- TOP ANCHOR -->
+    <div id="top"></div>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
     <main>
 
-        <!-- TOOLS -->
-        <h2>Choose a Tool</h2>
+        <!-- TOOLS HEADING -->
+        <h1>
+            Free PDF & Image Tools Online
+        </h1>
 
-        <div class="tools" id="tools">
-
-            <button>
-                📄 Compress PDF
-            </button>
-
-            <button>
-                🖼️ Compress Image
-            </button>
-
-            <button>
-                🔄 JPG/PNG → PDF
-            </button>
-
-            <button>
-                🔗 Merge PDF
-            </button>
-
-            <button>
-                🖼️ PDF → JPG/PNG
-            </button>
-
-            <button>
-                📐 Document Scanner
-            </button>
-
-            <button>
-                ✨ Document Enhance
-            </button>
-
-            <button>
-                📏 Resize Image
-            </button>
-
-            <button>
-                ✂️ Crop Image
-            </button>
-
-            <button>
-                🔃 Rotate Image
-            </button>
-
-        </div>
+        <!-- SEO INTRO -->
+        <p class="tools-intro">
+            DocPinch provides free online PDF and image tools to
+            compress, convert, merge, resize, crop, rotate, scan
+            and enhance your documents and images.
+        </p>
 
 
-        <!-- ABOUT -->
+        <!-- =========================
+             TOOLS
+        ========================== -->
+
+        <section
+            id="tools"
+            aria-labelledby="tools-heading"
+        >
+
+            <h2 id="tools-heading">
+                Choose a Tool
+            </h2>
+
+
+            <div class="tools">
+
+                <button type="button">
+                    📄 Compress PDF
+                </button>
+
+                <button type="button">
+                    🖼️ Compress Image
+                </button>
+
+                <button type="button">
+                    🔄 JPG/PNG → PDF
+                </button>
+
+                <button type="button">
+                    🔗 Merge PDF
+                </button>
+
+                <button type="button">
+                    🖼️ PDF → JPG/PNG
+                </button>
+
+                <button type="button">
+                    📐 Document Scanner
+                </button>
+
+                <button type="button">
+                    ✨ Document Enhance
+                </button>
+
+                <button type="button">
+                    📏 Resize Image
+                </button>
+
+                <button type="button">
+                    ✂️ Crop Image
+                </button>
+
+                <button type="button">
+                    🔃 Rotate Image
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SEO TOOL INFORMATION
+        ========================== -->
+
+        <section
+            class="seo-tools"
+            aria-labelledby="pdf-tools-heading"
+        >
+
+            <h2 id="pdf-tools-heading">
+                Free PDF Tools
+            </h2>
+
+            <p>
+                DocPinch includes useful PDF tools for compressing
+                PDF files, creating PDFs from JPG or PNG images,
+                merging PDF documents and converting PDF pages
+                into JPG or PNG images.
+            </p>
+
+
+            <div class="seo-links">
+
+                <a href="#tools">
+                    Compress PDF
+                </a>
+
+                <a href="#tools">
+                    JPG/PNG to PDF
+                </a>
+
+                <a href="#tools">
+                    Merge PDF
+                </a>
+
+                <a href="#tools">
+                    PDF to JPG/PNG
+                </a>
+
+            </div>
+
+
+            <h2 id="image-tools-heading">
+                Free Image Tools
+            </h2>
+
+            <p>
+                Compress, resize, crop and rotate images online
+                with DocPinch. These tools support common image
+                formats such as JPG and PNG.
+            </p>
+
+
+            <div class="seo-links">
+
+                <a href="#tools">
+                    Compress Image
+                </a>
+
+                <a href="#tools">
+                    Resize Image
+                </a>
+
+                <a href="#tools">
+                    Crop Image
+                </a>
+
+                <a href="#tools">
+                    Rotate Image
+                </a>
+
+            </div>
+
+
+            <h2 id="document-tools-heading">
+                Free Document Tools
+            </h2>
+
+            <p>
+                Scan document photos and enhance document images
+                with DocPinch for cleaner and easier-to-read
+                results.
+            </p>
+
+
+            <div class="seo-links">
+
+                <a href="#tools">
+                    Document Scanner
+                </a>
+
+                <a href="#tools">
+                    Document Enhance
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
         <section
             id="about"
             class="about"
+            aria-labelledby="about-heading"
         >
 
-            <h2>About DocPinch</h2>
+            <h2 id="about-heading">
+                About DocPinch
+            </h2>
 
             <p>
-                DocPinch is a free online platform for PDF and image tools.
-                Compress, convert, merge, resize, crop, rotate, scan and
-                enhance your documents and images easily.
+                DocPinch is a free online platform for PDF and image
+                tools. Compress, convert, merge, resize, crop,
+                rotate, scan and enhance documents and images easily
+                from your browser.
             </p>
 
         </section>
@@ -148,7 +352,10 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
 
         <p>
