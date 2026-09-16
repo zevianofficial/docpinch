@@ -80,6 +80,35 @@
     >
 
     <!-- =========================
+         STRUCTURED DATA
+    ========================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://zevianofficial.github.io/docpinch/#website",
+                "url": "https://zevianofficial.github.io/docpinch/",
+                "name": "DocPinch",
+                "description": "Free online PDF and image tools."
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://zevianofficial.github.io/docpinch/#organization",
+                "name": "DocPinch",
+                "url": "https://zevianofficial.github.io/docpinch/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://zevianofficial.github.io/docpinch/logo.svg"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- =========================
          CSS
     ========================== -->
 
@@ -131,8 +160,6 @@
     ========================== -->
 
     <header>
-
-        <!-- LOGO -->
 
         <div class="brand">
 
@@ -208,43 +235,73 @@
 
             <div class="tools">
 
-                <button type="button">
+                <button
+                    type="button"
+                    id="compress-pdf-button"
+                >
                     📄 Compress PDF
                 </button>
 
-                <button type="button">
+                <button
+                    type="button"
+                    id="compress-image-button"
+                >
                     🖼️ Compress Image
                 </button>
 
-                <button type="button">
+                <button
+                    type="button"
+                    id="jpg-png-to-pdf-button"
+                >
                     🔄 JPG/PNG → PDF
                 </button>
 
-                <button type="button">
+                <button
+                    type="button"
+                    id="merge-pdf-button"
+                >
                     🔗 Merge PDF
                 </button>
 
-                <button type="button">
+                <button
+                    type="button"
+                    id="pdf-to-image-button"
+                >
                     🖼️ PDF → JPG/PNG
                 </button>
 
-                <button type="button">
+                <button
+                    type="button"
+                    id="document-scanner-button"
+                >
                     📐 Document Scanner
                 </button>
 
-                <button type="button">
+                <button
+                    type="button"
+                    id="document-enhance-button"
+                >
                     ✨ Document Enhance
                 </button>
 
-                <button type="button">
+                <button
+                    type="button"
+                    id="image-resizer-button"
+                >
                     📏 Resize Image
                 </button>
 
-                <button type="button">
+                <button
+                    type="button"
+                    id="crop-image-button"
+                >
                     ✂️ Crop Image
                 </button>
 
-                <button type="button">
+                <button
+                    type="button"
+                    id="rotate-image-button"
+                >
                     🔃 Rotate Image
                 </button>
 
@@ -273,7 +330,10 @@
                 suitable for sharing, uploading and everyday use.
             </p>
 
-            <a href="#tools">
+            <a
+                href="#compress-image-button"
+                onclick="document.getElementById('compress-image-button').click(); return false;"
+            >
                 Open Image Compressor →
             </a>
 
@@ -299,7 +359,10 @@
                 file size for easier sharing, uploading and storage.
             </p>
 
-            <a href="#tools">
+            <a
+                href="#compress-pdf-button"
+                onclick="document.getElementById('compress-pdf-button').click(); return false;"
+            >
                 Open PDF Compressor →
             </a>
 
@@ -326,7 +389,10 @@
                 in your browser.
             </p>
 
-            <a href="#tools">
+            <a
+                href="#jpg-png-to-pdf-button"
+                onclick="document.getElementById('jpg-png-to-pdf-button').click(); return false;"
+            >
                 Open JPG/PNG to PDF →
             </a>
 
@@ -353,7 +419,10 @@
                 your browser for easy sharing and saving.
             </p>
 
-            <a href="#tools">
+            <a
+                href="#pdf-to-image-button"
+                onclick="document.getElementById('pdf-to-image-button').click(); return false;"
+            >
                 Open PDF to JPG/PNG →
             </a>
 
@@ -380,7 +449,10 @@
                 document directly in your browser.
             </p>
 
-            <a href="#tools">
+            <a
+                href="#merge-pdf-button"
+                onclick="document.getElementById('merge-pdf-button').click(); return false;"
+            >
                 Open PDF Merger →
             </a>
 
@@ -408,7 +480,10 @@
                 everyday uses.
             </p>
 
-            <a href="#tools">
+            <a
+                href="#image-resizer-button"
+                onclick="document.getElementById('image-resizer-button').click(); return false;"
+            >
                 Open Image Resizer →
             </a>
 
@@ -435,7 +510,10 @@
                 of an image directly in your browser.
             </p>
 
-            <a href="#tools">
+            <a
+                href="#crop-image-button"
+                onclick="document.getElementById('crop-image-button').click(); return false;"
+            >
                 Open Image Cropper →
             </a>
 
@@ -462,7 +540,10 @@
                 in your browser.
             </p>
 
-            <a href="#tools">
+            <a
+                href="#rotate-image-button"
+                onclick="document.getElementById('rotate-image-button').click(); return false;"
+            >
                 Open Image Rotator →
             </a>
 
@@ -490,7 +571,10 @@
                 your browser.
             </p>
 
-            <a href="#tools">
+            <a
+                href="#document-scanner-button"
+                onclick="document.getElementById('document-scanner-button').click(); return false;"
+            >
                 Open Document Scanner →
             </a>
 
@@ -518,7 +602,10 @@
                 your browser.
             </p>
 
-            <a href="#tools">
+            <a
+                href="#document-enhance-button"
+                onclick="document.getElementById('document-enhance-button').click(); return false;"
+            >
                 Open Document Enhance →
             </a>
 
