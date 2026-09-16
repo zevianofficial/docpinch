@@ -31,6 +31,7 @@
         href="https://zevianofficial.github.io/docpinch/"
     >
 
+
     <!-- =========================
          FAVICON
     ========================== -->
@@ -41,6 +42,7 @@
         href="favicon.svg"
     >
 
+
     <!-- =========================
          REFERRER
     ========================== -->
@@ -49,6 +51,7 @@
         name="referrer"
         content="strict-origin-when-cross-origin"
     >
+
 
     <!-- =========================
          OPEN GRAPH
@@ -79,6 +82,12 @@
         content="https://zevianofficial.github.io/docpinch/logo.svg"
     >
 
+    <meta
+        property="og:site_name"
+        content="DocPinch"
+    >
+
+
     <!-- =========================
          STRUCTURED DATA
     ========================== -->
@@ -87,6 +96,7 @@
     {
         "@context": "https://schema.org",
         "@graph": [
+
             {
                 "@type": "WebSite",
                 "@id": "https://zevianofficial.github.io/docpinch/#website",
@@ -94,6 +104,7 @@
                 "name": "DocPinch",
                 "description": "Free online PDF and image tools."
             },
+
             {
                 "@type": "Organization",
                 "@id": "https://zevianofficial.github.io/docpinch/#organization",
@@ -104,9 +115,11 @@
                     "url": "https://zevianofficial.github.io/docpinch/logo.svg"
                 }
             }
+
         ]
     }
     </script>
+
 
     <!-- =========================
          CSS
@@ -117,6 +130,7 @@
         href="style.css"
     >
 
+
     <!-- =========================
          PDF.JS
     ========================== -->
@@ -124,6 +138,7 @@
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
     ></script>
+
 
     <!-- =========================
          JSPDF
@@ -133,6 +148,7 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
     ></script>
 
+
     <!-- =========================
          PDF-LIB
     ========================== -->
@@ -140,6 +156,7 @@
     <script
         src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"
     ></script>
+
 
     <!-- =========================
          OPENCV.JS
@@ -154,6 +171,7 @@
 
 
 <body>
+
 
     <!-- =========================
          HEADER
@@ -203,14 +221,19 @@
 
     <main>
 
-        <!-- MAIN SEO HEADING -->
+
+        <!-- =========================
+             MAIN SEO HEADING
+        ========================== -->
 
         <h1>
             Free PDF & Image Tools Online
         </h1>
 
 
-        <!-- SEO INTRO -->
+        <!-- =========================
+             SEO INTRO
+        ========================== -->
 
         <p class="tools-intro">
             DocPinch provides free online PDF and image tools to
@@ -235,12 +258,14 @@
 
             <div class="tools">
 
+
                 <button
                     type="button"
                     id="compress-pdf-button"
                 >
                     📄 Compress PDF
                 </button>
+
 
                 <button
                     type="button"
@@ -249,12 +274,14 @@
                     🖼️ Compress Image
                 </button>
 
+
                 <button
                     type="button"
                     id="jpg-png-to-pdf-button"
                 >
                     🔄 JPG/PNG → PDF
                 </button>
+
 
                 <button
                     type="button"
@@ -263,12 +290,14 @@
                     🔗 Merge PDF
                 </button>
 
+
                 <button
                     type="button"
                     id="pdf-to-image-button"
                 >
                     🖼️ PDF → JPG/PNG
                 </button>
+
 
                 <button
                     type="button"
@@ -277,12 +306,14 @@
                     📐 Document Scanner
                 </button>
 
+
                 <button
                     type="button"
                     id="document-enhance-button"
                 >
                     ✨ Document Enhance
                 </button>
+
 
                 <button
                     type="button"
@@ -291,6 +322,7 @@
                     📏 Resize Image
                 </button>
 
+
                 <button
                     type="button"
                     id="crop-image-button"
@@ -298,12 +330,14 @@
                     ✂️ Crop Image
                 </button>
 
+
                 <button
                     type="button"
                     id="rotate-image-button"
                 >
                     🔃 Rotate Image
                 </button>
+
 
             </div>
 
@@ -621,6 +655,7 @@
             aria-labelledby="pdf-tools-heading"
         >
 
+
             <!-- PDF TOOLS -->
 
             <h2 id="pdf-tools-heading">
@@ -763,6 +798,47 @@
     ========================== -->
 
     <script src="script.js"></script>
+
+
+    <!-- =========================
+         SEO LINKS → REAL TOOLS
+    ========================== -->
+
+    <script>
+
+        document.querySelectorAll(
+            ".tool-seo-section a"
+        ).forEach((link) => {
+
+            link.addEventListener("click", (event) => {
+
+                event.preventDefault();
+
+                const targetId =
+                    link.getAttribute("href").replace("#", "");
+
+                const targetButton =
+                    document.getElementById(targetId);
+
+                if (targetButton) {
+
+                    targetButton.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                    setTimeout(() => {
+                        targetButton.click();
+                    }, 300);
+
+                }
+
+            });
+
+        });
+
+    </script>
+
 
 </body>
 
