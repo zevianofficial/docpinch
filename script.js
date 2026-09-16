@@ -4623,3 +4623,30 @@ function openDocumentEnhance() {
         );
 
 }
+
+
+// SEO LINKS → OPEN ACTUAL TOOL
+document.querySelectorAll(".tool-seo-section a, .seo-tools a").forEach((link) => {
+
+    link.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        const text = link.innerText.toLowerCase();
+
+        const targetButton = [...document.querySelectorAll(".tools button")]
+            .find((button) => button.innerText.toLowerCase().includes(
+                text.replace("open ", "").replace(" →", "").trim()
+            ));
+
+        if (targetButton) {
+            targetButton.click();
+        } else {
+            document.getElementById("tools")?.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+    });
+
+});
