@@ -2,47 +2,38 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    <!-- HOMEPAGE -->
     <url>
         <loc>https://zevianofficial.github.io/docpinch/</loc>
     </url>
 
-    <!-- PDF COMPRESSOR -->
     <url>
         <loc>https://zevianofficial.github.io/docpinch/compress-pdf.html</loc>
     </url>
 
-    <!-- IMAGE COMPRESSOR -->
     <url>
         <loc>https://zevianofficial.github.io/docpinch/compress-image.html</loc>
     </url>
 
-    <!-- PDF MERGER -->
     <url>
         <loc>https://zevianofficial.github.io/docpinch/merge-pdf.html</loc>
     </url>
 
-    <!-- JPG / PNG TO PDF -->
     <url>
         <loc>https://zevianofficial.github.io/docpinch/jpg-png-to-pdf.html</loc>
     </url>
 
-    <!-- PDF TO JPG / PNG -->
     <url>
         <loc>https://zevianofficial.github.io/docpinch/pdf-to-image.html</loc>
     </url>
 
-    <!-- IMAGE RESIZER -->
     <url>
         <loc>https://zevianofficial.github.io/docpinch/resize-image.html</loc>
     </url>
 
-    <!-- IMAGE CROPPER -->
     <url>
         <loc>https://zevianofficial.github.io/docpinch/crop-image.html</loc>
     </url>
 
-    <!-- IMAGE ROTATOR -->
     <url>
         <loc>https://zevianofficial.github.io/docpinch/rotate-image.html</loc>
     </url>
