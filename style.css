@@ -30,15 +30,16 @@ header {
     border-bottom: 1px solid #e5e7eb;
 }
 
-header p {
-    font-size: 16px;
-    color: #64748b;
-    margin-top: 10px;
+.brand {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-/* =========================
-   DOCPINCH LOGO
-========================= */
+.brand a {
+    display: inline-block;
+    line-height: 0;
+}
 
 .brand img {
     width: 310px;
@@ -62,10 +63,10 @@ header p {
 }
 
 .navbar a {
-    text-decoration: none;
     color: #002b54;
     font-size: 16px;
     font-weight: 700;
+    text-decoration: none;
 }
 
 .navbar a:hover {
@@ -79,31 +80,62 @@ header p {
 main {
     width: 100%;
     max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
+    margin: 0 auto;
+    padding: 45px 20px 20px;
     overflow-x: hidden;
 }
 
+main h1 {
+    margin-bottom: 12px;
+    color: #111827;
+    font-size: 36px;
+    line-height: 1.2;
+}
+
 main h2 {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    color: #111827;
     font-size: 28px;
+    line-height: 1.3;
+}
+
+main h3 {
+    line-height: 1.3;
 }
 
 /* =========================
-   TOOLS INTRO
+   HERO
 ========================= */
+
+.hero {
+    margin-bottom: 38px;
+}
+
+.hero h1 {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .tools-intro {
     max-width: 720px;
-    margin: -10px auto 25px;
+    margin: 0 auto;
     color: #64748b;
-    line-height: 1.6;
+    line-height: 1.7;
     font-size: 16px;
 }
 
 /* =========================
-   TOOLS GRID
+   TOOLS SECTION
 ========================= */
+
+#tools {
+    scroll-margin-top: 25px;
+}
+
+#about {
+    scroll-margin-top: 25px;
+}
 
 .tools {
     display: grid;
@@ -117,76 +149,101 @@ main h2 {
 
 .tools button {
     width: 100%;
-    padding: 22px;
+    min-height: 68px;
+    padding: 20px;
     border: none;
     border-radius: 14px;
     background: #ffffff;
     color: #222;
     font-size: 17px;
-    font-weight: bold;
+    font-weight: 700;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.25s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 .tools button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
 }
 
 .tools button:active {
     transform: scale(0.98);
 }
 
-.tools button:focus {
-    outline: none;
+.tools button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
 }
 
 /* =========================
-   SEO TOOL SECTIONS
+   SEO TOOL DIRECTORY
 ========================= */
 
 .seo-tools {
     width: 100%;
     margin-top: 40px;
-    padding: 30px 20px;
+    padding: 32px 24px;
     background: #ffffff;
-    border-radius: 14px;
+    border-radius: 16px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
 .seo-tools h2 {
-    margin: 25px 0 12px;
+    margin: 0 0 12px;
     color: #002b54;
-    font-size: 24px;
+    font-size: 26px;
 }
 
-.seo-tools h2:first-child {
-    margin-top: 0;
+.seo-tools h3 {
+    margin-top: 28px;
+    margin-bottom: 10px;
+    color: #002b54;
+    font-size: 21px;
+}
+
+.seo-tools h3:first-of-type {
+    margin-top: 28px;
 }
 
 .seo-tools p {
     max-width: 750px;
-    margin: 0 auto 15px;
+    margin: 0 auto 14px;
     color: #64748b;
     line-height: 1.7;
     font-size: 16px;
 }
 
-.seo-tools a {
-    display: inline-block;
-    margin: 6px 8px;
+/* =========================
+   SEO LINKS
+========================= */
+
+.seo-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-bottom: 8px;
+}
+
+.seo-links a {
     color: #2563eb;
+    font-size: 15px;
     font-weight: 700;
     text-decoration: none;
 }
 
-.seo-tools a:hover {
+.seo-links a:hover {
     text-decoration: underline;
 }
 
 /* =========================
-   INDIVIDUAL TOOL SEO
+   INDIVIDUAL SEO SECTION
+   Kept for compatibility
 ========================= */
 
 .tool-seo {
@@ -206,10 +263,20 @@ main h2 {
 
 .tool-seo p {
     max-width: 750px;
-    margin: 0 auto;
+    margin: 0 auto 14px;
     color: #64748b;
     line-height: 1.7;
     font-size: 16px;
+}
+
+.tool-seo a {
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tool-seo a:hover {
+    text-decoration: underline;
 }
 
 /* =========================
@@ -237,37 +304,176 @@ main h2 {
 }
 
 /* =========================
-   ABOUT SECTION
+   ABOUT
 ========================= */
 
 .about {
     width: 100%;
-    margin-top: 50px;
-    padding: 30px 20px;
+    margin-top: 40px;
+    padding: 30px 24px;
     background: #ffffff;
-    border-radius: 14px;
+    border-radius: 16px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .about h2 {
     margin-bottom: 15px;
+    color: #002b54;
     font-size: 26px;
 }
 
 .about p {
     max-width: 700px;
     margin: 0 auto;
-    line-height: 1.7;
     color: #64748b;
     font-size: 16px;
+    line-height: 1.7;
 }
 
 /* =========================
-   IMAGES & CANVAS
+   DYNAMIC TOOL WORKSPACE
 ========================= */
 
-img,
+.compressor {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 24px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.compressor h2 {
+    margin-bottom: 12px;
+    color: #002b54;
+}
+
+.compressor p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.compressor label {
+    font-weight: 700;
+    color: #334155;
+}
+
+.compressor input[type="file"] {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.compressor input[type="number"] {
+    width: 100%;
+    max-width: 280px;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.compressor input[type="number"]:focus {
+    border-color: #2563eb;
+}
+
+.compressor input[type="range"] {
+    width: 100%;
+    max-width: 320px;
+    cursor: pointer;
+}
+
+/* =========================
+   DYNAMIC BUTTONS
+========================= */
+
+.compressor button {
+    padding: 12px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #111827;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.compressor button:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+}
+
+.compressor button:active {
+    transform: scale(0.98);
+}
+
+.compressor button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+/* =========================
+   RESULT BOX
+========================= */
+
+.result-box {
+    width: 100%;
+    max-width: 760px;
+    margin: 24px auto 0;
+    padding: 25px 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.result-box h3 {
+    margin-bottom: 12px;
+    color: #002b54;
+}
+
+.result-box p {
+    margin: 6px 0;
+    color: #475569;
+}
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+
+.preview {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 600px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    object-fit: contain;
+}
+
+/* =========================
+   CANVAS
+========================= */
+
 canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* =========================
+   COMMON IMAGES
+========================= */
+
+img {
     max-width: 100%;
     height: auto;
 }
@@ -281,14 +487,73 @@ input[type="file"] {
 }
 
 /* =========================
+   DEDICATED TOOL PAGES
+========================= */
+
+.tool-page-card {
+    width: 100%;
+    max-width: 800px;
+    margin: 22px auto;
+    padding: 30px 24px;
+    background: #ffffff;
+    border-radius: 16px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.tool-page-card h2 {
+    margin-bottom: 12px;
+    color: #002b54;
+    font-size: 24px;
+}
+
+.tool-page-card p {
+    margin-bottom: 16px;
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.tool-page-card a:not(.tool-page-button) {
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tool-page-card a:not(.tool-page-button):hover {
+    text-decoration: underline;
+}
+
+.tool-page-button {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: #002b54;
+    color: #ffffff !important;
+    font-weight: 700;
+    text-decoration: none !important;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.tool-page-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+}
+
+/* =========================
    FOOTER
 ========================= */
 
 footer {
     margin-top: 50px;
-    padding: 20px;
+    padding: 22px 20px;
     background: #111827;
     color: #ffffff;
+}
+
+footer p {
+    line-height: 1.5;
 }
 
 .footer-tagline {
@@ -321,10 +586,13 @@ footer {
     }
 
     main {
-        width: 100%;
         max-width: 100%;
-        padding: 15px;
-        margin: 25px auto;
+        padding: 30px 15px 15px;
+        margin: 0 auto;
+    }
+
+    main h1 {
+        font-size: 29px;
     }
 
     main h2 {
@@ -337,14 +605,14 @@ footer {
     }
 
     .tools button {
-        width: 100%;
-        padding: 20px 15px;
+        min-height: 62px;
+        padding: 19px 15px;
         font-size: 16px;
     }
 
     .tools-intro {
         font-size: 15px;
-        margin-bottom: 20px;
+        margin-bottom: 22px;
     }
 
     .seo-tools {
@@ -353,32 +621,24 @@ footer {
     }
 
     .seo-tools h2 {
-        font-size: 22px;
+        font-size: 23px;
+    }
+
+    .seo-tools h3 {
+        font-size: 20px;
+        margin-top: 25px;
     }
 
     .seo-tools p {
         font-size: 15px;
     }
 
-    .seo-tools a {
-        margin: 5px 6px;
-        font-size: 15px;
+    .seo-links {
+        gap: 7px 14px;
     }
 
-    .tool-seo {
-        padding: 22px 15px;
-    }
-
-    .tool-seo h2 {
-        font-size: 22px;
-    }
-
-    .tool-seo p {
-        font-size: 15px;
-    }
-
-    .tool-info {
-        padding: 22px 15px;
+    .seo-links a {
+        font-size: 14px;
     }
 
     .about {
@@ -394,85 +654,18 @@ footer {
         font-size: 15px;
     }
 
-    img,
-    canvas {
-        width: auto;
-        max-width: 100% !important;
-        height: auto !important;
+    .compressor {
+        padding: 25px 15px;
     }
 
-    main > div,
-    main > section {
+    .compressor button {
         width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
+        max-width: 320px;
     }
 
-    input[type="file"] {
-        width: 100%;
-        max-width: 100%;
+    .result-box {
+        padding: 22px 15px;
     }
-
-    button {
-        max-width: 100%;
-    }
-}
-
-
-/* =========================
-   DEDICATED TOOL PAGES
-========================= */
-
-.tool-page-card {
-    max-width: 800px;
-    margin: 22px auto;
-    padding: 30px 24px;
-    background: white;
-    border-radius: 14px;
-    text-align: left;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.tool-page-card h2 {
-    margin-bottom: 12px;
-    color: #002B54;
-    font-size: 24px;
-}
-
-.tool-page-card p {
-    color: #64748b;
-    line-height: 1.7;
-    margin-bottom: 16px;
-}
-
-.tool-page-card a {
-    color: #2563eb;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.tool-page-card a:hover {
-    text-decoration: underline;
-}
-
-.tool-page-button {
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 10px;
-    background: #002B54;
-    color: white !important;
-    text-decoration: none !important;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.tool-page-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.92;
-}
-
-/* MOBILE TOOL PAGES */
-
-@media (max-width: 600px) {
 
     .tool-page-card {
         padding: 24px 18px;
@@ -485,6 +678,47 @@ footer {
     .tool-page-button {
         width: 100%;
         text-align: center;
+    }
+
+    .preview {
+        max-height: 500px;
+    }
+
+    canvas {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    input[type="file"] {
+        width: 100%;
+    }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+
+    .brand img {
+        width: 220px;
+    }
+
+    .navbar {
+        gap: 14px;
+    }
+
+    .navbar a {
+        font-size: 14px;
+    }
+
+    main h1 {
+        font-size: 26px;
+    }
+
+    .tools button {
+        font-size: 15px;
     }
 
 }
