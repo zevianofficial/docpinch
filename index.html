@@ -10,7 +10,6 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-
     <!-- =========================
          PRIMARY SEO
     ========================== -->
@@ -223,8 +222,9 @@
         <div class="brand">
 
             <a
-                href="index.html"
+                href="./index.html"
                 aria-label="DocPinch Home"
+                onclick="window.location.href='./index.html'; return false;"
             >
 
                 <img
@@ -246,15 +246,24 @@
             aria-label="Main navigation"
         >
 
-            <a href="index.html">
+            <a
+                href="./index.html"
+                onclick="window.location.href='./index.html'; return false;"
+            >
                 Home
             </a>
 
-            <a href="index.html#tools">
+            <a
+                href="./index.html#tools"
+                onclick="window.location.href='./index.html#tools'; return false;"
+            >
                 Tools
             </a>
 
-            <a href="index.html#about">
+            <a
+                href="./index.html#about"
+                onclick="window.location.href='./index.html#about'; return false;"
+            >
                 About
             </a>
 
@@ -271,7 +280,7 @@
 
 
         <!-- =========================
-             HERO / MAIN SEO
+             HERO
         ========================== -->
 
         <section
@@ -309,9 +318,7 @@
             <div class="tools">
 
 
-                <!-- =========================
-                     PDF COMPRESSOR
-                ========================== -->
+                <!-- PDF COMPRESSOR -->
 
                 <button
                     type="button"
@@ -321,9 +328,7 @@
                 </button>
 
 
-                <!-- =========================
-                     IMAGE COMPRESSOR
-                ========================== -->
+                <!-- IMAGE COMPRESSOR -->
 
                 <button
                     type="button"
@@ -333,9 +338,7 @@
                 </button>
 
 
-                <!-- =========================
-                     JPG PNG TO PDF
-                ========================== -->
+                <!-- JPG PNG TO PDF -->
 
                 <button
                     type="button"
@@ -345,9 +348,7 @@
                 </button>
 
 
-                <!-- =========================
-                     PDF MERGER
-                ========================== -->
+                <!-- PDF MERGER -->
 
                 <button
                     type="button"
@@ -357,9 +358,7 @@
                 </button>
 
 
-                <!-- =========================
-                     PDF TO IMAGE
-                ========================== -->
+                <!-- PDF TO IMAGE -->
 
                 <button
                     type="button"
@@ -369,9 +368,7 @@
                 </button>
 
 
-                <!-- =========================
-                     DOCUMENT SCANNER
-                ========================== -->
+                <!-- DOCUMENT SCANNER -->
 
                 <button
                     type="button"
@@ -381,9 +378,7 @@
                 </button>
 
 
-                <!-- =========================
-                     DOCUMENT ENHANCE
-                ========================== -->
+                <!-- DOCUMENT ENHANCE -->
 
                 <button
                     type="button"
@@ -393,9 +388,7 @@
                 </button>
 
 
-                <!-- =========================
-                     IMAGE RESIZER
-                ========================== -->
+                <!-- IMAGE RESIZER -->
 
                 <button
                     type="button"
@@ -405,9 +398,7 @@
                 </button>
 
 
-                <!-- =========================
-                     IMAGE CROP
-                ========================== -->
+                <!-- IMAGE CROP -->
 
                 <button
                     type="button"
@@ -417,9 +408,7 @@
                 </button>
 
 
-                <!-- =========================
-                     IMAGE ROTATOR
-                ========================== -->
+                <!-- IMAGE ROTATOR -->
 
                 <button
                     type="button"
@@ -448,8 +437,9 @@
             </h2>
 
             <p>
-                Use DocPinch online tools for common PDF, image and
-                document tasks directly from your browser.
+                Open any DocPinch tool directly in your browser.
+                Each tool is designed for a specific PDF, image or
+                document task.
             </p>
 
 
@@ -467,19 +457,35 @@
 
             <div class="seo-links">
 
-                <a href="compress-pdf.html">
+
+                <a
+                    href="compress-pdf.html"
+                    onclick="openPDFCompressor(); return false;"
+                >
                     Compress PDF
                 </a>
 
-                <a href="merge-pdf.html">
+
+                <a
+                    href="merge-pdf.html"
+                    onclick="openPDFMerger(); return false;"
+                >
                     Merge PDF
                 </a>
 
-                <a href="jpg-png-to-pdf.html">
+
+                <a
+                    href="jpg-png-to-pdf.html"
+                    onclick="openImageToPDF(); return false;"
+                >
                     JPG/PNG to PDF
                 </a>
 
-                <a href="pdf-to-image.html">
+
+                <a
+                    href="pdf-to-image.html"
+                    onclick="openPDFToImage(); return false;"
+                >
                     PDF to JPG/PNG
                 </a>
 
@@ -500,19 +506,35 @@
 
             <div class="seo-links">
 
-                <a href="compress-image.html">
+
+                <a
+                    href="compress-image.html"
+                    onclick="openImageCompressor(); return false;"
+                >
                     Compress Image
                 </a>
 
-                <a href="resize-image.html">
+
+                <a
+                    href="resize-image.html"
+                    onclick="openImageResizer(); return false;"
+                >
                     Resize Image
                 </a>
 
-                <a href="crop-image.html">
+
+                <a
+                    href="crop-image.html"
+                    onclick="openImageCropper(); return false;"
+                >
                     Crop Image
                 </a>
 
-                <a href="rotate-image.html">
+
+                <a
+                    href="rotate-image.html"
+                    onclick="openImageRotator(); return false;"
+                >
                     Rotate Image
                 </a>
 
@@ -528,17 +550,322 @@
             </h3>
 
             <p>
-                DocPinch also includes Document Scanner and
-                Document Enhance tools for document photos.
+                Scan document photos and enhance document images
+                with DocPinch.
             </p>
 
             <div class="seo-links">
 
-                <a href="#tools">
-                    Open Document Tools
+
+                <a
+                    href="./index.html#tools"
+                    onclick="openDocumentScanner(); return false;"
+                >
+                    Document Scanner
+                </a>
+
+
+                <a
+                    href="./index.html#tools"
+                    onclick="openDocumentEnhance(); return false;"
+                >
+                    Document Enhance
                 </a>
 
             </div>
+
+        </section>
+
+
+        <!-- =========================
+             PDF COMPRESSOR SEO
+        ========================== -->
+
+        <section
+            id="pdf-compressor"
+            class="tool-seo-section"
+            aria-labelledby="pdf-compressor-heading"
+        >
+
+            <h2 id="pdf-compressor-heading">
+                Free Online PDF Compressor
+            </h2>
+
+            <p>
+                Compress PDF files online with DocPinch to reduce
+                file size for easier sharing, uploading and storage.
+            </p>
+
+            <a
+                href="compress-pdf.html"
+                onclick="openPDFCompressor(); return false;"
+            >
+                Open PDF Compressor →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             IMAGE COMPRESSOR SEO
+        ========================== -->
+
+        <section
+            id="image-compressor"
+            class="tool-seo-section"
+            aria-labelledby="image-compressor-heading"
+        >
+
+            <h2 id="image-compressor-heading">
+                Free Online Image Compressor
+            </h2>
+
+            <p>
+                Compress JPG and PNG images online with DocPinch.
+                Reduce image file size for sharing and uploading.
+            </p>
+
+            <a
+                href="compress-image.html"
+                onclick="openImageCompressor(); return false;"
+            >
+                Open Image Compressor →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             JPG PNG TO PDF SEO
+        ========================== -->
+
+        <section
+            id="jpg-png-to-pdf"
+            class="tool-seo-section"
+            aria-labelledby="jpg-png-to-pdf-heading"
+        >
+
+            <h2 id="jpg-png-to-pdf-heading">
+                JPG and PNG to PDF Converter
+            </h2>
+
+            <p>
+                Convert JPG and PNG images into PDF documents online
+                with DocPinch. Create a PDF from one or multiple images.
+            </p>
+
+            <a
+                href="jpg-png-to-pdf.html"
+                onclick="openImageToPDF(); return false;"
+            >
+                Open JPG/PNG to PDF →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             MERGE PDF SEO
+        ========================== -->
+
+        <section
+            id="merge-pdf"
+            class="tool-seo-section"
+            aria-labelledby="merge-pdf-heading"
+        >
+
+            <h2 id="merge-pdf-heading">
+                Free Online PDF Merger
+            </h2>
+
+            <p>
+                Merge multiple PDF files into one document online
+                with DocPinch.
+            </p>
+
+            <a
+                href="merge-pdf.html"
+                onclick="openPDFMerger(); return false;"
+            >
+                Open PDF Merger →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             PDF TO IMAGE SEO
+        ========================== -->
+
+        <section
+            id="pdf-to-image"
+            class="tool-seo-section"
+            aria-labelledby="pdf-to-image-heading"
+        >
+
+            <h2 id="pdf-to-image-heading">
+                PDF to JPG and PNG Converter
+            </h2>
+
+            <p>
+                Convert PDF pages into JPG or PNG images online with
+                DocPinch and save individual pages as images.
+            </p>
+
+            <a
+                href="pdf-to-image.html"
+                onclick="openPDFToImage(); return false;"
+            >
+                Open PDF to JPG/PNG →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             IMAGE RESIZER SEO
+        ========================== -->
+
+        <section
+            id="image-resizer"
+            class="tool-seo-section"
+            aria-labelledby="image-resizer-heading"
+        >
+
+            <h2 id="image-resizer-heading">
+                Free Online Image Resizer
+            </h2>
+
+            <p>
+                Resize JPG and PNG images online with DocPinch.
+                Set the width and height you need directly in your browser.
+            </p>
+
+            <a
+                href="resize-image.html"
+                onclick="openImageResizer(); return false;"
+            >
+                Open Image Resizer →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             CROP IMAGE SEO
+        ========================== -->
+
+        <section
+            id="crop-image"
+            class="tool-seo-section"
+            aria-labelledby="crop-image-heading"
+        >
+
+            <h2 id="crop-image-heading">
+                Free Online Image Cropper
+            </h2>
+
+            <p>
+                Crop JPG and PNG images online with DocPinch.
+                Select the area you need and remove unwanted parts.
+            </p>
+
+            <a
+                href="crop-image.html"
+                onclick="openImageCropper(); return false;"
+            >
+                Open Image Cropper →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             ROTATE IMAGE SEO
+        ========================== -->
+
+        <section
+            id="rotate-image"
+            class="tool-seo-section"
+            aria-labelledby="rotate-image-heading"
+        >
+
+            <h2 id="rotate-image-heading">
+                Free Online Image Rotator
+            </h2>
+
+            <p>
+                Rotate JPG and PNG images online with DocPinch.
+                Turn images to the correct orientation directly
+                in your browser.
+            </p>
+
+            <a
+                href="rotate-image.html"
+                onclick="openImageRotator(); return false;"
+            >
+                Open Image Rotator →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             DOCUMENT SCANNER SEO
+        ========================== -->
+
+        <section
+            id="document-scanner"
+            class="tool-seo-section"
+            aria-labelledby="document-scanner-heading"
+        >
+
+            <h2 id="document-scanner-heading">
+                Online Document Scanner
+            </h2>
+
+            <p>
+                Scan document photos online with DocPinch.
+                Adjust document corners, straighten the page and
+                download a clean scanned copy.
+            </p>
+
+            <a
+                href="./index.html#tools"
+                onclick="openDocumentScanner(); return false;"
+            >
+                Open Document Scanner →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             DOCUMENT ENHANCE SEO
+        ========================== -->
+
+        <section
+            id="document-enhance"
+            class="tool-seo-section"
+            aria-labelledby="document-enhance-heading"
+        >
+
+            <h2 id="document-enhance-heading">
+                Online Document Enhancer
+            </h2>
+
+            <p>
+                Enhance scanned document images online with DocPinch.
+                Improve document appearance with clean white and
+                black-and-white enhancement options.
+            </p>
+
+            <a
+                href="./index.html#tools"
+                onclick="openDocumentEnhance(); return false;"
+            >
+                Open Document Enhance →
+            </a>
 
         </section>
 
@@ -559,9 +886,9 @@
 
             <p>
                 DocPinch is a free online platform for PDF and image
-                tools. Compress, convert, merge, resize, crop,
-                rotate, scan and enhance documents and images easily
-                from your browser.
+                tools. Compress, convert, merge, resize, crop, rotate,
+                scan and enhance documents and images easily from
+                your browser.
             </p>
 
         </section>
