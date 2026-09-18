@@ -433,3 +433,85 @@ function openDocumentEnhance() {
     alert("Document Enhance feature coming soon!");
     goToTools();
 }
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocPinch – Free PDF & Image Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="logo.svg" alt="DocPinch Logo" class="logo-img">
+            <span class="logo-text">DocPinch</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="hero">
+            <h1>Free Online PDF & Image Tools</h1>
+            <p>Compress, convert, merge, resize, crop, rotate, scan, and enhance documents easily from your browser.</p>
+        </div>
+
+        <div class="tools-grid">
+            <div class="tool-card" onclick="location.href='compress-image.html'">
+                <div class="icon">🗜️</div>
+                <h3>Image Compressor</h3>
+                <p>Reduce image file size without losing quality.</p>
+            </div>
+            <div class="tool-card" onclick="location.href='resize-image.html'">
+                <div class="icon">📐</div>
+                <h3>Image Resizer</h3>
+                <p>Resize JPG and PNG dimensions in pixels.</p>
+            </div>
+            <div class="tool-card" onclick="location.href='crop-image.html'">
+                <div class="icon">✂️</div>
+                <h3>Image Cropper</h3>
+                <p>Crop images to exact dimensions.</p>
+            </div>
+            <div class="tool-card" onclick="location.href='rotate-image.html'">
+                <div class="icon">🔄</div>
+                <h3>Image Rotator</h3>
+                <p>Rotate photos 90°, 180°, or 270° online.</p>
+            </div>
+            <div class="tool-card" onclick="location.href='compress-pdf.html'">
+                <div class="icon">📄</div>
+                <h3>PDF Compressor</h3>
+                <p>Compress PDF files for easy sharing.</p>
+            </div>
+            <div class="tool-card" onclick="location.href='pdf-to-image.html'">
+                <div class="icon">🖼️</div>
+                <h3>PDF to JPG/PNG</h3>
+                <p>Convert PDF pages into image files.</p>
+            </div>
+            <div class="tool-card" onclick="location.href='jpg-png-to-pdf.html'">
+                <div class="icon">📑</div>
+                <h3>JPG/PNG to PDF</h3>
+                <p>Convert images into PDF documents.</p>
+            </div>
+            <div class="tool-card" onclick="location.href='merge-pdf.html'">
+                <div class="icon">🧩</div>
+                <h3>Merge PDF</h3>
+                <p>Combine multiple PDFs into a single file.</p>
+            </div>
+        </div>
+
+        <section class="about-section">
+            <h2>About DocPinch</h2>
+            <p>DocPinch is a free online platform providing client-side document and image processing utilities. All operations are processed locally in your web browser for total privacy.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 DocPinch. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
