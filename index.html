@@ -31,6 +31,11 @@
         href="https://zevianofficial.github.io/docpinch/"
     >
 
+    <meta
+        name="theme-color"
+        content="#002B54"
+    >
+
 
     <!-- =========================
          FAVICON
@@ -58,6 +63,11 @@
     ========================== -->
 
     <meta
+        property="og:site_name"
+        content="DocPinch"
+    >
+
+    <meta
         property="og:title"
         content="DocPinch – Free PDF & Image Tools Online"
     >
@@ -82,6 +92,11 @@
         content="https://zevianofficial.github.io/docpinch/logo.svg"
     >
 
+    <meta
+        property="og:image:alt"
+        content="DocPinch PDF and Image Tools Logo"
+    >
+
 
     <!-- =========================
          STRUCTURED DATA
@@ -91,6 +106,7 @@
     {
         "@context": "https://schema.org",
         "@graph": [
+
             {
                 "@type": "WebSite",
                 "@id": "https://zevianofficial.github.io/docpinch/#website",
@@ -98,6 +114,7 @@
                 "name": "DocPinch",
                 "description": "Free online PDF and image tools."
             },
+
             {
                 "@type": "Organization",
                 "@id": "https://zevianofficial.github.io/docpinch/#organization",
@@ -108,6 +125,7 @@
                     "url": "https://zevianofficial.github.io/docpinch/logo.svg"
                 }
             }
+
         ]
     }
     </script>
@@ -164,7 +182,6 @@
 
 <body>
 
-
     <!-- =========================
          HEADER
     ========================== -->
@@ -220,7 +237,6 @@
 
     <main>
 
-
         <!-- =========================
              MAIN SEO HEADING
         ========================== -->
@@ -256,7 +272,6 @@
 
 
             <div class="tools">
-
 
                 <!-- PDF COMPRESSOR -->
 
@@ -431,14 +446,11 @@
 
             <p>
                 Convert JPG and PNG images into PDF documents online
-                with DocPinch. Create a PDF from your images directly
-                in your browser.
+                with DocPinch. Create PDF files from one or multiple
+                images directly in your browser.
             </p>
 
-            <a
-                href="#jpg-png-to-pdf-button"
-                onclick="document.getElementById('jpg-png-to-pdf-button').click(); return false;"
-            >
+            <a href="jpg-png-to-pdf.html">
                 Open JPG/PNG to PDF →
             </a>
 
@@ -465,10 +477,7 @@
                 your browser for easy sharing and saving.
             </p>
 
-            <a
-                href="#pdf-to-image-button"
-                onclick="document.getElementById('pdf-to-image-button').click(); return false;"
-            >
+            <a href="pdf-to-image.html">
                 Open PDF to JPG/PNG →
             </a>
 
@@ -664,7 +673,6 @@
             aria-labelledby="pdf-tools-heading"
         >
 
-
             <!-- PDF TOOLS -->
 
             <h2 id="pdf-tools-heading">
@@ -678,14 +686,13 @@
                 into JPG or PNG images.
             </p>
 
-
             <div class="seo-links">
 
                 <a href="compress-pdf.html">
                     Compress PDF
                 </a>
 
-                <a href="#jpg-png-to-pdf">
+                <a href="jpg-png-to-pdf.html">
                     JPG/PNG to PDF
                 </a>
 
@@ -693,7 +700,7 @@
                     Merge PDF
                 </a>
 
-                <a href="#pdf-to-image">
+                <a href="pdf-to-image.html">
                     PDF to JPG/PNG
                 </a>
 
@@ -712,22 +719,30 @@
                 uploading and document-related tasks.
             </p>
 
-
             <div class="seo-links">
 
                 <a href="compress-image.html">
                     Compress Image
                 </a>
 
-                <a href="#image-resizer">
+                <a
+                    href="#image-resizer-button"
+                    onclick="document.getElementById('image-resizer-button').click(); return false;"
+                >
                     Resize Image
                 </a>
 
-                <a href="#crop-image">
+                <a
+                    href="#crop-image-button"
+                    onclick="document.getElementById('crop-image-button').click(); return false;"
+                >
                     Crop Image
                 </a>
 
-                <a href="#rotate-image">
+                <a
+                    href="#rotate-image-button"
+                    onclick="document.getElementById('rotate-image-button').click(); return false;"
+                >
                     Rotate Image
                 </a>
 
@@ -746,14 +761,19 @@
                 results.
             </p>
 
-
             <div class="seo-links">
 
-                <a href="#document-scanner">
+                <a
+                    href="#document-scanner-button"
+                    onclick="document.getElementById('document-scanner-button').click(); return false;"
+                >
                     Document Scanner
                 </a>
 
-                <a href="#document-enhance">
+                <a
+                    href="#document-enhance-button"
+                    onclick="document.getElementById('document-enhance-button').click(); return false;"
+                >
                     Document Enhance
                 </a>
 
