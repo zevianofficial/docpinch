@@ -1,3 +1,5 @@
+# DocPinch robots.txt
+
 User-agent: *
 Allow: /
 
