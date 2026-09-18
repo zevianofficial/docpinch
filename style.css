@@ -417,3 +417,74 @@ footer {
         max-width: 100%;
     }
 }
+
+
+/* =========================
+   DEDICATED TOOL PAGES
+========================= */
+
+.tool-page-card {
+    max-width: 800px;
+    margin: 22px auto;
+    padding: 30px 24px;
+    background: white;
+    border-radius: 14px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.tool-page-card h2 {
+    margin-bottom: 12px;
+    color: #002B54;
+    font-size: 24px;
+}
+
+.tool-page-card p {
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.tool-page-card a {
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tool-page-card a:hover {
+    text-decoration: underline;
+}
+
+.tool-page-button {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: #002B54;
+    color: white !important;
+    text-decoration: none !important;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.tool-page-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+}
+
+/* MOBILE TOOL PAGES */
+
+@media (max-width: 600px) {
+
+    .tool-page-card {
+        padding: 24px 18px;
+    }
+
+    .tool-page-card h2 {
+        font-size: 21px;
+    }
+
+    .tool-page-button {
+        width: 100%;
+        text-align: center;
+    }
+
+}
