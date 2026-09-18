@@ -66,6 +66,18 @@ buttons.forEach((button) => {
 
 
 // =====================================================
+// BACK TO HOMEPAGE / TOOLS
+// =====================================================
+
+function goToTools() {
+
+    window.location.href =
+        "index.html#tools";
+
+}
+
+
+// =====================================================
 // FILE SIZE FORMAT
 // =====================================================
 
@@ -371,9 +383,7 @@ function openImageCompressor() {
 
     backBtn.addEventListener(
         "click",
-        () => {
-            location.reload();
-        }
+        goToTools
     );
 
 }
@@ -445,9 +455,7 @@ function openImageToPDF() {
         .getElementById("imagePDFBackBtn")
         .addEventListener(
             "click",
-            () => {
-                location.reload();
-            }
+            goToTools
         );
 
 
@@ -1191,9 +1199,7 @@ function openImageResizer() {
 
     backBtn.addEventListener(
         "click",
-        () => {
-            location.reload();
-        }
+        goToTools
     );
 
 }
@@ -1601,9 +1607,7 @@ function openImageCropper() {
 
     backBtn.addEventListener(
         "click",
-        () => {
-            location.reload();
-        }
+        goToTools
     );
 
 }
@@ -1843,9 +1847,7 @@ function openImageRotator() {
             };
 
 
-        reader.readAsDataURL(
-            file
-        );
+        reader.readAsDataURL(file);
 
     }
 
@@ -1876,9 +1878,7 @@ function openImageRotator() {
 
     backBtn.addEventListener(
         "click",
-        () => {
-            location.reload();
-        }
+        goToTools
     );
 
 }
@@ -1991,9 +1991,7 @@ function openPDFCompressor() {
         .getElementById("pdfBackBtn")
         .addEventListener(
             "click",
-            () => {
-                location.reload();
-            }
+            goToTools
         );
 
 
@@ -2436,9 +2434,7 @@ function openPDFMerger() {
         .getElementById("mergeBackBtn")
         .addEventListener(
             "click",
-            () => {
-                location.reload();
-            }
+            goToTools
         );
 
 
@@ -2759,9 +2755,7 @@ function openPDFToImage() {
         )
         .addEventListener(
             "click",
-            () => {
-                location.reload();
-            }
+            goToTools
         );
 
 
@@ -4061,9 +4055,7 @@ function openDocumentScanner() {
         )
         .addEventListener(
             "click",
-            () => {
-                location.reload();
-            }
+            goToTools
         );
 
 }
@@ -4617,36 +4609,102 @@ function openDocumentEnhance() {
         )
         .addEventListener(
             "click",
-            () => {
-                location.reload();
-            }
+            goToTools
         );
 
 }
 
 
-// SEO LINKS → OPEN ACTUAL TOOL
-document.querySelectorAll(".tool-seo-section a, .seo-tools a").forEach((link) => {
+// =====================================================
+// DIRECT TOOL ROUTING
+// =====================================================
 
-    link.addEventListener("click", (event) => {
+function openToolFromURL() {
 
-        event.preventDefault();
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
 
-        const text = link.innerText.toLowerCase();
 
-        const targetButton = [...document.querySelectorAll(".tools button")]
-            .find((button) => button.innerText.toLowerCase().includes(
-                text.replace("open ", "").replace(" →", "").trim()
-            ));
+    const tool =
+        params.get("tool");
 
-        if (targetButton) {
-            targetButton.click();
-        } else {
-            document.getElementById("tools")?.scrollIntoView({
-                behavior: "smooth"
-            });
-        }
 
-    });
+    if (!tool) {
+        return;
+    }
 
-});
+
+    const toolsMap = {
+
+        "compress-pdf":
+            openPDFCompressor,
+
+        "compress-image":
+            openImageCompressor,
+
+        "jpg-png-to-pdf":
+            openImageToPDF,
+
+        "merge-pdf":
+            openPDFMerger,
+
+        "pdf-to-image":
+            openPDFToImage,
+
+        "document-scanner":
+            openDocumentScanner,
+
+        "document-enhance":
+            openDocumentEnhance,
+
+        "resize-image":
+            openImageResizer,
+
+        "crop-image":
+            openImageCropper,
+
+        "rotate-image":
+            openImageRotator
+
+    };
+
+
+    const toolFunction =
+        toolsMap[tool];
+
+
+    if (
+        typeof toolFunction ===
+        "function"
+    ) {
+
+        toolFunction();
+
+    }
+
+}
+
+
+// =====================================================
+// START DIRECT TOOL ROUTING
+// =====================================================
+
+if (
+    document.readyState ===
+    "complete"
+) {
+
+    openToolFromURL();
+
+}
+
+else {
+
+    window.addEventListener(
+        "load",
+        openToolFromURL
+    );
+
+}
