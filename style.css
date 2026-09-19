@@ -4,10 +4,6 @@
     padding: 0;
 }
 
-/* =========================
-   PAGE
-========================= */
-
 html {
     scroll-behavior: smooth;
 }
@@ -25,21 +21,20 @@ body {
 ========================= */
 
 header {
-    background: #ffffff;
+    background: white;
     padding: 25px 20px;
     border-bottom: 1px solid #e5e7eb;
 }
 
-.brand {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+header p {
+    font-size: 16px;
+    color: #64748b;
+    margin-top: 10px;
 }
 
-.brand a {
-    display: inline-block;
-    line-height: 0;
-}
+/* =========================
+   DOCPINCH LOGO
+========================= */
 
 .brand img {
     width: 310px;
@@ -63,10 +58,10 @@ header {
 }
 
 .navbar a {
-    color: #002b54;
+    text-decoration: none;
+    color: #002B54;
     font-size: 16px;
     font-weight: 700;
-    text-decoration: none;
 }
 
 .navbar a:hover {
@@ -80,62 +75,19 @@ header {
 main {
     width: 100%;
     max-width: 900px;
-    margin: 0 auto;
-    padding: 45px 20px 20px;
+    margin: 40px auto;
+    padding: 20px;
     overflow-x: hidden;
 }
 
-main h1 {
-    margin-bottom: 12px;
-    color: #111827;
-    font-size: 36px;
-    line-height: 1.2;
-}
-
 main h2 {
-    margin-bottom: 20px;
-    color: #111827;
+    margin-bottom: 25px;
     font-size: 28px;
-    line-height: 1.3;
-}
-
-main h3 {
-    line-height: 1.3;
 }
 
 /* =========================
-   HERO
+   TOOLS GRID
 ========================= */
-
-.hero {
-    margin-bottom: 38px;
-}
-
-.hero h1 {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.tools-intro {
-    max-width: 720px;
-    margin: 0 auto;
-    color: #64748b;
-    line-height: 1.7;
-    font-size: 16px;
-}
-
-/* =========================
-   TOOLS SECTION
-========================= */
-
-#tools {
-    scroll-margin-top: 25px;
-}
-
-#about {
-    scroll-margin-top: 25px;
-}
 
 .tools {
     display: grid;
@@ -149,331 +101,62 @@ main h3 {
 
 .tools button {
     width: 100%;
-    min-height: 68px;
-    padding: 20px;
+    padding: 22px;
     border: none;
     border-radius: 14px;
-    background: #ffffff;
-    color: #222;
+    background: white;
     font-size: 17px;
-    font-weight: 700;
+    font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .tools button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 .tools button:active {
     transform: scale(0.98);
 }
 
-.tools button:focus-visible {
-    outline: 3px solid #93c5fd;
-    outline-offset: 2px;
+.tools button:focus {
+    outline: none;
 }
 
 /* =========================
-   SEO TOOL DIRECTORY
-========================= */
-
-.seo-tools {
-    width: 100%;
-    margin-top: 40px;
-    padding: 32px 24px;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.seo-tools h2 {
-    margin: 0 0 12px;
-    color: #002b54;
-    font-size: 26px;
-}
-
-.seo-tools h3 {
-    margin-top: 28px;
-    margin-bottom: 10px;
-    color: #002b54;
-    font-size: 21px;
-}
-
-.seo-tools h3:first-of-type {
-    margin-top: 28px;
-}
-
-.seo-tools p {
-    max-width: 750px;
-    margin: 0 auto 14px;
-    color: #64748b;
-    line-height: 1.7;
-    font-size: 16px;
-}
-
-/* =========================
-   SEO LINKS
-========================= */
-
-.seo-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px 18px;
-    margin-bottom: 8px;
-}
-
-.seo-links a {
-    color: #2563eb;
-    font-size: 15px;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.seo-links a:hover {
-    text-decoration: underline;
-}
-
-/* =========================
-   INDIVIDUAL SEO SECTION
-   Kept for compatibility
-========================= */
-
-.tool-seo {
-    width: 100%;
-    margin-top: 30px;
-    padding: 25px 20px;
-    background: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.tool-seo h2 {
-    margin-bottom: 12px;
-    color: #002b54;
-    font-size: 24px;
-}
-
-.tool-seo p {
-    max-width: 750px;
-    margin: 0 auto 14px;
-    color: #64748b;
-    line-height: 1.7;
-    font-size: 16px;
-}
-
-.tool-seo a {
-    color: #2563eb;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.tool-seo a:hover {
-    text-decoration: underline;
-}
-
-/* =========================
-   TOOL INFO
-========================= */
-
-.tool-info {
-    width: 100%;
-    margin-top: 20px;
-    padding: 24px 20px;
-    background: #ffffff;
-    border-radius: 14px;
-    text-align: left;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.tool-info h3 {
-    margin-bottom: 10px;
-    color: #002b54;
-}
-
-.tool-info p {
-    color: #64748b;
-    line-height: 1.6;
-}
-
-/* =========================
-   ABOUT
+   ABOUT SECTION
 ========================= */
 
 .about {
     width: 100%;
-    margin-top: 40px;
-    padding: 30px 24px;
-    background: #ffffff;
-    border-radius: 16px;
+    margin-top: 50px;
+    padding: 30px 20px;
+    background: white;
+    border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .about h2 {
     margin-bottom: 15px;
-    color: #002b54;
     font-size: 26px;
 }
 
 .about p {
     max-width: 700px;
     margin: 0 auto;
-    color: #64748b;
-    font-size: 16px;
     line-height: 1.7;
-}
-
-/* =========================
-   DYNAMIC TOOL WORKSPACE
-========================= */
-
-.compressor {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 30px 24px;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.compressor h2 {
-    margin-bottom: 12px;
-    color: #002b54;
-}
-
-.compressor p {
     color: #64748b;
-    line-height: 1.6;
-}
-
-.compressor label {
-    font-weight: 700;
-    color: #334155;
-}
-
-.compressor input[type="file"] {
-    display: block;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.compressor input[type="number"] {
-    width: 100%;
-    max-width: 280px;
-    padding: 11px 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 10px;
     font-size: 16px;
-    outline: none;
-}
-
-.compressor input[type="number"]:focus {
-    border-color: #2563eb;
-}
-
-.compressor input[type="range"] {
-    width: 100%;
-    max-width: 320px;
-    cursor: pointer;
 }
 
 /* =========================
-   DYNAMIC BUTTONS
+   IMAGES & CANVAS
 ========================= */
 
-.compressor button {
-    padding: 12px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 10px;
-    background: #111827;
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition:
-        transform 0.2s ease,
-        opacity 0.2s ease;
-}
-
-.compressor button:hover {
-    transform: translateY(-1px);
-    opacity: 0.92;
-}
-
-.compressor button:active {
-    transform: scale(0.98);
-}
-
-.compressor button:focus-visible {
-    outline: 3px solid #93c5fd;
-    outline-offset: 2px;
-}
-
-/* =========================
-   RESULT BOX
-========================= */
-
-.result-box {
-    width: 100%;
-    max-width: 760px;
-    margin: 24px auto 0;
-    padding: 25px 20px;
-    background: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.result-box h3 {
-    margin-bottom: 12px;
-    color: #002b54;
-}
-
-.result-box p {
-    margin: 6px 0;
-    color: #475569;
-}
-
-/* =========================
-   IMAGE PREVIEW
-========================= */
-
-.preview {
-    display: block;
-    width: auto;
-    max-width: 100%;
-    max-height: 600px;
-    height: auto;
-    margin: 0 auto;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    object-fit: contain;
-}
-
-/* =========================
-   CANVAS
-========================= */
-
+img,
 canvas {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-/* =========================
-   COMMON IMAGES
-========================= */
-
-img {
     max-width: 100%;
     height: auto;
 }
@@ -487,73 +170,14 @@ input[type="file"] {
 }
 
 /* =========================
-   DEDICATED TOOL PAGES
-========================= */
-
-.tool-page-card {
-    width: 100%;
-    max-width: 800px;
-    margin: 22px auto;
-    padding: 30px 24px;
-    background: #ffffff;
-    border-radius: 16px;
-    text-align: left;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.tool-page-card h2 {
-    margin-bottom: 12px;
-    color: #002b54;
-    font-size: 24px;
-}
-
-.tool-page-card p {
-    margin-bottom: 16px;
-    color: #64748b;
-    line-height: 1.7;
-}
-
-.tool-page-card a:not(.tool-page-button) {
-    color: #2563eb;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.tool-page-card a:not(.tool-page-button):hover {
-    text-decoration: underline;
-}
-
-.tool-page-button {
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 10px;
-    background: #002b54;
-    color: #ffffff !important;
-    font-weight: 700;
-    text-decoration: none !important;
-    transition:
-        transform 0.2s ease,
-        opacity 0.2s ease;
-}
-
-.tool-page-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.92;
-}
-
-/* =========================
    FOOTER
 ========================= */
 
 footer {
     margin-top: 50px;
-    padding: 22px 20px;
+    padding: 20px;
     background: #111827;
-    color: #ffffff;
-}
-
-footer p {
-    line-height: 1.5;
+    color: white;
 }
 
 .footer-tagline {
@@ -586,13 +210,10 @@ footer p {
     }
 
     main {
+        width: 100%;
         max-width: 100%;
-        padding: 30px 15px 15px;
-        margin: 0 auto;
-    }
-
-    main h1 {
-        font-size: 29px;
+        padding: 15px;
+        margin: 25px auto;
     }
 
     main h2 {
@@ -605,40 +226,9 @@ footer p {
     }
 
     .tools button {
-        min-height: 62px;
-        padding: 19px 15px;
+        width: 100%;
+        padding: 20px 15px;
         font-size: 16px;
-    }
-
-    .tools-intro {
-        font-size: 15px;
-        margin-bottom: 22px;
-    }
-
-    .seo-tools {
-        margin-top: 30px;
-        padding: 25px 15px;
-    }
-
-    .seo-tools h2 {
-        font-size: 23px;
-    }
-
-    .seo-tools h3 {
-        font-size: 20px;
-        margin-top: 25px;
-    }
-
-    .seo-tools p {
-        font-size: 15px;
-    }
-
-    .seo-links {
-        gap: 7px 14px;
-    }
-
-    .seo-links a {
-        font-size: 14px;
     }
 
     .about {
@@ -654,81 +244,111 @@ footer p {
         font-size: 15px;
     }
 
-    .compressor {
-        padding: 25px 15px;
-    }
-
-    .compressor button {
-        width: 100%;
-        max-width: 320px;
-    }
-
-    .result-box {
-        padding: 22px 15px;
-    }
-
-    .tool-page-card {
-        padding: 24px 18px;
-    }
-
-    .tool-page-card h2 {
-        font-size: 21px;
-    }
-
-    .tool-page-button {
-        width: 100%;
-        text-align: center;
-    }
-
-    .preview {
-        max-height: 500px;
-    }
-
+    img,
     canvas {
+        width: auto;
         max-width: 100% !important;
         height: auto !important;
     }
 
+    main > div,
+    main > section {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
     input[type="file"] {
         width: 100%;
+        max-width: 100%;
     }
 
-}
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media (max-width: 380px) {
-
-    .brand img {
-        width: 220px;
+    button {
+        max-width: 100%;
     }
-
-    .navbar {
-        gap: 14px;
-    }
-
-    .navbar a {
-        font-size: 14px;
-    }
-
-    main h1 {
-        font-size: 26px;
-    }
-
-    .tools button {
-        font-size: 15px;
-    }
-
 }
 
 
-/* =========================
-   HOW DOCPINCH WORKS
-========================= */
+.tools-intro {
+    max-width: 720px;
+    margin: -10px auto 25px;
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 16px;
+}
 
-.how-it-works {
+
+.seo-section {
+    margin-top: 22px;
+    padding: 24px 20px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.seo-section h3 {
+    margin-bottom: 10px;
+    font-size: 21px;
+    color: #002B54;
+}
+
+.seo-section p {
+    max-width: 700px;
+    margin: 0 auto 12px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.seo-section a {
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.seo-section a:hover {
+    text-decoration: underline;
+}
+
+
+.tool-link {
+    display: block;
+    padding: 22px;
+    border-radius: 14px;
+    background: white;
+    color: #222;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+}
+
+.tool-link:hover {
+    transform: translateY(-2px);
+}
+
+.tool-info {
+    margin-top: 20px;
+    padding: 24px 20px;
+    background: white;
+    border-radius: 14px;
+    text-align: left;
+}
+
+.tool-info h3 {
+    margin-bottom: 10px;
+    color: #002B54;
+}
+
+.tool-info p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+
+/* SEO TOOL LINKS */
+
+.seo-tools {
     margin-top: 40px;
     padding: 30px 20px;
     background: white;
@@ -736,95 +356,52 @@ footer p {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
-.how-it-works h2 {
-    margin-bottom: 25px;
-    font-size: 26px;
+.seo-tools h2 {
+    margin: 25px 0 12px;
     color: #002B54;
+    font-size: 24px;
 }
 
-.steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+.seo-tools h2:first-child {
+    margin-top: 0;
 }
 
-.step-card {
-    padding: 22px 18px;
-    background: #f8fafc;
-    border-radius: 12px;
-}
-
-.step-number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    margin-bottom: 12px;
-    border-radius: 50%;
-    background: #002B54;
-    color: white;
-    font-weight: bold;
-}
-
-.step-card h3 {
-    margin-bottom: 8px;
-    font-size: 19px;
-}
-
-.step-card p {
+.seo-tools p {
+    max-width: 750px;
+    margin: 0 auto 15px;
     color: #64748b;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-@media (max-width: 600px) {
-
-    .steps {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
-   BREADCRUMBS
-========================= */
-
-.breadcrumbs {
-    max-width: 800px;
-    margin: 20px auto 0;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    font-size: 14px;
-}
-
-.breadcrumbs a {
+.seo-tools a {
+    display: inline-block;
+    margin: 6px 8px;
     color: #2563eb;
+    font-weight: 700;
     text-decoration: none;
-    font-weight: 600;
 }
 
-.breadcrumbs a:hover {
+.seo-tools a:hover {
     text-decoration: underline;
 }
 
-.breadcrumbs span {
+.tool-seo {
+    margin-top: 30px;
+    padding: 25px 20px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.tool-seo h2 {
+    margin-bottom: 12px;
+    color: #002B54;
+    font-size: 24px;
+}
+
+.tool-seo p {
+    max-width: 750px;
+    margin: 0 auto;
     color: #64748b;
+    line-height: 1.7;
 }
