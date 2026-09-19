@@ -722,3 +722,65 @@ footer p {
     }
 
 }
+
+
+/* =========================
+   HOW DOCPINCH WORKS
+========================= */
+
+.how-it-works {
+    margin-top: 40px;
+    padding: 30px 20px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.how-it-works h2 {
+    margin-bottom: 25px;
+    font-size: 26px;
+    color: #002B54;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.step-card {
+    padding: 22px 18px;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    background: #002B54;
+    color: white;
+    font-weight: bold;
+}
+
+.step-card h3 {
+    margin-bottom: 8px;
+    font-size: 19px;
+}
+
+.step-card p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+}
