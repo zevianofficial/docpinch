@@ -1,3 +1,4 @@
+```css
 * {
     box-sizing: border-box;
     margin: 0;
@@ -69,6 +70,39 @@ header p {
 }
 
 /* =========================
+   BREADCRUMBS
+========================= */
+
+.breadcrumbs {
+    width: 100%;
+    max-width: 900px;
+    margin: 18px auto 0;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    font-size: 14px;
+    color: #64748b;
+    text-align: left;
+}
+
+.breadcrumbs a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs span {
+    color: #94a3b8;
+}
+
+/* =========================
    MAIN
 ========================= */
 
@@ -78,6 +112,12 @@ main {
     margin: 40px auto;
     padding: 20px;
     overflow-x: hidden;
+}
+
+main h1 {
+    margin-bottom: 15px;
+    font-size: 32px;
+    line-height: 1.3;
 }
 
 main h2 {
@@ -123,6 +163,63 @@ main h2 {
 
 .tools button:focus {
     outline: none;
+}
+
+/* =========================
+   TOOL PAGE
+========================= */
+
+.tool-page-card {
+    width: 100%;
+    margin-top: 22px;
+    padding: 28px 22px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.tool-page-card h2 {
+    margin-bottom: 12px;
+    color: #002B54;
+    font-size: 24px;
+}
+
+.tool-page-card p {
+    max-width: 750px;
+    margin: 0 auto 18px;
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.tool-page-card a {
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tool-page-card a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   TOOL PAGE BUTTON
+========================= */
+
+.tool-page-button {
+    display: inline-block;
+    padding: 13px 22px;
+    border-radius: 10px;
+    background: #002B54;
+    color: white !important;
+    font-weight: 700;
+    text-decoration: none !important;
+    transition: all 0.25s ease;
+}
+
+.tool-page-button:hover {
+    transform: translateY(-2px);
+    background: #004477;
+    text-decoration: none !important;
 }
 
 /* =========================
@@ -209,11 +306,22 @@ footer {
         font-size: 15px;
     }
 
+    .breadcrumbs {
+        padding: 0 15px;
+        margin-top: 15px;
+        font-size: 13px;
+        gap: 5px;
+    }
+
     main {
         width: 100%;
         max-width: 100%;
         padding: 15px;
         margin: 25px auto;
+    }
+
+    main h1 {
+        font-size: 27px;
     }
 
     main h2 {
@@ -244,6 +352,23 @@ footer {
         font-size: 15px;
     }
 
+    .tool-page-card {
+        padding: 24px 16px;
+    }
+
+    .tool-page-card h2 {
+        font-size: 22px;
+    }
+
+    .tool-page-card p {
+        font-size: 15px;
+    }
+
+    .tool-page-button {
+        width: 100%;
+        max-width: 320px;
+    }
+
     img,
     canvas {
         width: auto;
@@ -268,6 +393,9 @@ footer {
     }
 }
 
+/* =========================
+   TOOLS INTRO
+========================= */
 
 .tools-intro {
     max-width: 720px;
@@ -277,6 +405,9 @@ footer {
     font-size: 16px;
 }
 
+/* =========================
+   SEO SECTION
+========================= */
 
 .seo-section {
     margin-top: 22px;
@@ -309,6 +440,9 @@ footer {
     text-decoration: underline;
 }
 
+/* =========================
+   TOOL LINKS
+========================= */
 
 .tool-link {
     display: block;
@@ -326,6 +460,10 @@ footer {
 .tool-link:hover {
     transform: translateY(-2px);
 }
+
+/* =========================
+   TOOL INFO
+========================= */
 
 .tool-info {
     margin-top: 20px;
@@ -345,8 +483,9 @@ footer {
     line-height: 1.6;
 }
 
-
-/* SEO TOOL LINKS */
+/* =========================
+   SEO TOOL LINKS
+========================= */
 
 .seo-tools {
     margin-top: 40px;
@@ -385,6 +524,10 @@ footer {
     text-decoration: underline;
 }
 
+/* =========================
+   TOOL SEO
+========================= */
+
 .tool-seo {
     margin-top: 30px;
     padding: 25px 20px;
@@ -405,3 +548,4 @@ footer {
     color: #64748b;
     line-height: 1.7;
 }
+```
