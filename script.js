@@ -1,6 +1,6 @@
 // =====================================================
 // DocPinch - PDF & Image Tools
-// Cleaned Version - Duplicate Scanner Removed
+// Clean Full Version
 // =====================================================
 
 
@@ -14,48 +14,52 @@ buttons.forEach((button) => {
 
     button.addEventListener("click", () => {
 
-        if (button.innerText.includes("Compress PDF")) {
+        const text = button.innerText;
+
+        if (text.includes("Compress PDF")) {
+
             openPDFCompressor();
-        }
 
-        else if (button.innerText.includes("Compress Image")) {
+        } else if (text.includes("Compress Image")) {
+
             openImageCompressor();
-        }
 
-        else if (button.innerText.includes("PDF → JPG/PNG")) {
+        } else if (text.includes("PDF → JPG/PNG")) {
+
             openPDFToImage();
-        }
 
-        else if (button.innerText.includes("JPG/PNG")) {
+        } else if (text.includes("JPG/PNG")) {
+
             openImageToPDF();
-        }
 
-        else if (button.innerText.includes("Merge PDF")) {
+        } else if (text.includes("Merge PDF")) {
+
             openPDFMerger();
-        }
 
-        else if (button.innerText.includes("Document Scanner")) {
+        } else if (text.includes("Document Scanner")) {
+
             openDocumentScanner();
-        }
 
-        else if (button.innerText.includes("Document Enhance")) {
+        } else if (text.includes("Document Enhance")) {
+
             openDocumentEnhance();
-        }
 
-        else if (button.innerText.includes("Resize Image")) {
+        } else if (text.includes("Resize Image")) {
+
             openImageResizer();
-        }
 
-        else if (button.innerText.includes("Crop Image")) {
+        } else if (text.includes("Crop Image")) {
+
             openImageCropper();
-        }
 
-        else if (button.innerText.includes("Rotate Image")) {
+        } else if (text.includes("Rotate Image")) {
+
             openImageRotator();
-        }
 
-        else {
-            alert(button.innerText + " - Coming Soon!");
+        } else {
+
+            alert(text + " - Coming Soon!");
+
         }
 
     });
@@ -69,20 +73,32 @@ buttons.forEach((button) => {
 
 function formatBytes(bytes) {
 
-    if (bytes === 0) return "0 Bytes";
+    if (!Number.isFinite(bytes) || bytes <= 0) {
+        return "0 Bytes";
+    }
 
-    const units = ["Bytes", "KB", "MB", "GB"];
+    const units = [
+        "Bytes",
+        "KB",
+        "MB",
+        "GB"
+    ];
 
     const i = Math.floor(
         Math.log(bytes) / Math.log(1024)
     );
 
+    const index = Math.min(
+        i,
+        units.length - 1
+    );
+
     return (
         parseFloat(
-            (bytes / Math.pow(1024, i)).toFixed(2)
+            (bytes / Math.pow(1024, index)).toFixed(2)
         ) +
         " " +
-        units[i]
+        units[index]
     );
 }
 
@@ -98,7 +114,9 @@ function openImageCompressor() {
 
             <h2>🖼️ Image Compressor</h2>
 
-            <p>Select an image and reduce its file size.</p>
+            <p>
+                Select an image and reduce its file size.
+            </p>
 
             <br>
 
@@ -175,10 +193,11 @@ function openImageCompressor() {
 
         if (!file) {
 
-            alert("Please select an image first.");
+            alert(
+                "Please select an image first."
+            );
 
             return;
-
         }
 
 
@@ -186,13 +205,13 @@ function openImageCompressor() {
             new FileReader();
 
 
-        reader.onload = function(event) {
+        reader.onload = function (event) {
 
             const img =
                 new Image();
 
 
-            img.onload = function() {
+            img.onload = function () {
 
                 const canvas =
                     document.createElement("canvas");
@@ -218,18 +237,27 @@ function openImageCompressor() {
                 const compressedData =
                     canvas.toDataURL(
                         "image/jpeg",
-                        quality.value / 100
+                        Number(quality.value) / 100
                     );
 
 
+                const base64 =
+                    compressedData.split(",")[1] || "";
+
                 const compressedSize =
-                    Math.round(
-                        (compressedData.length * 3) / 4
+                    Math.max(
+                        0,
+                        Math.round(
+                            (base64.length * 3) / 4
+                        )
                     );
 
 
                 const savedBytes =
-                    file.size - compressedSize;
+                    Math.max(
+                        0,
+                        file.size - compressedSize
+                    );
 
 
                 let compressionPercent = 0;
@@ -249,10 +277,11 @@ function openImageCompressor() {
 
 
                 result.innerHTML = `
-
                     <div class="result-box">
 
-                        <h3>✅ Compression Complete</h3>
+                        <h3>
+                            ✅ Compression Complete
+                        </h3>
 
                         <p>
                             <strong>Original Size:</strong>
@@ -274,6 +303,7 @@ function openImageCompressor() {
                         <img
                             src="${compressedData}"
                             class="preview"
+                            alt="Compressed image preview"
                         >
 
                         <br><br>
@@ -296,7 +326,6 @@ function openImageCompressor() {
                         </button>
 
                     </div>
-
                 `;
 
             };
@@ -329,7 +358,6 @@ function openImageCompressor() {
 function openImageToPDF() {
 
     document.querySelector("main").innerHTML = `
-
         <h2>🔄 JPG/PNG → PDF</h2>
 
         <p style="margin:15px 0;">
@@ -365,7 +393,6 @@ function openImageToPDF() {
         <button id="imagePDFBackBtn">
             ⬅️ Back
         </button>
-
     `;
 
 
@@ -390,13 +417,19 @@ function openImageToPDF() {
     async function createPDF() {
 
         const input =
-            document.getElementById("imageToPDFInput");
+            document.getElementById(
+                "imageToPDFInput"
+            );
 
         const status =
-            document.getElementById("imagePDFStatus");
+            document.getElementById(
+                "imagePDFStatus"
+            );
 
         const result =
-            document.getElementById("imagePDFResult");
+            document.getElementById(
+                "imagePDFResult"
+            );
 
 
         if (!input.files.length) {
@@ -406,21 +439,28 @@ function openImageToPDF() {
             );
 
             return;
-
         }
 
 
         status.innerText =
             "⏳ Creating PDF...";
 
-
         result.innerHTML = "";
 
 
         try {
 
-            const { jsPDF } =
-                window.jspdf;
+            const jsPDF =
+                window.jspdf?.jsPDF;
+
+
+            if (!jsPDF) {
+
+                throw new Error(
+                    "jsPDF library is not available."
+                );
+
+            }
 
 
             let pdf = null;
@@ -457,14 +497,12 @@ function openImageToPDF() {
                 if (i === 0) {
 
                     pdf = new jsPDF({
-                        orientation: orientation,
+                        orientation,
                         unit: "pt",
                         format: "a4"
                     });
 
-                }
-
-                else {
+                } else {
 
                     pdf.addPage(
                         "a4",
@@ -477,7 +515,6 @@ function openImageToPDF() {
                 const pageWidth =
                     pdf.internal.pageSize.getWidth();
 
-
                 const pageHeight =
                     pdf.internal.pageSize.getHeight();
 
@@ -486,11 +523,10 @@ function openImageToPDF() {
 
 
                 const maxWidth =
-                    pageWidth - margin * 2;
-
+                    pageWidth - (margin * 2);
 
                 const maxHeight =
-                    pageHeight - margin * 2;
+                    pageHeight - (margin * 2);
 
 
                 const ratio =
@@ -503,14 +539,12 @@ function openImageToPDF() {
                 const imageWidth =
                     image.width * ratio;
 
-
                 const imageHeight =
                     image.height * ratio;
 
 
                 const x =
                     (pageWidth - imageWidth) / 2;
-
 
                 const y =
                     (pageHeight - imageHeight) / 2;
@@ -549,18 +583,19 @@ function openImageToPDF() {
 
 
             result.innerHTML = `
+                <div
+                    style="
+                        background:white;
+                        padding:25px;
+                        margin-top:20px;
+                        border-radius:15px;
+                        box-shadow:0 4px 15px rgba(0,0,0,0.08);
+                    "
+                >
 
-                <div style="
-                    background:white;
-                    padding:25px;
-                    margin-top:20px;
-                    border-radius:15px;
-                    box-shadow:
-                        0 4px 15px
-                        rgba(0,0,0,0.08);
-                ">
-
-                    <h3>📄 PDF Ready</h3>
+                    <h3>
+                        📄 PDF Ready
+                    </h3>
 
                     <p style="margin-top:15px;">
                         <strong>Images:</strong>
@@ -604,19 +639,14 @@ function openImageToPDF() {
                     </button>
 
                 </div>
-
             `;
 
-        }
-
-        catch (error) {
+        } catch (error) {
 
             console.error(error);
 
-
             status.innerText =
                 "❌ PDF creation failed.";
-
 
             alert(
                 "Could not create PDF. Please try again."
@@ -695,7 +725,6 @@ function openImageToPDF() {
 function openImageResizer() {
 
     document.querySelector("main").innerHTML = `
-
         <div class="compressor">
 
             <h2>📏 Image Resizer</h2>
@@ -724,6 +753,7 @@ function openImageResizer() {
                 type="number"
                 id="resizeWidth"
                 placeholder="Enter width"
+                min="1"
             >
 
             <br><br>
@@ -738,6 +768,7 @@ function openImageResizer() {
                 type="number"
                 id="resizeHeight"
                 placeholder="Enter height"
+                min="1"
             >
 
             <br><br>
@@ -769,82 +800,94 @@ function openImageResizer() {
             </button>
 
         </div>
-
     `;
 
 
     const input =
-        document.getElementById("resizeInput");
+        document.getElementById(
+            "resizeInput"
+        );
 
     const widthInput =
-        document.getElementById("resizeWidth");
+        document.getElementById(
+            "resizeWidth"
+        );
 
     const heightInput =
-        document.getElementById("resizeHeight");
+        document.getElementById(
+            "resizeHeight"
+        );
 
     const keepRatio =
-        document.getElementById("keepRatio");
+        document.getElementById(
+            "keepRatio"
+        );
 
     const resizeBtn =
-        document.getElementById("resizeBtn");
+        document.getElementById(
+            "resizeBtn"
+        );
 
     const result =
-        document.getElementById("resizeResult");
+        document.getElementById(
+            "resizeResult"
+        );
 
     const backBtn =
-        document.getElementById("resizeBackBtn");
+        document.getElementById(
+            "resizeBackBtn"
+        );
 
 
     let originalRatio = 1;
 
 
-    input.addEventListener("change", () => {
+    input.addEventListener(
+        "change",
+        () => {
 
-        const file =
-            input.files[0];
+            const file =
+                input.files[0];
 
-
-        if (!file) return;
-
-
-        const reader =
-            new FileReader();
+            if (!file) return;
 
 
-        reader.onload =
-            function(event) {
-
-                const img =
-                    new Image();
+            const reader =
+                new FileReader();
 
 
-                img.onload =
-                    function() {
+            reader.onload =
+                function (event) {
 
-                        widthInput.value =
-                            img.width;
-
-
-                        heightInput.value =
-                            img.height;
+                    const img =
+                        new Image();
 
 
-                        originalRatio =
-                            img.width /
-                            img.height;
+                    img.onload =
+                        function () {
 
-                    };
+                            widthInput.value =
+                                img.width;
+
+                            heightInput.value =
+                                img.height;
+
+                            originalRatio =
+                                img.width / img.height;
+
+                        };
 
 
-                img.src =
-                    event.target.result;
+                    img.src =
+                        event.target.result;
 
-            };
+                };
 
 
-        reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
 
-    });
+        }
+    );
 
 
     widthInput.addEventListener(
@@ -858,9 +901,12 @@ function openImageResizer() {
             ) {
 
                 heightInput.value =
-                    Math.round(
-                        widthInput.value /
-                        originalRatio
+                    Math.max(
+                        1,
+                        Math.round(
+                            Number(widthInput.value) /
+                            originalRatio
+                        )
                     );
 
             }
@@ -880,9 +926,12 @@ function openImageResizer() {
             ) {
 
                 widthInput.value =
-                    Math.round(
-                        heightInput.value *
-                        originalRatio
+                    Math.max(
+                        1,
+                        Math.round(
+                            Number(heightInput.value) *
+                            originalRatio
+                        )
                     );
 
             }
@@ -906,25 +955,25 @@ function openImageResizer() {
                 );
 
                 return;
-
             }
 
 
             const newWidth =
                 parseInt(
-                    widthInput.value
+                    widthInput.value,
+                    10
                 );
-
 
             const newHeight =
                 parseInt(
-                    heightInput.value
+                    heightInput.value,
+                    10
                 );
 
 
             if (
-                !newWidth ||
-                !newHeight ||
+                !Number.isFinite(newWidth) ||
+                !Number.isFinite(newHeight) ||
                 newWidth <= 0 ||
                 newHeight <= 0
             ) {
@@ -934,7 +983,6 @@ function openImageResizer() {
                 );
 
                 return;
-
             }
 
 
@@ -943,20 +991,19 @@ function openImageResizer() {
 
 
             reader.onload =
-                function(event) {
+                function (event) {
 
                     const img =
                         new Image();
 
 
                     img.onload =
-                        function() {
+                        function () {
 
                             const canvas =
                                 document.createElement(
                                     "canvas"
                                 );
-
 
                             const ctx =
                                 canvas.getContext(
@@ -966,7 +1013,6 @@ function openImageResizer() {
 
                             canvas.width =
                                 newWidth;
-
 
                             canvas.height =
                                 newHeight;
@@ -989,7 +1035,6 @@ function openImageResizer() {
 
 
                             result.innerHTML = `
-
                                 <div class="result-box">
 
                                     <h3>
@@ -1006,6 +1051,7 @@ function openImageResizer() {
                                     <img
                                         src="${resizedImage}"
                                         class="preview"
+                                        alt="Resized image preview"
                                     >
 
                                     <br><br>
@@ -1028,7 +1074,6 @@ function openImageResizer() {
                                     </button>
 
                                 </div>
-
                             `;
 
                         };
@@ -1063,7 +1108,6 @@ function openImageResizer() {
 function openImageCropper() {
 
     document.querySelector("main").innerHTML = `
-
         <div class="compressor">
 
             <h2>✂️ Image Crop</h2>
@@ -1092,6 +1136,7 @@ function openImageCropper() {
                 type="number"
                 id="cropX"
                 value="0"
+                min="0"
             >
 
             <br><br>
@@ -1106,6 +1151,7 @@ function openImageCropper() {
                 type="number"
                 id="cropY"
                 value="0"
+                min="0"
             >
 
             <br><br>
@@ -1119,6 +1165,7 @@ function openImageCropper() {
             <input
                 type="number"
                 id="cropWidth"
+                min="1"
             >
 
             <br><br>
@@ -1132,6 +1179,7 @@ function openImageCropper() {
             <input
                 type="number"
                 id="cropHeight"
+                min="1"
             >
 
             <br><br>
@@ -1149,33 +1197,48 @@ function openImageCropper() {
             </button>
 
         </div>
-
     `;
 
 
     const input =
-        document.getElementById("cropInput");
+        document.getElementById(
+            "cropInput"
+        );
 
     const cropX =
-        document.getElementById("cropX");
+        document.getElementById(
+            "cropX"
+        );
 
     const cropY =
-        document.getElementById("cropY");
+        document.getElementById(
+            "cropY"
+        );
 
     const cropWidth =
-        document.getElementById("cropWidth");
+        document.getElementById(
+            "cropWidth"
+        );
 
     const cropHeight =
-        document.getElementById("cropHeight");
+        document.getElementById(
+            "cropHeight"
+        );
 
     const cropBtn =
-        document.getElementById("cropBtn");
+        document.getElementById(
+            "cropBtn"
+        );
 
     const result =
-        document.getElementById("cropResult");
+        document.getElementById(
+            "cropResult"
+        );
 
     const backBtn =
-        document.getElementById("cropBackBtn");
+        document.getElementById(
+            "cropBackBtn"
+        );
 
 
     input.addEventListener(
@@ -1185,7 +1248,6 @@ function openImageCropper() {
             const file =
                 input.files[0];
 
-
             if (!file) return;
 
 
@@ -1194,18 +1256,17 @@ function openImageCropper() {
 
 
             reader.onload =
-                function(event) {
+                function (event) {
 
                     const img =
                         new Image();
 
 
                     img.onload =
-                        function() {
+                        function () {
 
                             cropWidth.value =
                                 img.width;
-
 
                             cropHeight.value =
                                 img.height;
@@ -1240,35 +1301,40 @@ function openImageCropper() {
                 );
 
                 return;
-
             }
 
 
             const x =
                 parseInt(
-                    cropX.value
+                    cropX.value,
+                    10
                 ) || 0;
 
 
             const y =
                 parseInt(
-                    cropY.value
+                    cropY.value,
+                    10
                 ) || 0;
 
 
             const width =
                 parseInt(
-                    cropWidth.value
+                    cropWidth.value,
+                    10
                 );
 
 
             const height =
                 parseInt(
-                    cropHeight.value
+                    cropHeight.value,
+                    10
                 );
 
 
             if (
+                !Number.isFinite(width) ||
+                !Number.isFinite(height) ||
                 width <= 0 ||
                 height <= 0 ||
                 x < 0 ||
@@ -1280,7 +1346,6 @@ function openImageCropper() {
                 );
 
                 return;
-
             }
 
 
@@ -1289,14 +1354,14 @@ function openImageCropper() {
 
 
             reader.onload =
-                function(event) {
+                function (event) {
 
                     const img =
                         new Image();
 
 
                     img.onload =
-                        function() {
+                        function () {
 
                             if (
                                 x + width > img.width ||
@@ -1308,7 +1373,6 @@ function openImageCropper() {
                                 );
 
                                 return;
-
                             }
 
 
@@ -1316,7 +1380,6 @@ function openImageCropper() {
                                 document.createElement(
                                     "canvas"
                                 );
-
 
                             const ctx =
                                 canvas.getContext(
@@ -1326,7 +1389,6 @@ function openImageCropper() {
 
                             canvas.width =
                                 width;
-
 
                             canvas.height =
                                 height;
@@ -1353,7 +1415,6 @@ function openImageCropper() {
 
 
                             result.innerHTML = `
-
                                 <div class="result-box">
 
                                     <h3>
@@ -1370,6 +1431,7 @@ function openImageCropper() {
                                     <img
                                         src="${croppedImage}"
                                         class="preview"
+                                        alt="Cropped image preview"
                                     >
 
                                     <br><br>
@@ -1392,7 +1454,6 @@ function openImageCropper() {
                                     </button>
 
                                 </div>
-
                             `;
 
                         };
@@ -1427,7 +1488,6 @@ function openImageCropper() {
 function openImageRotator() {
 
     document.querySelector("main").innerHTML = `
-
         <div class="compressor">
 
             <h2>🔃 Rotate Image</h2>
@@ -1467,18 +1527,23 @@ function openImageRotator() {
             </button>
 
         </div>
-
     `;
 
 
     const input =
-        document.getElementById("rotateInput");
+        document.getElementById(
+            "rotateInput"
+        );
 
     const result =
-        document.getElementById("rotateResult");
+        document.getElementById(
+            "rotateResult"
+        );
 
     const backBtn =
-        document.getElementById("rotateBackBtn");
+        document.getElementById(
+            "rotateBackBtn"
+        );
 
 
     function rotateImage(degrees) {
@@ -1494,7 +1559,6 @@ function openImageRotator() {
             );
 
             return;
-
         }
 
 
@@ -1503,20 +1567,19 @@ function openImageRotator() {
 
 
         reader.onload =
-            function(event) {
+            function (event) {
 
                 const img =
                     new Image();
 
 
                 img.onload =
-                    function() {
+                    function () {
 
                         const canvas =
                             document.createElement(
                                 "canvas"
                             );
-
 
                         const ctx =
                             canvas.getContext(
@@ -1525,9 +1588,7 @@ function openImageRotator() {
 
 
                         const radians =
-                            degrees *
-                            Math.PI /
-                            180;
+                            degrees * Math.PI / 180;
 
 
                         if (
@@ -1541,9 +1602,7 @@ function openImageRotator() {
                             canvas.height =
                                 img.width;
 
-                        }
-
-                        else {
+                        } else {
 
                             canvas.width =
                                 img.width;
@@ -1580,7 +1639,6 @@ function openImageRotator() {
 
 
                         result.innerHTML = `
-
                             <div class="result-box">
 
                                 <h3>
@@ -1597,6 +1655,7 @@ function openImageRotator() {
                                 <img
                                     src="${rotatedImage}"
                                     class="preview"
+                                    alt="Rotated image preview"
                                 >
 
                                 <br><br>
@@ -1619,7 +1678,6 @@ function openImageRotator() {
                                 </button>
 
                             </div>
-
                         `;
 
                     };
@@ -1677,7 +1735,6 @@ function openImageRotator() {
 function openPDFCompressor() {
 
     document.querySelector("main").innerHTML = `
-
         <h2>📄 Compress PDF</h2>
 
         <div style="margin:25px 0;">
@@ -1727,7 +1784,6 @@ function openPDFCompressor() {
         <button id="pdfBackBtn">
             ⬅️ Back
         </button>
-
     `;
 
 
@@ -1735,7 +1791,6 @@ function openPDFCompressor() {
         document.getElementById(
             "pdfQuality"
         );
-
 
     const qualityValue =
         document.getElementById(
@@ -1779,12 +1834,10 @@ function openPDFCompressor() {
                 "pdfInput"
             );
 
-
         const status =
             document.getElementById(
                 "pdfStatus"
             );
-
 
         const result =
             document.getElementById(
@@ -1799,7 +1852,19 @@ function openPDFCompressor() {
             );
 
             return;
+        }
 
+
+        if (
+            typeof pdfjsLib === "undefined" ||
+            !window.jspdf?.jsPDF
+        ) {
+
+            alert(
+                "PDF engine is not ready. Please wait a few seconds and try again."
+            );
+
+            return;
         }
 
 
@@ -1821,17 +1886,19 @@ function openPDFCompressor() {
 
 
             const pdf =
-                await pdfjsLib.getDocument({
-                    data: arrayBuffer
-                }).promise;
+                await pdfjsLib
+                    .getDocument({
+                        data: arrayBuffer
+                    })
+                    .promise;
 
 
             const totalPages =
                 pdf.numPages;
 
 
-            const { jsPDF } =
-                window.jspdf;
+            const jsPDF =
+                window.jspdf.jsPDF;
 
 
             let outputPDF = null;
@@ -1839,7 +1906,8 @@ function openPDFCompressor() {
 
             const quality =
                 parseInt(
-                    qualitySlider.value
+                    qualitySlider.value,
+                    10
                 ) / 100;
 
 
@@ -1878,16 +1946,19 @@ function openPDFCompressor() {
 
 
                 canvas.width =
-                    viewport.width;
-
+                    Math.ceil(
+                        viewport.width
+                    );
 
                 canvas.height =
-                    viewport.height;
+                    Math.ceil(
+                        viewport.height
+                    );
 
 
                 await page.render({
                     canvasContext: context,
-                    viewport: viewport
+                    viewport
                 }).promise;
 
 
@@ -1899,8 +1970,7 @@ function openPDFCompressor() {
 
 
                 const orientation =
-                    viewport.width >
-                    viewport.height
+                    viewport.width > viewport.height
                         ? "landscape"
                         : "portrait";
 
@@ -1909,15 +1979,13 @@ function openPDFCompressor() {
 
                     outputPDF =
                         new jsPDF({
-                            orientation: orientation,
+                            orientation,
                             unit: "pt",
                             format: "a4",
                             compress: true
                         });
 
-                }
-
-                else {
+                } else {
 
                     outputPDF.addPage(
                         "a4",
@@ -1928,41 +1996,37 @@ function openPDFCompressor() {
 
 
                 const pageWidth =
-                    outputPDF.internal.pageSize.getWidth();
+                    outputPDF.internal
+                        .pageSize
+                        .getWidth();
 
 
                 const pageHeight =
-                    outputPDF.internal.pageSize.getHeight();
+                    outputPDF.internal
+                        .pageSize
+                        .getHeight();
 
 
                 const ratio =
                     Math.min(
-                        pageWidth /
-                            viewport.width,
-
-                        pageHeight /
-                            viewport.height
+                        pageWidth / viewport.width,
+                        pageHeight / viewport.height
                     );
 
 
                 const imageWidth =
-                    viewport.width *
-                    ratio;
-
+                    viewport.width * ratio;
 
                 const imageHeight =
-                    viewport.height *
-                    ratio;
+                    viewport.height * ratio;
 
 
                 const x =
-                    (pageWidth -
-                        imageWidth) / 2;
+                    (pageWidth - imageWidth) / 2;
 
 
                 const y =
-                    (pageHeight -
-                        imageHeight) / 2;
+                    (pageHeight - imageHeight) / 2;
 
 
                 outputPDF.addImage(
@@ -2021,22 +2085,15 @@ function openPDFCompressor() {
 
 
             result.innerHTML = `
-
-                <div style="
-                    background:white;
-                    padding:25px;
-                    margin-top:20px;
-                    border-radius:15px;
-                    box-shadow:
-                        0 4px 15px
-                        rgba(0,0,0,0.08);
-                ">
+                <div
+                    class="result-box"
+                >
 
                     <h3>
                         📊 Compression Result
                     </h3>
 
-                    <p style="margin-top:15px;">
+                    <p>
                         <strong>Original Size:</strong>
                         ${formatBytes(originalSize)}
                     </p>
@@ -2060,17 +2117,10 @@ function openPDFCompressor() {
                     <a
                         href="${downloadURL}"
                         download="DocPinch-compressed.pdf"
-                        style="
-                            display:inline-block;
-                            padding:12px 20px;
-                            background:#111827;
-                            color:white;
-                            text-decoration:none;
-                            border-radius:10px;
-                            font-weight:bold;
-                        "
                     >
-                        ⬇️ Download Compressed PDF
+                        <button>
+                            ⬇️ Download Compressed PDF
+                        </button>
                     </a>
 
                     <br><br>
@@ -2082,19 +2132,14 @@ function openPDFCompressor() {
                     </button>
 
                 </div>
-
             `;
 
-        }
-
-        catch (error) {
+        } catch (error) {
 
             console.error(error);
 
-
             status.innerText =
                 "❌ Error while compressing PDF.";
-
 
             alert(
                 "PDF compression failed. Please try another PDF."
@@ -2114,7 +2159,6 @@ function openPDFCompressor() {
 async function openPDFMerger() {
 
     document.querySelector("main").innerHTML = `
-
         <h2>🔗 Merge PDF</h2>
 
         <p style="margin:15px 0;">
@@ -2150,7 +2194,6 @@ async function openPDFMerger() {
         <button id="mergeBackBtn">
             ⬅️ Back
         </button>
-
     `;
 
 
@@ -2179,12 +2222,10 @@ async function openPDFMerger() {
                 "mergePDFInput"
             );
 
-
         const status =
             document.getElementById(
                 "mergeStatus"
             );
-
 
         const result =
             document.getElementById(
@@ -2199,7 +2240,18 @@ async function openPDFMerger() {
             );
 
             return;
+        }
 
+
+        if (
+            !window.PDFLib?.PDFDocument
+        ) {
+
+            alert(
+                "PDF merge engine is not ready. Please wait a few seconds and try again."
+            );
+
+            return;
         }
 
 
@@ -2274,7 +2326,9 @@ async function openPDFMerger() {
 
 
             const downloadURL =
-                URL.createObjectURL(blob);
+                URL.createObjectURL(
+                    blob
+                );
 
 
             status.innerText =
@@ -2282,22 +2336,13 @@ async function openPDFMerger() {
 
 
             result.innerHTML = `
-
-                <div style="
-                    background:white;
-                    padding:25px;
-                    margin-top:20px;
-                    border-radius:15px;
-                    box-shadow:
-                        0 4px 15px
-                        rgba(0,0,0,0.08);
-                ">
+                <div class="result-box">
 
                     <h3>
                         ✅ Merge Complete
                     </h3>
 
-                    <p style="margin-top:15px;">
+                    <p>
                         <strong>PDF Files:</strong>
                         ${input.files.length}
                     </p>
@@ -2317,17 +2362,10 @@ async function openPDFMerger() {
                     <a
                         href="${downloadURL}"
                         download="DocPinch-merged.pdf"
-                        style="
-                            display:inline-block;
-                            padding:12px 20px;
-                            background:#111827;
-                            color:white;
-                            text-decoration:none;
-                            border-radius:10px;
-                            font-weight:bold;
-                        "
                     >
-                        ⬇️ Download Merged PDF
+                        <button>
+                            ⬇️ Download Merged PDF
+                        </button>
                     </a>
 
                     <br><br>
@@ -2339,19 +2377,14 @@ async function openPDFMerger() {
                     </button>
 
                 </div>
-
             `;
 
-        }
-
-        catch (error) {
+        } catch (error) {
 
             console.error(error);
 
-
             status.innerText =
                 "❌ Error while merging PDFs.";
-
 
             alert(
                 "PDF merge failed. Please check your PDF files."
@@ -2371,11 +2404,10 @@ async function openPDFMerger() {
 function openPDFToImage() {
 
     document.querySelector("main").innerHTML = `
-
         <h2>🖼️ PDF → JPG/PNG</h2>
 
         <p style="margin:15px 0;">
-            Convert PDF pages into high-quality JPG images.
+            Convert PDF pages into JPG images.
         </p>
 
         <div style="margin:25px 0;">
@@ -2425,7 +2457,6 @@ function openPDFToImage() {
         <button id="pdfToImageBackBtn">
             ⬅️ Back
         </button>
-
     `;
 
 
@@ -2433,7 +2464,6 @@ function openPDFToImage() {
         document.getElementById(
             "pdfImageQuality"
         );
-
 
     const qualityValue =
         document.getElementById(
@@ -2477,12 +2507,10 @@ function openPDFToImage() {
                 "pdfToImageInput"
             );
 
-
         const status =
             document.getElementById(
                 "pdfToImageStatus"
             );
-
 
         const result =
             document.getElementById(
@@ -2497,7 +2525,18 @@ function openPDFToImage() {
             );
 
             return;
+        }
 
+
+        if (
+            typeof pdfjsLib === "undefined"
+        ) {
+
+            alert(
+                "PDF engine is not ready. Please wait a few seconds and try again."
+            );
+
+            return;
         }
 
 
@@ -2519,35 +2558,32 @@ function openPDFToImage() {
 
 
             const pdf =
-                await pdfjsLib.getDocument({
-                    data: arrayBuffer
-                }).promise;
+                await pdfjsLib
+                    .getDocument({
+                        data: arrayBuffer
+                    })
+                    .promise;
 
 
             const quality =
                 parseInt(
-                    qualitySlider.value
+                    qualitySlider.value,
+                    10
                 ) / 100;
 
 
             result.innerHTML = `
+                <div
+                    class="result-box"
+                >
 
-                <div style="
-                    background:white;
-                    padding:25px;
-                    margin-top:20px;
-                    border-radius:15px;
-                    box-shadow:
-                        0 4px 15px
-                        rgba(0,0,0,0.08);
-                ">
-
-                    <h3>📄 PDF Pages</h3>
+                    <h3>
+                        📄 PDF Pages
+                    </h3>
 
                     <div id="pdfPages"></div>
 
                 </div>
-
             `;
 
 
@@ -2592,21 +2628,19 @@ function openPDFToImage() {
 
 
                 canvas.width =
-                    viewport.width;
-
+                    Math.ceil(
+                        viewport.width
+                    );
 
                 canvas.height =
-                    viewport.height;
+                    Math.ceil(
+                        viewport.height
+                    );
 
 
                 await page.render({
-
-                    canvasContext:
-                        context,
-
-                    viewport:
-                        viewport
-
+                    canvasContext: context,
+                    viewport
                 }).promise;
 
 
@@ -2628,7 +2662,6 @@ function openPDFToImage() {
 
 
                 pageBox.innerHTML = `
-
                     <p>
                         <strong>
                             Page ${pageNumber}
@@ -2637,13 +2670,12 @@ function openPDFToImage() {
 
                     <img
                         src="${imageURL}"
+                        alt="PDF page ${pageNumber}"
                         style="
                             max-width:100%;
                             border-radius:8px;
                             margin:10px 0;
-                            box-shadow:
-                                0 3px 10px
-                                rgba(0,0,0,0.15);
+                            box-shadow:0 3px 10px rgba(0,0,0,0.15);
                         "
                     >
 
@@ -2651,8 +2683,7 @@ function openPDFToImage() {
 
                     <a
                         href="${imageURL}"
-                        download=
-                        "DocPinch-page-${pageNumber}.jpg"
+                        download="DocPinch-page-${pageNumber}.jpg"
                         style="
                             display:inline-block;
                             padding:10px 18px;
@@ -2665,7 +2696,6 @@ function openPDFToImage() {
                     >
                         ⬇️ Download Page ${pageNumber}
                     </a>
-
                 `;
 
 
@@ -2679,16 +2709,12 @@ function openPDFToImage() {
             status.innerText =
                 "✅ PDF converted successfully!";
 
-        }
-
-        catch (error) {
+        } catch (error) {
 
             console.error(error);
 
-
             status.innerText =
                 "❌ Conversion failed.";
-
 
             alert(
                 "PDF conversion failed. Please try another PDF."
@@ -2704,14 +2730,10 @@ function openPDFToImage() {
 // =====================================================
 // DOCUMENT SCANNER
 // =====================================================
-// IMPORTANT: This is the ONLY Document Scanner function.
-// Old duplicate scanner has been removed.
-// =====================================================
 
 function openDocumentScanner() {
 
     document.querySelector("main").innerHTML = `
-
         <div class="compressor">
 
             <h2>📐 Document Scanner</h2>
@@ -2736,8 +2758,7 @@ function openDocumentScanner() {
             >
 
                 <p style="margin-bottom:15px;">
-                    🔵 Drag the 4 blue points to the
-                    document corners.
+                    🔵 Drag the 4 blue points to the document corners.
                 </p>
 
                 <div
@@ -2796,7 +2817,6 @@ function openDocumentScanner() {
             </button>
 
         </div>
-
     `;
 
 
@@ -2805,38 +2825,35 @@ function openDocumentScanner() {
             "scannerInput"
         );
 
-
     const workspace =
         document.getElementById(
             "scannerWorkspace"
         );
-
 
     const canvas =
         document.getElementById(
             "scannerCanvas"
         );
 
-
     const overlay =
         document.getElementById(
             "scannerOverlay"
         );
 
-
     const ctx =
-        canvas.getContext("2d");
-
+        canvas.getContext(
+            "2d"
+        );
 
     const overlayCtx =
-        overlay.getContext("2d");
-
+        overlay.getContext(
+            "2d"
+        );
 
     const result =
         document.getElementById(
             "scannerResult"
         );
-
 
     const status =
         document.getElementById(
@@ -2845,9 +2862,7 @@ function openDocumentScanner() {
 
 
     let image = null;
-
     let points = [];
-
     let activePoint = -1;
 
 
@@ -2861,7 +2876,6 @@ function openDocumentScanner() {
 
             const file =
                 this.files[0];
-
 
             if (!file) return;
 
@@ -2880,11 +2894,8 @@ function openDocumentScanner() {
                     image.onload =
                         function () {
 
-                            // Original resolution
-
                             canvas.width =
                                 image.naturalWidth;
-
 
                             canvas.height =
                                 image.naturalHeight;
@@ -2892,7 +2903,6 @@ function openDocumentScanner() {
 
                             overlay.width =
                                 canvas.width;
-
 
                             overlay.height =
                                 canvas.height;
@@ -2923,16 +2933,12 @@ function openDocumentScanner() {
                             );
 
 
-                            // Default corners
-
                             const marginX =
-                                canvas.width *
-                                0.08;
+                                canvas.width * 0.08;
 
 
                             const marginY =
-                                canvas.height *
-                                0.08;
+                                canvas.height * 0.08;
 
 
                             points = [
@@ -2943,29 +2949,18 @@ function openDocumentScanner() {
                                 },
 
                                 {
-                                    x:
-                                        canvas.width -
-                                        marginX,
-
+                                    x: canvas.width - marginX,
                                     y: marginY
                                 },
 
                                 {
-                                    x:
-                                        canvas.width -
-                                        marginX,
-
-                                    y:
-                                        canvas.height -
-                                        marginY
+                                    x: canvas.width - marginX,
+                                    y: canvas.height - marginY
                                 },
 
                                 {
                                     x: marginX,
-
-                                    y:
-                                        canvas.height -
-                                        marginY
+                                    y: canvas.height - marginY
                                 }
 
                             ];
@@ -2977,7 +2972,6 @@ function openDocumentScanner() {
 
                             result.innerHTML =
                                 "";
-
 
                             status.innerText =
                                 "";
@@ -3014,43 +3008,38 @@ function openDocumentScanner() {
         );
 
 
-        if (points.length !== 4)
+        if (points.length !== 4) {
             return;
+        }
 
 
         overlayCtx.beginPath();
-
 
         overlayCtx.moveTo(
             points[0].x,
             points[0].y
         );
 
-
         overlayCtx.lineTo(
             points[1].x,
             points[1].y
         );
-
 
         overlayCtx.lineTo(
             points[2].x,
             points[2].y
         );
 
-
         overlayCtx.lineTo(
             points[3].x,
             points[3].y
         );
-
 
         overlayCtx.closePath();
 
 
         overlayCtx.fillStyle =
             "rgba(37,99,235,0.12)";
-
 
         overlayCtx.fill();
 
@@ -3209,11 +3198,8 @@ function openDocumentScanner() {
 
                 const distance =
                     Math.hypot(
-                        point.x -
-                            position.x,
-
-                        point.y -
-                            position.y
+                        point.x - position.x,
+                        point.y - position.y
                     );
 
 
@@ -3259,7 +3245,9 @@ function openDocumentScanner() {
 
 
         const position =
-            getPointerPosition(event);
+            getPointerPosition(
+                event
+            );
 
 
         activePoint =
@@ -3279,15 +3267,20 @@ function openDocumentScanner() {
 
     function drag(event) {
 
-        if (activePoint === -1)
+        if (
+            activePoint === -1
+        ) {
             return;
+        }
 
 
         event.preventDefault();
 
 
         const position =
-            getPointerPosition(event);
+            getPointerPosition(
+                event
+            );
 
 
         points[activePoint].x =
@@ -3321,7 +3314,9 @@ function openDocumentScanner() {
 
     function stopDrag() {
 
-        activePoint = -1;
+        activePoint =
+            -1;
+
 
         drawOverlay();
 
@@ -3333,12 +3328,10 @@ function openDocumentScanner() {
         startDrag
     );
 
-
     overlay.addEventListener(
         "mousemove",
         drag
     );
-
 
     window.addEventListener(
         "mouseup",
@@ -3354,7 +3347,6 @@ function openDocumentScanner() {
         }
     );
 
-
     overlay.addEventListener(
         "touchmove",
         drag,
@@ -3362,7 +3354,6 @@ function openDocumentScanner() {
             passive: false
         }
     );
-
 
     window.addEventListener(
         "touchend",
@@ -3391,8 +3382,11 @@ function openDocumentScanner() {
             points.length !== 4
         ) {
 
-            return;
+            alert(
+                "Please select a document image first."
+            );
 
+            return;
         }
 
 
@@ -3407,7 +3401,6 @@ function openDocumentScanner() {
             );
 
             return;
-
         }
 
 
@@ -3433,8 +3426,6 @@ function openDocumentScanner() {
             const bl =
                 points[3];
 
-
-            // OUTPUT SIZE
 
             const topWidth =
                 Math.hypot(
@@ -3488,8 +3479,6 @@ function openDocumentScanner() {
                 );
 
 
-            // OPENCV
-
             const src =
                 cv.imread(canvas);
 
@@ -3500,7 +3489,6 @@ function openDocumentScanner() {
                     1,
                     cv.CV_32FC2,
                     [
-
                         tl.x,
                         tl.y,
 
@@ -3512,7 +3500,6 @@ function openDocumentScanner() {
 
                         bl.x,
                         bl.y
-
                     ]
                 );
 
@@ -3523,7 +3510,6 @@ function openDocumentScanner() {
                     1,
                     cv.CV_32FC2,
                     [
-
                         0,
                         0,
 
@@ -3535,7 +3521,6 @@ function openDocumentScanner() {
 
                         0,
                         outputHeight - 1
-
                     ]
                 );
 
@@ -3570,8 +3555,6 @@ function openDocumentScanner() {
             );
 
 
-            // RESULT CANVAS
-
             const outputCanvas =
                 document.createElement(
                     "canvas"
@@ -3580,7 +3563,6 @@ function openDocumentScanner() {
 
             outputCanvas.width =
                 outputWidth;
-
 
             outputCanvas.height =
                 outputHeight;
@@ -3592,20 +3574,12 @@ function openDocumentScanner() {
             );
 
 
-            // CLEAN MEMORY
-
             src.delete();
-
             srcPoints.delete();
-
             dstPoints.delete();
-
             transform.delete();
-
             dst.delete();
 
-
-            // HIGH QUALITY JPEG
 
             const scannedURL =
                 outputCanvas.toDataURL(
@@ -3619,37 +3593,21 @@ function openDocumentScanner() {
 
 
             result.innerHTML = `
-
-                <div
-                    class="result-box"
-                    style="
-                        background:white;
-                        padding:25px;
-                        margin-top:25px;
-                        border-radius:15px;
-                        box-shadow:
-                            0 4px 15px
-                            rgba(0,0,0,0.08);
-                    "
-                >
+                <div class="result-box">
 
                     <h3>
                         ✅ Document Scanned
                     </h3>
 
-                    <p
-                        style="
-                            margin-top:15px;
-                        "
-                    >
-                        Perspective corrected
-                        successfully.
+                    <p>
+                        Perspective corrected successfully.
                     </p>
 
                     <br>
 
                     <img
                         src="${scannedURL}"
+                        alt="Scanned document result"
                         style="
                             max-width:100%;
                             border-radius:10px;
@@ -3662,43 +3620,29 @@ function openDocumentScanner() {
                     <a
                         href="${scannedURL}"
                         download="DocPinch-scanned-document.jpg"
-                        style="
-                            display:inline-block;
-                            padding:12px 20px;
-                            background:#111827;
-                            color:white;
-                            text-decoration:none;
-                            border-radius:10px;
-                            font-weight:bold;
-                        "
                     >
-                        ⬇️ Download Document
+                        <button>
+                            ⬇️ Download Document
+                        </button>
                     </a>
 
                     <br><br>
 
                     <button
-                        onclick="
-                            openDocumentScanner()
-                        "
+                        onclick="openDocumentScanner()"
                     >
                         🔄 Scan Another
                     </button>
 
                 </div>
-
             `;
 
-        }
-
-        catch (error) {
+        } catch (error) {
 
             console.error(error);
 
-
             status.innerText =
                 "❌ Scanner failed.";
-
 
             alert(
                 "Document scanning failed. Please try again."
@@ -3734,7 +3678,6 @@ function openDocumentScanner() {
 function openDocumentEnhance() {
 
     document.querySelector("main").innerHTML = `
-
         <div class="compressor">
 
             <h2>✨ Document Enhance</h2>
@@ -3753,9 +3696,7 @@ function openDocumentEnhance() {
 
             <br><br>
 
-            <div
-                id="enhanceWorkspace"
-            ></div>
+            <div id="enhanceWorkspace"></div>
 
             <br>
 
@@ -3764,7 +3705,6 @@ function openDocumentEnhance() {
             </button>
 
         </div>
-
     `;
 
 
@@ -3772,7 +3712,6 @@ function openDocumentEnhance() {
         document.getElementById(
             "enhanceInput"
         );
-
 
     const workspace =
         document.getElementById(
@@ -3786,7 +3725,6 @@ function openDocumentEnhance() {
 
             const file =
                 this.files[0];
-
 
             if (!file) return;
 
@@ -3806,15 +3744,12 @@ function openDocumentEnhance() {
                         function () {
 
                             workspace.innerHTML = `
-
                                 <div
                                     style="
                                         background:white;
                                         padding:20px;
                                         border-radius:15px;
-                                        box-shadow:
-                                            0 4px 15px
-                                            rgba(0,0,0,0.08);
+                                        box-shadow:0 4px 15px rgba(0,0,0,0.08);
                                     "
                                 >
 
@@ -3827,6 +3762,7 @@ function openDocumentEnhance() {
                                     <img
                                         src="${event.target.result}"
                                         id="enhancePreview"
+                                        alt="Document enhancement preview"
                                         style="
                                             max-width:100%;
                                             max-height:500px;
@@ -3851,13 +3787,10 @@ function openDocumentEnhance() {
 
                                     <div
                                         id="enhanceResult"
-                                        style="
-                                            margin-top:25px;
-                                        "
+                                        style="margin-top:25px;"
                                     ></div>
 
                                 </div>
-
                             `;
 
 
@@ -3868,12 +3801,10 @@ function openDocumentEnhance() {
                                 .addEventListener(
                                     "click",
                                     () => {
-
                                         processEnhancement(
                                             img,
                                             "enhance"
                                         );
-
                                     }
                                 );
 
@@ -3885,12 +3816,10 @@ function openDocumentEnhance() {
                                 .addEventListener(
                                     "click",
                                     () => {
-
                                         processEnhancement(
                                             img,
                                             "bw"
                                         );
-
                                     }
                                 );
 
@@ -3902,11 +3831,9 @@ function openDocumentEnhance() {
                                 .addEventListener(
                                     "click",
                                     () => {
-
                                         showOriginal(
                                             img
                                         );
-
                                     }
                                 );
 
@@ -3942,7 +3869,6 @@ function openDocumentEnhance() {
 
         canvas.width =
             img.naturalWidth;
-
 
         canvas.height =
             img.naturalHeight;
@@ -3985,10 +3911,8 @@ function openDocumentEnhance() {
             let r =
                 data[i];
 
-
             let g =
                 data[i + 1];
-
 
             let b =
                 data[i + 2];
@@ -3998,19 +3922,15 @@ function openDocumentEnhance() {
                 mode === "enhance"
             ) {
 
-                // Brighten paper and increase contrast
-
                 r =
                     (r - 128) *
                     1.20 +
                     145;
 
-
                 g =
                     (g - 128) *
                     1.20 +
                     145;
-
 
                 b =
                     (b - 128) *
@@ -4027,7 +3947,6 @@ function openDocumentEnhance() {
                         )
                     );
 
-
                 g =
                     Math.max(
                         0,
@@ -4036,7 +3955,6 @@ function openDocumentEnhance() {
                             g
                         )
                     );
-
 
                 b =
                     Math.max(
@@ -4067,9 +3985,7 @@ function openDocumentEnhance() {
 
 
                 r = value;
-
                 g = value;
-
                 b = value;
 
             }
@@ -4078,10 +3994,8 @@ function openDocumentEnhance() {
             data[i] =
                 r;
 
-
             data[i + 1] =
                 g;
-
 
             data[i + 2] =
                 b;
@@ -4116,7 +4030,6 @@ function openDocumentEnhance() {
 
 
         result.innerHTML = `
-
             <div
                 style="
                     background:#f8fafc;
@@ -4133,6 +4046,7 @@ function openDocumentEnhance() {
 
                 <img
                     src="${outputURL}"
+                    alt="Enhanced document result"
                     style="
                         max-width:100%;
                         max-height:600px;
@@ -4160,7 +4074,6 @@ function openDocumentEnhance() {
                 </a>
 
             </div>
-
         `;
 
     }
@@ -4183,7 +4096,6 @@ function openDocumentEnhance() {
 
 
         result.innerHTML = `
-
             <div
                 style="
                     background:#f8fafc;
@@ -4200,6 +4112,7 @@ function openDocumentEnhance() {
 
                 <img
                     src="${originalURL}"
+                    alt="Original document"
                     style="
                         max-width:100%;
                         max-height:600px;
@@ -4227,7 +4140,6 @@ function openDocumentEnhance() {
                 </a>
 
             </div>
-
         `;
 
     }
