@@ -1888,3 +1888,42 @@ select:focus-visible {
 /* =========================================================
    END OF DOCPINCH STEP 89 CSS
    ========================================================= */
+
+
+
+/* =========================================================
+   DOCPINCH — STEP 90
+   ACTIVE NAVIGATION
+   ========================================================= */
+
+.navbar a.active {
+    background: var(--dp-primary);
+    color: var(--dp-white);
+
+    font-weight: 700;
+
+    box-shadow:
+        0 4px 12px rgba(0, 51, 102, 0.16);
+}
+
+.navbar a.active:hover {
+    background: var(--dp-primary-dark);
+    color: var(--dp-white);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
