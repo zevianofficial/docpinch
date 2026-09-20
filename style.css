@@ -1911,7 +1911,322 @@ select:focus-visible {
     color: var(--dp-white);
 }
 
+/* =========================================================
+   DOCPINCH — STEP 91
+   VISUAL IMAGE CROPPER
+   ========================================================= */
 
+.cropper-tool {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CROP EDITOR
+   ========================================================= */
+
+.crop-editor {
+    position: relative;
+
+    width: 100%;
+    max-width: 760px;
+
+    margin: 24px auto;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background: #101820;
+
+    border: 1px solid var(--dp-border);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+
+    touch-action: none;
+}
+
+
+/* =========================================================
+   PREVIEW IMAGE
+   ========================================================= */
+
+.crop-image-preview {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 70vh;
+
+    object-fit: contain;
+
+    margin: 0 auto;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   CROP SELECTION
+   ========================================================= */
+
+.crop-selection {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    box-sizing: border-box;
+
+    border: 2px solid #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 0 0 9999px rgba(0, 0, 0, 0.48);
+
+    cursor: move;
+
+    touch-action: none;
+
+    user-select: none;
+}
+
+
+/* =========================================================
+   RULE-OF-THIRDS GUIDES
+   ========================================================= */
+
+.crop-selection::before,
+.crop-selection::after {
+    content: "";
+
+    position: absolute;
+
+    pointer-events: none;
+}
+
+.crop-selection::before {
+    left: 33.33%;
+    top: 0;
+
+    width: 33.33%;
+    height: 100%;
+
+    border-left: 1px solid
+        rgba(255, 255, 255, 0.55);
+
+    border-right: 1px solid
+        rgba(255, 255, 255, 0.55);
+
+    box-sizing: border-box;
+}
+
+.crop-selection::after {
+    left: 0;
+    top: 33.33%;
+
+    width: 100%;
+    height: 33.33%;
+
+    border-top: 1px solid
+        rgba(255, 255, 255, 0.55);
+
+    border-bottom: 1px solid
+        rgba(255, 255, 255, 0.55);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CROP HANDLES
+   ========================================================= */
+
+.crop-handle {
+    position: absolute;
+
+    width: 16px;
+    height: 16px;
+
+    background: var(--dp-white);
+
+    border: 2px solid var(--dp-primary);
+
+    border-radius: 4px;
+
+    z-index: 5;
+
+    touch-action: none;
+}
+
+
+/* =========================================================
+   HANDLE POSITIONS
+   ========================================================= */
+
+.crop-handle-nw {
+    left: -9px;
+    top: -9px;
+
+    cursor: nwse-resize;
+}
+
+.crop-handle-ne {
+    right: -9px;
+    top: -9px;
+
+    cursor: nesw-resize;
+}
+
+.crop-handle-sw {
+    left: -9px;
+    bottom: -9px;
+
+    cursor: nesw-resize;
+}
+
+.crop-handle-se {
+    right: -9px;
+    bottom: -9px;
+
+    cursor: nwse-resize;
+}
+
+
+/* =========================================================
+   CROP INFO
+   ========================================================= */
+
+.crop-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin: 20px 0;
+}
+
+.crop-info > div {
+    padding: 14px;
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    text-align: center;
+}
+
+.crop-info span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--dp-muted);
+
+    font-size: 0.82rem;
+}
+
+.crop-info strong {
+    color: var(--dp-primary);
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   CROP RESULT
+   ========================================================= */
+
+.crop-result {
+    margin-top: 26px;
+}
+
+.crop-result-box {
+    padding: 20px;
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: 14px;
+
+    background: #fbfdff;
+
+    text-align: center;
+}
+
+.crop-output-preview {
+    display: block;
+
+    width: auto;
+    max-width: 100%;
+
+    max-height: 500px;
+
+    margin: 18px auto;
+
+    object-fit: contain;
+}
+
+.crop-result-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 14px;
+}
+
+.crop-result-actions a {
+    display: inline-flex;
+
+    text-decoration: none;
+}
+
+.crop-result-actions button {
+    margin: 0;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .crop-editor {
+        margin-top: 18px;
+    }
+
+    .crop-info {
+        grid-template-columns: 1fr;
+    }
+
+    .crop-result-actions {
+        flex-direction: column;
+    }
+
+    .crop-result-actions a,
+    .crop-result-actions button {
+        width: 100%;
+    }
+
+    .crop-result-actions a button {
+        width: 100%;
+    }
+
+}
 
 
 
