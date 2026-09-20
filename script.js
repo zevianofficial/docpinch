@@ -4161,3 +4161,227 @@ function openDocumentEnhance() {
         );
 
 }
+
+// =====================================================
+// DOCPINCH — STEP 90
+// GLOBAL NAVIGATION FIX
+// =====================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const currentPath = window.location.pathname;
+    const currentHash = window.location.hash;
+
+    const isHomePage =
+        currentPath.endsWith("/") ||
+        currentPath.endsWith("/index.html");
+
+    const navbarLinks =
+        document.querySelectorAll(".navbar a");
+
+
+    // =================================================
+    // NAVIGATION LINKS
+    // =================================================
+
+    navbarLinks.forEach((link) => {
+
+        const text =
+            link.textContent
+                .trim()
+                .toLowerCase();
+
+
+        // =============================================
+        // HOME
+        // =============================================
+
+        if (text === "home") {
+
+            link.href = "index.html";
+
+        }
+
+
+        // =============================================
+        // TOOLS
+        // =============================================
+
+        else if (text === "tools") {
+
+            link.href = isHomePage
+                ? "#tools"
+                : "index.html#tools";
+
+        }
+
+
+        // =============================================
+        // ABOUT
+        // =============================================
+
+        else if (text === "about") {
+
+            link.href = isHomePage
+                ? "#about"
+                : "index.html#about";
+
+        }
+
+    });
+
+
+    // =================================================
+    // ACTIVE NAVIGATION
+    // =================================================
+
+    function updateActiveNavigation() {
+
+        navbarLinks.forEach((link) => {
+
+            link.classList.remove("active");
+
+            link.removeAttribute("aria-current");
+
+        });
+
+
+        let activeLink = null;
+
+
+        // =============================================
+        // HOMEPAGE
+        // =============================================
+
+        if (isHomePage) {
+
+            if (window.location.hash === "#about") {
+
+                activeLink =
+                    Array.from(navbarLinks)
+                        .find((link) =>
+                            link.textContent
+                                .trim()
+                                .toLowerCase() === "about"
+                        );
+
+            }
+
+            else {
+
+                activeLink =
+                    Array.from(navbarLinks)
+                        .find((link) =>
+                            link.textContent
+                                .trim()
+                                .toLowerCase() === "home"
+                        );
+
+            }
+
+        }
+
+
+        // =============================================
+        // TOOL / DEDICATED PAGE
+        // =============================================
+
+        else {
+
+            activeLink =
+                Array.from(navbarLinks)
+                    .find((link) =>
+                        link.textContent
+                            .trim()
+                            .toLowerCase() === "tools"
+                    );
+
+        }
+
+
+        // =============================================
+        // APPLY ACTIVE STATE
+        // =============================================
+
+        if (activeLink) {
+
+            activeLink.classList.add("active");
+
+            activeLink.setAttribute(
+                "aria-current",
+                "page"
+            );
+
+        }
+
+    }
+
+
+    // Initial state
+    updateActiveNavigation();
+
+
+    // Update when hash changes
+    window.addEventListener(
+        "hashchange",
+        updateActiveNavigation
+    );
+
+
+    // =================================================
+    // SMOOTH SCROLL ON HOMEPAGE
+    // =================================================
+
+    if (isHomePage) {
+
+        navbarLinks.forEach((link) => {
+
+            link.addEventListener("click", (event) => {
+
+                const href =
+                    link.getAttribute("href");
+
+
+                if (
+                    href === "#tools" ||
+                    href === "#about"
+                ) {
+
+                    event.preventDefault();
+
+                    const targetId =
+                        href.substring(1);
+
+                    const target =
+                        document.getElementById(
+                            targetId
+                        );
+
+
+                    if (target) {
+
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+
+                        history.replaceState(
+                            null,
+                            "",
+                            href
+                        );
+
+                        updateActiveNavigation();
+
+                    }
+
+                }
+
+            });
+
+        });
+
+    }
+
+});
