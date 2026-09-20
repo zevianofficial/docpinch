@@ -1,291 +1,1579 @@
-```css
+/* =========================================================
+   DOCPINCH — STYLE.CSS
+   STEP 89 — COMMON PROFESSIONAL UI
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+
+/* =========================================================
+   HTML
+   ========================================================= */
+
 html {
     scroll-behavior: smooth;
 }
 
+
+/* =========================================================
+   ROOT COLORS
+   ========================================================= */
+
+:root {
+    --dp-primary: #002B54;
+    --dp-primary-hover: #004477;
+    --dp-primary-soft: #eef6ff;
+
+    --dp-text: #222222;
+    --dp-muted: #64748b;
+
+    --dp-bg: #f5f7fb;
+    --dp-white: #ffffff;
+
+    --dp-border: #e2e8f0;
+    --dp-border-dark: #cbd5e1;
+
+    --dp-success: #15803d;
+    --dp-success-bg: #f0fdf4;
+
+    --dp-danger: #b91c1c;
+    --dp-danger-bg: #fef2f2;
+
+    --dp-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    --dp-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.11);
+
+    --dp-radius: 14px;
+    --dp-transition: 0.25s ease;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
 body {
     font-family: Arial, sans-serif;
-    background: #f5f7fb;
-    color: #222;
+    background: var(--dp-bg);
+    color: var(--dp-text);
     text-align: center;
+
     overflow-x: hidden;
+    line-height: 1.5;
 }
 
-/* =========================
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
    HEADER
-========================= */
+   ========================================================= */
 
 header {
-    background: white;
+    background: var(--dp-white);
+
     padding: 25px 20px;
-    border-bottom: 1px solid #e5e7eb;
+
+    border-bottom: 1px solid var(--dp-border);
+
+    position: relative;
+    z-index: 1000;
 }
+
 
 header p {
     font-size: 16px;
-    color: #64748b;
+    color: var(--dp-muted);
     margin-top: 10px;
 }
 
-/* =========================
-   DOCPINCH LOGO
-========================= */
+
+/* =========================================================
+   BRAND / LOGO
+   ========================================================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+}
 
 .brand img {
     width: 310px;
     max-width: 90%;
     height: auto;
+
     display: block;
     margin: 0 auto;
 }
 
-/* =========================
+
+/* =========================================================
    NAVIGATION
-========================= */
+   ========================================================= */
 
 .navbar {
     margin-top: 18px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 24px;
+
+    gap: 8px;
+
     flex-wrap: wrap;
 }
 
+
 .navbar a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding: 8px 14px;
+
     text-decoration: none;
-    color: #002B54;
+
+    color: var(--dp-primary);
+
     font-size: 16px;
     font-weight: 700;
+
+    border-radius: 10px;
+
+    transition:
+        background var(--dp-transition),
+        color var(--dp-transition),
+        transform var(--dp-transition);
 }
+
 
 .navbar a:hover {
-    text-decoration: underline;
+    background: var(--dp-primary-soft);
+    color: var(--dp-primary);
 }
 
-/* =========================
+
+.navbar a:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================================
    BREADCRUMBS
-========================= */
+   ========================================================= */
 
 .breadcrumbs {
     width: 100%;
     max-width: 900px;
+
     margin: 18px auto 0;
+
     padding: 0 20px;
+
     display: flex;
+
     justify-content: flex-start;
     align-items: center;
+
     flex-wrap: wrap;
+
     gap: 7px;
+
     font-size: 14px;
-    color: #64748b;
+
+    color: var(--dp-muted);
+
     text-align: left;
 }
 
+
 .breadcrumbs a {
     color: #2563eb;
+
     text-decoration: none;
+
     font-weight: 600;
 }
+
 
 .breadcrumbs a:hover {
     text-decoration: underline;
 }
 
+
 .breadcrumbs span {
     color: #94a3b8;
 }
 
-/* =========================
+
+/* =========================================================
    MAIN
-========================= */
+   ========================================================= */
 
 main {
     width: 100%;
     max-width: 900px;
+
     margin: 40px auto;
+
     padding: 20px;
+
     overflow-x: hidden;
 }
 
+
 main h1 {
     margin-bottom: 15px;
+
     font-size: 32px;
+
     line-height: 1.3;
+
+    color: var(--dp-primary);
 }
+
 
 main h2 {
     margin-bottom: 25px;
+
     font-size: 28px;
+
+    line-height: 1.3;
 }
 
-/* =========================
+
+main h3 {
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   TOOLS INTRO
+   ========================================================= */
+
+.tools-intro {
+    max-width: 720px;
+
+    margin: -10px auto 28px;
+
+    color: var(--dp-muted);
+
+    line-height: 1.6;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
    TOOLS GRID
-========================= */
+   ========================================================= */
 
 .tools {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
     gap: 18px;
+
+    margin-bottom: 35px;
 }
 
-/* =========================
-   TOOL BUTTONS
-========================= */
+
+/* =========================================================
+   MAIN TOOL BUTTONS
+   ========================================================= */
 
 .tools button {
     width: 100%;
-    padding: 22px;
-    border: none;
-    border-radius: 14px;
-    background: white;
+
+    min-height: 64px;
+
+    padding: 20px 18px;
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: var(--dp-radius);
+
+    background: var(--dp-white);
+
+    color: var(--dp-primary);
+
     font-size: 17px;
+
     font-weight: bold;
+
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.25s ease;
+
+    box-shadow: var(--dp-shadow);
+
+    transition:
+        transform var(--dp-transition),
+        box-shadow var(--dp-transition),
+        background var(--dp-transition),
+        border-color var(--dp-transition),
+        color var(--dp-transition);
 }
+
 
 .tools button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+
+    box-shadow: var(--dp-shadow-hover);
+
+    background: var(--dp-primary-soft);
+
+    border-color: #c8d8e8;
 }
+
 
 .tools button:active {
     transform: scale(0.98);
 }
 
+
 .tools button:focus {
     outline: none;
 }
 
-/* =========================
-   TOOL PAGE
-========================= */
+
+.tools button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.20);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   COMMON TOOL PAGE CARD
+   ========================================================= */
 
 .tool-page-card {
     width: 100%;
+
     margin-top: 22px;
+
     padding: 28px 22px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+
+    background: var(--dp-white);
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: var(--dp-radius);
+
+    box-shadow: var(--dp-shadow);
 }
+
 
 .tool-page-card h2 {
     margin-bottom: 12px;
-    color: #002B54;
+
+    color: var(--dp-primary);
+
     font-size: 24px;
 }
 
+
 .tool-page-card p {
     max-width: 750px;
+
     margin: 0 auto 18px;
-    color: #64748b;
+
+    color: var(--dp-muted);
+
     line-height: 1.7;
 }
 
+
 .tool-page-card a {
     color: #2563eb;
+
     font-weight: 700;
+
     text-decoration: none;
 }
+
 
 .tool-page-card a:hover {
     text-decoration: underline;
 }
 
-/* =========================
+
+/* =========================================================
    TOOL PAGE BUTTON
-========================= */
+   ========================================================= */
 
 .tool-page-button {
-    display: inline-block;
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+
     padding: 13px 22px;
+
     border-radius: 10px;
-    background: #002B54;
+
+    background: var(--dp-primary);
+
     color: white !important;
+
     font-weight: 700;
+
     text-decoration: none !important;
-    transition: all 0.25s ease;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--dp-transition),
+        background var(--dp-transition),
+        box-shadow var(--dp-transition);
 }
+
 
 .tool-page-button:hover {
     transform: translateY(-2px);
-    background: #004477;
+
+    background: var(--dp-primary-hover);
+
+    box-shadow: 0 7px 16px rgba(0, 43, 84, 0.15);
+
     text-decoration: none !important;
 }
 
-/* =========================
-   ABOUT SECTION
-========================= */
 
-.about {
+/* =========================================================
+   JAVASCRIPT TOOL CONTAINER
+   .compressor is used by the tool interfaces
+   ========================================================= */
+
+.compressor {
     width: 100%;
-    margin-top: 50px;
-    padding: 30px 20px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    max-width: 760px;
+
+    margin: 20px auto 40px;
+
+    padding: 30px 26px;
+
+    background: var(--dp-white);
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.08);
+
+    text-align: center;
 }
 
-.about h2 {
-    margin-bottom: 15px;
+
+.compressor h2 {
+    margin-bottom: 10px;
+
+    color: var(--dp-primary);
+
     font-size: 26px;
+
+    line-height: 1.3;
 }
 
-.about p {
-    max-width: 700px;
-    margin: 0 auto;
+
+.compressor h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    color: var(--dp-primary);
+
+    font-size: 20px;
+}
+
+
+.compressor p {
+    margin: 0 auto 20px;
+
+    color: var(--dp-muted);
+
     line-height: 1.7;
-    color: #64748b;
-    font-size: 16px;
 }
 
-/* =========================
-   IMAGES & CANVAS
-========================= */
 
-img,
+/* =========================================================
+   TOOL FORM AREA
+   ========================================================= */
+
+.compressor form {
+    width: 100%;
+}
+
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+.compressor label {
+    display: block;
+
+    margin: 12px 0 7px;
+
+    color: var(--dp-text);
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.compressor label strong {
+    color: var(--dp-primary);
+}
+
+
+/* =========================================================
+   FILE INPUT
+   ========================================================= */
+
+.compressor input[type="file"] {
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    min-height: 48px;
+
+    padding: 8px;
+
+    margin: 8px 0 18px;
+
+    border: 1px solid var(--dp-border-dark);
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    color: var(--dp-text);
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+
+.compressor input[type="file"]:focus {
+    outline: none;
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================================================
+   FILE SELECTOR BUTTON
+   ========================================================= */
+
+.compressor input[type="file"]::file-selector-button {
+    margin-right: 12px;
+
+    padding: 10px 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: var(--dp-primary);
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background var(--dp-transition);
+}
+
+
+.compressor input[type="file"]::file-selector-button:hover {
+    background: var(--dp-primary-hover);
+}
+
+
+/* =========================================================
+   TEXT / NUMBER INPUTS
+   ========================================================= */
+
+.compressor input[type="number"],
+.compressor input[type="text"],
+.compressor input[type="email"],
+.compressor input[type="url"] {
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 10px 12px;
+
+    border: 1px solid var(--dp-border-dark);
+
+    border-radius: 10px;
+
+    background: var(--dp-white);
+
+    color: var(--dp-text);
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition:
+        border-color var(--dp-transition),
+        box-shadow var(--dp-transition);
+}
+
+
+.compressor input[type="number"]:focus,
+.compressor input[type="text"]:focus,
+.compressor input[type="email"]:focus,
+.compressor input[type="url"]:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.compressor select {
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 10px 12px;
+
+    border: 1px solid var(--dp-border-dark);
+
+    border-radius: 10px;
+
+    background: var(--dp-white);
+
+    color: var(--dp-text);
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    outline: none;
+}
+
+
+.compressor select:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================================================
+   RANGE SLIDER
+   ========================================================= */
+
+.compressor input[type="range"] {
+    width: 100%;
+
+    margin: 10px 0 20px;
+
+    accent-color: var(--dp-primary);
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CHECKBOX / RADIO
+   ========================================================= */
+
+.compressor input[type="checkbox"],
+.compressor input[type="radio"] {
+    accent-color: var(--dp-primary);
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   ALL TOOL BUTTONS INSIDE CARD
+   ========================================================= */
+
+.compressor button {
+    min-height: 44px;
+
+    margin: 6px 6px 6px 0;
+
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--dp-primary);
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgba(0, 43, 84, 0.10);
+
+    transition:
+        transform var(--dp-transition),
+        background var(--dp-transition),
+        box-shadow var(--dp-transition);
+}
+
+
+.compressor button:hover {
+    transform: translateY(-1px);
+
+    background: var(--dp-primary-hover);
+
+    box-shadow: 0 7px 16px rgba(0, 43, 84, 0.15);
+}
+
+
+.compressor button:active {
+    transform: scale(0.98);
+}
+
+
+.compressor button:focus {
+    outline: none;
+}
+
+
+.compressor button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.20);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   BACK BUTTONS
+   ========================================================= */
+
+.compressor button[id*="Back"],
+.compressor button[id*="back"],
+.compressor button[id*="BACK"] {
+    background: #eef2f6;
+
+    color: var(--dp-primary);
+
+    border: 1px solid var(--dp-border-dark);
+
+    box-shadow: none;
+}
+
+
+.compressor button[id*="Back"]:hover,
+.compressor button[id*="back"]:hover,
+.compressor button[id*="BACK"]:hover {
+    background: #e2e8f0;
+
+    color: var(--dp-primary);
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   RESULT AREA
+   ========================================================= */
+
+.compressor [id*="result"],
+.compressor [id*="Result"] {
+    width: 100%;
+
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   RESULT CARD-LIKE CONTENT
+   ========================================================= */
+
+.compressor .result-card,
+.compressor .result,
+.compressor .output,
+.compressor .preview-card {
+    width: 100%;
+
+    margin: 20px auto 0;
+
+    padding: 20px;
+
+    background: #fafcff;
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: 12px;
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+   ========================================================= */
+
+.compressor .success,
+.compressor .success-message {
+    margin: 18px auto;
+
+    padding: 14px 16px;
+
+    border-radius: 10px;
+
+    border: 1px solid #bbf7d0;
+
+    background: var(--dp-success-bg);
+
+    color: var(--dp-success);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
+
+.compressor .error,
+.compressor .error-message {
+    margin: 18px auto;
+
+    padding: 14px 16px;
+
+    border-radius: 10px;
+
+    border: 1px solid #fecaca;
+
+    background: var(--dp-danger-bg);
+
+    color: var(--dp-danger);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.compressor img {
+    display: block;
+
+    max-width: 100%;
+    height: auto;
+
+    margin: 18px auto;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--dp-border);
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   IMAGE PREVIEW
+   ========================================================= */
+
+.compressor .preview,
+.compressor .image-preview,
+.compressor .preview-container {
+    width: 100%;
+
+    margin: 20px auto;
+
+    padding: 16px;
+
+    background: #f8fafc;
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+
+.compressor .preview img,
+.compressor .image-preview img,
+.compressor .preview-container img {
+    max-width: 100%;
+
+    width: auto;
+
+    height: auto;
+
+    max-height: 600px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   CANVAS
+   ========================================================= */
+
 canvas {
     max-width: 100%;
     height: auto;
 }
 
-/* =========================
-   FILE INPUT
-========================= */
 
-input[type="file"] {
+.compressor canvas {
+    display: block;
+
+    width: auto;
+
     max-width: 100%;
+
+    height: auto;
+
+    margin: 18px auto;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--dp-border);
+
+    background: #ffffff;
 }
 
-/* =========================
+
+/* =========================================================
+   CANVAS / SCANNER WRAPPER
+   ========================================================= */
+
+.compressor .canvas-container,
+.compressor .scanner-preview,
+.compressor .scanner-container {
+    width: 100%;
+
+    margin: 20px auto;
+
+    padding: 12px;
+
+    background: #f8fafc;
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: 14px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   DOWNLOAD LINKS
+   ========================================================= */
+
+.compressor a[download] {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    margin: 8px 4px;
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    background: var(--dp-primary);
+
+    color: white;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        background var(--dp-transition),
+        transform var(--dp-transition);
+}
+
+
+.compressor a[download]:hover {
+    background: var(--dp-primary-hover);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   DATA / RESULT TEXT
+   ========================================================= */
+
+.compressor strong {
+    color: var(--dp-primary);
+}
+
+
+.compressor small {
+    color: var(--dp-muted);
+}
+
+
+/* =========================================================
+   SEO SECTION
+   ========================================================= */
+
+.seo-section {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 24px 20px;
+
+    background: var(--dp-white);
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: var(--dp-radius);
+
+    box-shadow: var(--dp-shadow);
+}
+
+
+.seo-section h2,
+.seo-section h3 {
+    color: var(--dp-primary);
+
+    margin-bottom: 12px;
+}
+
+
+.seo-section h3 {
+    font-size: 21px;
+}
+
+
+.seo-section p {
+    max-width: 700px;
+
+    margin: 0 auto 12px;
+
+    color: var(--dp-muted);
+
+    line-height: 1.6;
+}
+
+
+.seo-section a {
+    color: #2563eb;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.seo-section a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   TOOL LINK
+   ========================================================= */
+
+.tool-link {
+    display: block;
+
+    width: 100%;
+
+    padding: 22px;
+
+    border-radius: var(--dp-radius);
+
+    background: var(--dp-white);
+
+    color: var(--dp-text);
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    border: 1px solid var(--dp-border);
+
+    box-shadow: var(--dp-shadow);
+
+    transition:
+        transform var(--dp-transition),
+        box-shadow var(--dp-transition),
+        background var(--dp-transition);
+}
+
+
+.tool-link:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--dp-shadow-hover);
+
+    background: #fbfdff;
+}
+
+
+/* =========================================================
+   TOOL INFO
+   ========================================================= */
+
+.tool-info {
+    margin-top: 20px;
+
+    padding: 24px 20px;
+
+    background: var(--dp-white);
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: var(--dp-radius);
+
+    text-align: left;
+
+    box-shadow: var(--dp-shadow);
+}
+
+
+.tool-info h3 {
+    margin-bottom: 10px;
+
+    color: var(--dp-primary);
+}
+
+
+.tool-info p {
+    color: var(--dp-muted);
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   SEO TOOLS
+   ========================================================= */
+
+.seo-tools {
+    width: 100%;
+
+    margin-top: 40px;
+
+    padding: 30px 20px;
+
+    background: var(--dp-white);
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: var(--dp-radius);
+
+    box-shadow: var(--dp-shadow);
+}
+
+
+.seo-tools h2 {
+    margin: 25px 0 12px;
+
+    color: var(--dp-primary);
+
+    font-size: 24px;
+}
+
+
+.seo-tools h2:first-child {
+    margin-top: 0;
+}
+
+
+.seo-tools p {
+    max-width: 750px;
+
+    margin: 0 auto 15px;
+
+    color: var(--dp-muted);
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SEO TOOL LINK AREA
+   ========================================================= */
+
+.seo-tools a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
+    margin: 5px;
+
+    padding: 9px 14px;
+
+    color: #2563eb;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    background: var(--dp-primary-soft);
+
+    border-radius: 9px;
+
+    transition:
+        background var(--dp-transition),
+        color var(--dp-transition),
+        transform var(--dp-transition);
+}
+
+
+.seo-tools a:hover {
+    background: var(--dp-primary);
+
+    color: white;
+
+    transform: translateY(-1px);
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   SEO LINKS CONTAINER
+   ========================================================= */
+
+.seo-links {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+.seo-links a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding: 9px 14px;
+
+    border-radius: 9px;
+
+    background: var(--dp-primary-soft);
+
+    color: var(--dp-primary);
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+        background var(--dp-transition),
+        color var(--dp-transition),
+        transform var(--dp-transition);
+}
+
+
+.seo-links a:hover {
+    background: var(--dp-primary);
+
+    color: white;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   TOOL SEO
+   ========================================================= */
+
+.tool-seo {
+    margin-top: 30px;
+
+    padding: 25px 20px;
+
+    background: var(--dp-white);
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: var(--dp-radius);
+
+    box-shadow: var(--dp-shadow);
+}
+
+
+.tool-seo h2 {
+    margin-bottom: 12px;
+
+    color: var(--dp-primary);
+
+    font-size: 24px;
+}
+
+
+.tool-seo p {
+    max-width: 750px;
+
+    margin: 0 auto;
+
+    color: var(--dp-muted);
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TOOL SEO SECTION
+   ========================================================= */
+
+.tool-seo-section {
+    width: 100%;
+
+    margin-top: 24px;
+
+    padding: 28px 22px;
+
+    background: var(--dp-white);
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: 16px;
+
+    box-shadow: var(--dp-shadow);
+}
+
+
+.tool-seo-section h2 {
+    margin-bottom: 10px;
+
+    color: var(--dp-primary);
+}
+
+
+.tool-seo-section p {
+    max-width: 750px;
+
+    margin: 0 auto 18px;
+
+    color: var(--dp-muted);
+
+    line-height: 1.7;
+}
+
+
+.tool-seo-section a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 9px 14px;
+
+    border-radius: 10px;
+
+    background: var(--dp-primary);
+
+    color: white;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.tool-seo-section a:hover {
+    background: var(--dp-primary-hover);
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   ABOUT SECTION
+   ========================================================= */
+
+.about {
+    width: 100%;
+
+    margin-top: 50px;
+
+    padding: 30px 20px;
+
+    background: var(--dp-white);
+
+    border: 1px solid var(--dp-border);
+
+    border-radius: var(--dp-radius);
+
+    box-shadow: var(--dp-shadow);
+}
+
+
+.about h2 {
+    margin-bottom: 15px;
+
+    font-size: 26px;
+
+    color: var(--dp-primary);
+}
+
+
+.about p {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    line-height: 1.7;
+
+    color: var(--dp-muted);
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
    FOOTER
-========================= */
+   ========================================================= */
 
 footer {
     margin-top: 50px;
-    padding: 20px;
+
+    padding: 24px 20px;
+
     background: #111827;
+
     color: white;
 }
 
+
+footer p {
+    margin: 4px 0;
+}
+
+
 .footer-tagline {
     margin-top: 8px;
+
     font-size: 14px;
+
     opacity: 0.75;
 }
 
-/* =========================
-   MOBILE
-========================= */
+
+/* =========================================================
+   GENERAL BUTTON SAFETY
+   ========================================================= */
+
+button {
+    font-family: inherit;
+}
+
+
+button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none !important;
+}
+
+
+/* =========================================================
+   GENERAL INPUT SAFETY
+   ========================================================= */
+
+input,
+select,
+button {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.22);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   MOBILE — 600px
+   ========================================================= */
 
 @media (max-width: 600px) {
 
@@ -293,259 +1581,310 @@ footer {
         padding: 20px 15px;
     }
 
+
     .brand img {
         width: 240px;
+
         max-width: 95%;
     }
 
+
     .navbar {
-        gap: 18px;
+        gap: 5px;
+
+        margin-top: 16px;
     }
 
+
     .navbar a {
+        min-height: 38px;
+
+        padding: 7px 10px;
+
         font-size: 15px;
     }
 
+
     .breadcrumbs {
         padding: 0 15px;
+
         margin-top: 15px;
+
         font-size: 13px;
+
         gap: 5px;
     }
 
+
     main {
         width: 100%;
+
         max-width: 100%;
+
         padding: 15px;
+
         margin: 25px auto;
     }
+
 
     main h1 {
         font-size: 27px;
     }
 
+
     main h2 {
         font-size: 24px;
     }
 
+
     .tools {
         grid-template-columns: 1fr;
+
         gap: 15px;
     }
 
+
     .tools button {
         width: 100%;
+
         padding: 20px 15px;
+
         font-size: 16px;
     }
 
+
     .about {
         margin-top: 35px;
+
         padding: 25px 15px;
     }
+
 
     .about h2 {
         font-size: 23px;
     }
 
+
     .about p {
         font-size: 15px;
     }
+
 
     .tool-page-card {
         padding: 24px 16px;
     }
 
+
     .tool-page-card h2 {
         font-size: 22px;
     }
+
 
     .tool-page-card p {
         font-size: 15px;
     }
 
+
     .tool-page-button {
         width: 100%;
+
         max-width: 320px;
     }
+
+
+    .compressor {
+        padding: 24px 16px;
+
+        border-radius: 15px;
+    }
+
+
+    .compressor h2 {
+        font-size: 22px;
+    }
+
+
+    .compressor p {
+        font-size: 15px;
+    }
+
+
+    .compressor button {
+        width: 100%;
+
+        margin: 6px 0;
+    }
+
+
+    .compressor a[download] {
+        width: 100%;
+
+        margin: 6px 0;
+    }
+
+
+    .compressor input[type="file"] {
+        width: 100%;
+
+        font-size: 14px;
+
+        padding: 7px;
+    }
+
+
+    .compressor input[type="file"]::file-selector-button {
+        margin-right: 8px;
+
+        padding: 9px 10px;
+
+        font-size: 13px;
+    }
+
+
+    .compressor input[type="number"],
+    .compressor input[type="text"],
+    .compressor input[type="email"],
+    .compressor input[type="url"],
+    .compressor select {
+        width: 100%;
+
+        font-size: 15px;
+    }
+
+
+    .seo-section,
+    .seo-tools,
+    .tool-seo,
+    .tool-seo-section,
+    .about {
+        padding: 22px 16px;
+    }
+
+
+    .seo-tools a,
+    .seo-links a {
+        width: 100%;
+
+        margin: 0;
+    }
+
 
     img,
     canvas {
         width: auto;
+
         max-width: 100% !important;
+
         height: auto !important;
     }
+
 
     main > div,
     main > section {
         width: 100%;
+
         max-width: 100%;
+
         overflow-x: hidden;
     }
 
+
     input[type="file"] {
         width: 100%;
+
         max-width: 100%;
     }
+
 
     button {
         max-width: 100%;
     }
 }
 
-/* =========================
-   TOOLS INTRO
-========================= */
 
-.tools-intro {
-    max-width: 720px;
-    margin: -10px auto 25px;
-    color: #64748b;
-    line-height: 1.6;
-    font-size: 16px;
+/* =========================================================
+   VERY SMALL MOBILE — 420px
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    header {
+        padding: 18px 12px;
+    }
+
+
+    .brand img {
+        width: 210px;
+    }
+
+
+    .navbar {
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 4px;
+    }
+
+
+    .navbar a {
+        flex: 1;
+
+        padding: 7px 6px;
+
+        font-size: 14px;
+    }
+
+
+    main {
+        padding: 12px;
+    }
+
+
+    main h1 {
+        font-size: 24px;
+    }
+
+
+    main h2 {
+        font-size: 21px;
+    }
+
+
+    .tools-intro {
+        font-size: 15px;
+    }
+
+
+    .compressor {
+        padding: 20px 13px;
+    }
+
+
+    .compressor h2 {
+        font-size: 20px;
+    }
+
+
+    .compressor input[type="file"]::file-selector-button {
+        display: block;
+
+        width: 100%;
+
+        margin: 0 0 8px;
+    }
+
+
+    .seo-section,
+    .seo-tools,
+    .tool-seo,
+    .tool-seo-section,
+    .about {
+        padding: 20px 13px;
+    }
 }
 
-/* =========================
-   SEO SECTION
-========================= */
 
-.seo-section {
-    margin-top: 22px;
-    padding: 24px 20px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.seo-section h3 {
-    margin-bottom: 10px;
-    font-size: 21px;
-    color: #002B54;
-}
-
-.seo-section p {
-    max-width: 700px;
-    margin: 0 auto 12px;
-    color: #64748b;
-    line-height: 1.6;
-}
-
-.seo-section a {
-    color: #2563eb;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.seo-section a:hover {
-    text-decoration: underline;
-}
-
-/* =========================
-   TOOL LINKS
-========================= */
-
-.tool-link {
-    display: block;
-    padding: 22px;
-    border-radius: 14px;
-    background: white;
-    color: #222;
-    font-size: 17px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.25s ease;
-}
-
-.tool-link:hover {
-    transform: translateY(-2px);
-}
-
-/* =========================
-   TOOL INFO
-========================= */
-
-.tool-info {
-    margin-top: 20px;
-    padding: 24px 20px;
-    background: white;
-    border-radius: 14px;
-    text-align: left;
-}
-
-.tool-info h3 {
-    margin-bottom: 10px;
-    color: #002B54;
-}
-
-.tool-info p {
-    color: #64748b;
-    line-height: 1.6;
-}
-
-/* =========================
-   SEO TOOL LINKS
-========================= */
-
-.seo-tools {
-    margin-top: 40px;
-    padding: 30px 20px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.seo-tools h2 {
-    margin: 25px 0 12px;
-    color: #002B54;
-    font-size: 24px;
-}
-
-.seo-tools h2:first-child {
-    margin-top: 0;
-}
-
-.seo-tools p {
-    max-width: 750px;
-    margin: 0 auto 15px;
-    color: #64748b;
-    line-height: 1.7;
-}
-
-.seo-tools a {
-    display: inline-block;
-    margin: 6px 8px;
-    color: #2563eb;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.seo-tools a:hover {
-    text-decoration: underline;
-}
-
-/* =========================
-   TOOL SEO
-========================= */
-
-.tool-seo {
-    margin-top: 30px;
-    padding: 25px 20px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.tool-seo h2 {
-    margin-bottom: 12px;
-    color: #002B54;
-    font-size: 24px;
-}
-
-.tool-seo p {
-    max-width: 750px;
-    margin: 0 auto;
-    color: #64748b;
-    line-height: 1.7;
-}
-```
+/* =========================================================
+   END OF DOCPINCH STEP 89 CSS
+   ========================================================= */
