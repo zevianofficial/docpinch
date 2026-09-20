@@ -31,6 +31,7 @@ html {
 :root {
     --dp-primary: #002B54;
     --dp-primary-hover: #004477;
+    --dp-primary-dark: #001f3d;
     --dp-primary-soft: #eef6ff;
 
     --dp-text: #222222;
@@ -2242,3 +2243,483 @@ select:focus-visible {
 
 
 
+
+/* =========================================================
+   DOCPINCH — STEP 93
+   IMAGE RESIZER PROFESSIONAL UI
+   ========================================================= */
+
+.resize-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.resize-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 12px;
+    background: var(--dp-primary-soft);
+    font-size: 24px;
+}
+
+.resize-header h2 { margin: 0 0 6px; }
+
+.resize-header p {
+    margin: 0;
+    color: var(--dp-muted);
+    line-height: 1.6;
+}
+
+.resize-upload-card { margin-bottom: 20px; }
+
+.resize-file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 145px;
+    padding: 24px;
+    border: 2px dashed var(--dp-border);
+    border-radius: 16px;
+    background: #fbfdff;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.resize-file-label:hover {
+    border-color: var(--dp-primary);
+    background: var(--dp-primary-soft);
+    transform: translateY(-1px);
+}
+
+.resize-upload-icon {
+    margin-bottom: 8px;
+    font-size: 30px;
+}
+
+.resize-file-label strong {
+    color: var(--dp-primary);
+    font-size: 1.05rem;
+}
+
+.resize-file-label span:last-child {
+    margin-top: 5px;
+    color: var(--dp-muted);
+    font-size: 0.88rem;
+}
+
+#resizeInput {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.resize-original-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.resize-original-info > div {
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid var(--dp-border);
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.resize-original-info span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--dp-muted);
+    font-size: 0.78rem;
+}
+
+.resize-original-info strong {
+    display: block;
+    overflow: hidden;
+    color: var(--dp-text);
+    font-size: 0.92rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.resize-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.resize-field label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--dp-text);
+    font-weight: 700;
+}
+
+.resize-field input {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid var(--dp-border);
+    border-radius: 10px;
+    background: var(--dp-white);
+    color: var(--dp-text);
+    font-size: 1rem;
+    outline: none;
+}
+
+.resize-field input:focus {
+    border-color: var(--dp-primary);
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.10);
+}
+
+.resize-ratio-option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 4px 0 18px;
+    color: var(--dp-text);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.resize-ratio-option input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--dp-primary);
+    cursor: pointer;
+}
+
+.resize-primary-btn {
+    width: 100%;
+    min-height: 48px;
+    margin: 0 !important;
+    background: var(--dp-primary) !important;
+    color: var(--dp-white) !important;
+    border: none !important;
+}
+
+.resize-primary-btn:hover {
+    background: var(--dp-primary-dark) !important;
+}
+
+.resize-primary-btn:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none !important;
+}
+
+.resize-status {
+    margin-top: 14px;
+    padding: 11px 13px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.resize-status.processing {
+    background: #fff7e6;
+    color: #9a6700;
+}
+
+.resize-status.success {
+    background: var(--dp-success-bg);
+    color: var(--dp-success);
+}
+
+.resize-status.error {
+    background: var(--dp-danger-bg);
+    color: var(--dp-danger);
+}
+
+.resize-result { margin-top: 22px; }
+
+.resize-result-card {
+    padding: 20px;
+    border: 1px solid var(--dp-border);
+    border-radius: 15px;
+    background: var(--dp-white);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+}
+
+.resize-result-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 16px;
+}
+
+.resize-result-header h3 {
+    margin: 7px 0 0;
+    color: var(--dp-primary);
+    line-height: 1.3;
+}
+
+.resize-success-badge {
+    display: inline-flex;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: var(--dp-success-bg);
+    color: var(--dp-success);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.resize-result-size {
+    color: var(--dp-muted);
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
+
+.resize-preview-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 300px;
+    max-height: 560px;
+    padding: 24px;
+    overflow: auto;
+    border: 1px solid var(--dp-border);
+    border-radius: 14px;
+    background:
+        linear-gradient(
+            45deg,
+            #f5f7fa 25%,
+            #ffffff 25%,
+            #ffffff 50%,
+            #f5f7fa 50%,
+            #f5f7fa 75%,
+            #ffffff 75%
+        );
+    background-size: 22px 22px;
+}
+
+.resize-output-preview {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    margin: 0 auto;
+    object-fit: contain;
+    border: 1px solid var(--dp-border) !important;
+    border-radius: 8px !important;
+    background: var(--dp-white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.resize-result-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.resize-result-info > div {
+    padding: 13px 14px;
+    border: 1px solid var(--dp-border);
+    border-radius: 10px;
+    background: #f8fafc;
+    text-align: center;
+}
+
+.resize-result-info span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--dp-muted);
+    font-size: 0.78rem;
+}
+
+.resize-result-info strong {
+    color: var(--dp-primary);
+    font-size: 0.92rem;
+}
+
+.resize-result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 17px;
+}
+
+.resize-download-btn,
+.resize-another-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 45px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.resize-download-btn {
+    background: var(--dp-primary);
+    color: var(--dp-white);
+}
+
+.resize-download-btn:hover {
+    background: var(--dp-primary-hover);
+    color: var(--dp-white);
+}
+
+.resize-another-btn {
+    border: 1px solid var(--dp-border);
+    background: #eef2f6;
+    color: var(--dp-text);
+}
+
+.resize-another-btn:hover {
+    background: #e3e9ef;
+    color: var(--dp-primary);
+}
+
+.resize-back-btn {
+    width: 100%;
+    margin-top: 20px !important;
+    background: #eef2f6 !important;
+    color: var(--dp-text) !important;
+    border: 1px solid var(--dp-border) !important;
+    box-shadow: none !important;
+}
+
+.resize-back-btn:hover {
+    background: #e3e9ef !important;
+    color: var(--dp-primary) !important;
+}
+
+@media (max-width: 700px) {
+    .resize-original-info,
+    .resize-controls,
+    .resize-result-info {
+        grid-template-columns: 1fr;
+    }
+
+    .resize-result-header {
+        flex-direction: column;
+    }
+
+    .resize-result-size {
+        white-space: normal;
+    }
+
+    .resize-preview-frame {
+        min-height: 220px;
+        padding: 15px;
+        max-height: 440px;
+    }
+
+    .resize-output-preview {
+        max-height: 390px;
+    }
+
+    .resize-result-actions {
+        flex-direction: column;
+    }
+
+    .resize-download-btn,
+    .resize-another-btn {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   DOCPINCH — STEP 94
+   COMMON PROCESSING UI
+   ========================================================= */
+
+.processing-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    cursor: wait !important;
+    opacity: 0.82;
+    transform: none !important;
+}
+
+.dp-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-top-color: var(--dp-white);
+    border-radius: 50%;
+    animation: dp-spin 0.8s linear infinite;
+}
+
+.dp-spinner-large {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+    border-width: 3px;
+    border-color: rgba(0, 51, 102, 0.18);
+    border-top-color: var(--dp-primary);
+}
+
+@keyframes dp-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.dp-processing-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 140px;
+    margin-top: 20px;
+    padding: 24px;
+    border: 1px solid var(--dp-border);
+    border-radius: 14px;
+    background: #f8fafc;
+    text-align: center;
+}
+
+.dp-processing-box strong {
+    color: var(--dp-primary);
+    font-size: 1rem;
+}
+
+.dp-processing-box span {
+    color: var(--dp-muted);
+    font-size: 0.86rem;
+}
+
+@media (max-width: 600px) {
+    .resize-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .resize-file-label {
+        min-height: 130px;
+        padding: 20px 14px;
+    }
+
+    .resize-result-card {
+        padding: 16px 12px;
+    }
+}
