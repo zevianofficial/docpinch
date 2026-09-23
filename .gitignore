@@ -1,0 +1,7 @@
+﻿node_modules/
+.idea/
+*.log
+hs_err_pid*.log
+script.js.backup-*.js
+style.css.backup-*.css
+*.backup-*

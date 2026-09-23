@@ -1,0 +1,66 @@
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Homepage -->
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+    <!-- PDF Tools -->
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/compress-pdf.html</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/jpg-png-to-pdf.html</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/merge-pdf.html</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/pdf-to-image.html</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+    <!-- Image Tools -->
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/compress-image.html</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/resize-image.html</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/crop-image.html</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/rotate-image.html</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+    <!-- Document Tools -->
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/document-scanner.html</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+    <url>
+        <loc>https://zevianofficial.github.io/docpinch/document-enhance.html</loc>
+        <lastmod>2026-09-19</lastmod>
+    </url>
+
+</urlset>
+```

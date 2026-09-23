@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DocPinch</string>
+    <string name="title_activity_main">DocPinch</string>
+    <string name="package_name">com.zevian.docpinch</string>
+    <string name="custom_url_scheme">com.zevian.docpinch</string>
+</resources>
