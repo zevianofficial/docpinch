@@ -463,6 +463,7 @@ function openImageCompressor() {
 function openImageToPDF() {
 
     document.querySelector("main").innerHTML = `
+        <div class="compressor">
         <h2>🔄 JPG/PNG → PDF</h2>
 
         <p style="margin:15px 0;">
@@ -498,6 +499,8 @@ function openImageToPDF() {
         <button id="imagePDFBackBtn">
             ⬅️ Back
         </button>
+    
+        </div>
     `;
 
 
@@ -2982,6 +2985,7 @@ function openImageRotator() {
 function openPDFCompressor() {
 
     document.querySelector("main").innerHTML = `
+        <div class="compressor">
         <h2>📄 Compress PDF</h2>
 
         <div style="margin:25px 0;">
@@ -3031,6 +3035,8 @@ function openPDFCompressor() {
         <button id="pdfBackBtn">
             ⬅️ Back
         </button>
+    
+        </div>
     `;
 
 
@@ -3422,6 +3428,7 @@ function openPDFCompressor() {
 async function openPDFMerger() {
 
     document.querySelector("main").innerHTML = `
+        <div class="compressor">
         <h2>🔗 Merge PDF</h2>
 
         <p style="margin:15px 0;">
@@ -3457,6 +3464,8 @@ async function openPDFMerger() {
         <button id="mergeBackBtn">
             ⬅️ Back
         </button>
+    
+        </div>
     `;
 
 
@@ -3689,6 +3698,7 @@ async function openPDFMerger() {
 function openPDFToImage() {
 
     document.querySelector("main").innerHTML = `
+        <div class="compressor">
         <h2>🖼️ PDF → JPG/PNG</h2>
 
         <p style="margin:15px 0;">
@@ -3742,6 +3752,8 @@ function openPDFToImage() {
         <button id="pdfToImageBackBtn">
             ⬅️ Back
         </button>
+    
+        </div>
     `;
 
 
@@ -5081,7 +5093,8 @@ function openDocumentEnhance() {
         document.querySelector("main");
 
 
-    main.innerHTML = `
+    main.innerHTML = `<div class="compressor">
+
 
         <div
             class="compressor"
@@ -5430,7 +5443,8 @@ function openDocumentEnhance() {
 
         </div>
 
-    `;
+
+</div>`;
 
 
     const input =
