@@ -449,7 +449,7 @@ function openImageCompressor() {
 
     backBtn.addEventListener("click", () => {
 
-        window.location.replace("index.html#tools");
+        window.location.reload();
 
     });
 
@@ -514,7 +514,7 @@ function openImageToPDF() {
         .addEventListener(
             "click",
             () => {
-                window.location.replace("index.html#tools");
+                window.location.reload();
             }
         );
 
@@ -2725,7 +2725,7 @@ image.src =
 
             }
 
-            window.location.replace("index.html#tools");
+            window.location.reload();
 
         }
     );
@@ -2968,7 +2968,7 @@ function openImageRotator() {
     backBtn.addEventListener(
         "click",
         () => {
-            window.location.replace("index.html#tools");
+            window.location.reload();
         }
     );
 
@@ -3069,7 +3069,7 @@ function openPDFCompressor() {
         .addEventListener(
             "click",
             () => {
-                window.location.replace("index.html#tools");
+                window.location.reload();
             }
         );
 
@@ -3473,7 +3473,7 @@ async function openPDFMerger() {
         .addEventListener(
             "click",
             () => {
-                window.location.replace("index.html#tools");
+                window.location.reload();
             }
         );
 
@@ -3780,7 +3780,7 @@ function openPDFToImage() {
         .addEventListener(
             "click",
             () => {
-                window.location.replace("index.html#tools");
+                window.location.reload();
             }
         );
 
@@ -5064,7 +5064,7 @@ requestAnimationFrame(
         .addEventListener(
             "click",
             () => {
-                window.location.replace("index.html#tools");
+                window.location.reload();
             }
         );
 
@@ -6135,7 +6135,7 @@ function openDocumentEnhance() {
 
             clearResultURL();
 
-            window.location.replace("index.html#tools");
+            window.location.reload();
 
         }
     );
