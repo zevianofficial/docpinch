@@ -1,5 +1,10 @@
 {
-  "appId": "com.zevian.docpinch",
-  "appName": "DocPinch",
-  "webDir": "www"
+    "appId":  "com.zevian.docpinch",
+    "appName":  "DocPinch",
+    "webDir":  "www",
+    "plugins":  {
+                    "App":  {
+
+                            }
+                }
 }
