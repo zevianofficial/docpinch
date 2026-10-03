@@ -1,4 +1,45 @@
-// =====================================================
+
+/* ==========================================================
+ * DOCPINCH FINAL NAVIGATION CORE
+ * Single Back destination for all tools.
+ * ========================================================== */
+(function () {
+    "use strict";
+
+    function dpGoToTools() {
+
+        var targetUrl =
+            new URL(
+                "index.html",
+                document.baseURI
+            );
+
+        /*
+         * Keep the tools section as the destination and add a
+         * unique query value so Android WebView performs a fresh
+         * document navigation every time.
+         */
+        targetUrl.searchParams.set(
+            "nav",
+            "tools"
+        );
+
+        targetUrl.searchParams.set(
+            "dp",
+            String(Date.now())
+        );
+
+        targetUrl.hash = "tools";
+
+        window.location.href =
+            targetUrl.href;
+    }
+
+    window.dpGoToTools =
+        dpGoToTools;
+
+})();
+
 // DocPinch - PDF & Image Tools
 // Clean Full Version
 // =====================================================
@@ -104,13 +145,13 @@ function formatBytes(bytes) {
 
 
 // =====================================================
-// DOCPINCH — COMMON PROCESSING SYSTEM
+// DOCPINCH â€” COMMON PROCESSING SYSTEM
 // STEP 94
 // =====================================================
 
 function showProcessing(
     button,
-    message = "⏳ Processing..."
+    message = "â³ Processing..."
 ) {
 
     if (!button) return;
@@ -158,7 +199,7 @@ function hideProcessing(button) {
 
 function showProcessingBox(
     container,
-    message = "⏳ Processing..."
+    message = "â³ Processing..."
 ) {
 
     if (!container) return;
@@ -192,7 +233,7 @@ function openImageCompressor() {
     document.querySelector("main").innerHTML = `
         <div class="compressor">
 
-            <h2>🖼️ Image Compressor</h2>
+            <h2>ðŸ–¼ï¸ Image Compressor</h2>
 
             <p>
                 Select an image and reduce its file size.
@@ -226,7 +267,7 @@ function openImageCompressor() {
             <br><br>
 
             <button id="compressBtn">
-                ⚡ Compress Image
+                âš¡ Compress Image
             </button>
 
             <div id="result"></div>
@@ -234,7 +275,7 @@ function openImageCompressor() {
             <br>
 
             <button id="backBtn">
-                ← Back to Tools
+                â† Back to Tools
             </button>
 
         </div>
@@ -284,11 +325,6 @@ function openImageCompressor() {
         showProcessing(
             compressBtn,
             "Compressing Image..."
-        );
-
-        showProcessingBox(
-            result,
-            "Compressing your image..."
         );
 
 
@@ -373,7 +409,7 @@ function openImageCompressor() {
                     <div class="result-box">
 
                         <h3>
-                            ✅ Compression Complete
+                            âœ… Compression Complete
                         </h3>
 
                         <p>
@@ -391,6 +427,11 @@ function openImageCompressor() {
                             ${compressionPercent}%
                         </p>
 
+                        <p>
+                            <strong>Output File:</strong>
+                            DocPinch-compressed.jpg
+                        </p>
+
                         <br>
 
                         <img
@@ -404,25 +445,21 @@ function openImageCompressor() {
                         <a
                             href="${compressedData}"
                             download="DocPinch-compressed.jpg"
-                        >⬇️ Download Image</a>
+                        >â¬‡ï¸ Download Image</a>
 
                         <br><br>
 
                         <button
                             onclick="openImageCompressor()"
                         >
-                            🔄 Compress Another
+                            ðŸ”„ Compress Another
                         </button>
 
                     </div>
                 `;
 
             };
-
-
-            img.src =
-                event.target.result;
-
+loadOrientedImageFromFile(file).then(function(orientedImg){ img.src=orientedImg.src; }).catch(function(error){ console.error("Image orientation error:",error); alert("Unable to process this image."); });
         };
 
 
@@ -449,7 +486,7 @@ function openImageCompressor() {
 
     backBtn.addEventListener("click", () => {
 
-        window.location.reload();
+        dpGoToTools();
 
     });
 
@@ -457,14 +494,14 @@ function openImageCompressor() {
 
 
 // =====================================================
-// JPG / PNG → PDF
+// JPG / PNG â†’ PDF
 // =====================================================
 
 function openImageToPDF() {
 
     document.querySelector("main").innerHTML = `
         <div class="compressor">
-        <h2>🔄 JPG/PNG → PDF</h2>
+        <h2>ðŸ”„ JPG/PNG â†’ PDF</h2>
 
         <p style="margin:15px 0;">
             Select one or multiple images to create a PDF.
@@ -482,7 +519,7 @@ function openImageToPDF() {
             <br><br>
 
             <button id="createPDFBtn">
-                📄 Create PDF
+                ðŸ“„ Create PDF
             </button>
 
             <p
@@ -497,7 +534,7 @@ function openImageToPDF() {
         <br>
 
         <button id="imagePDFBackBtn">
-            ⬅️ Back
+            â¬…ï¸ Back
         </button>
     
         </div>
@@ -517,7 +554,7 @@ function openImageToPDF() {
         .addEventListener(
             "click",
             () => {
-                window.location.reload();
+                dpGoToTools();
             }
         );
 
@@ -563,7 +600,7 @@ function openImageToPDF() {
 
 
         status.innerText =
-            "⏳ Creating PDF...";
+            "â³ Creating PDF...";
 
         result.innerHTML = "";
 
@@ -597,7 +634,7 @@ function openImageToPDF() {
 
 
                 status.innerText =
-                    `⏳ Adding image ${i + 1} of ${input.files.length}...`;
+                    `â³ Adding image ${i + 1} of ${input.files.length}...`;
 
 
                 const imageURL =
@@ -699,7 +736,7 @@ function openImageToPDF() {
 
 
             status.innerText =
-                "✅ PDF created successfully!";
+                "âœ… PDF created successfully!";
 
 
             hideProcessing(createBtn);
@@ -716,7 +753,7 @@ function openImageToPDF() {
                 >
 
                     <h3>
-                        📄 PDF Ready
+                        ðŸ“„ PDF Ready
                     </h3>
 
                     <p style="margin-top:15px;">
@@ -749,7 +786,7 @@ function openImageToPDF() {
                             font-weight:bold;
                         "
                     >
-                        ⬇️ Download PDF
+                        â¬‡ï¸ Download PDF
                     </a>
 
                     <br><br>
@@ -757,7 +794,7 @@ function openImageToPDF() {
                     <button
                         onclick="openImageToPDF()"
                     >
-                        🔄 Create Another PDF
+                        ðŸ”„ Create Another PDF
                     </button>
 
                 </div>
@@ -770,7 +807,7 @@ function openImageToPDF() {
             console.error(error);
 
             status.innerText =
-                "❌ PDF creation failed.";
+                "âŒ PDF creation failed.";
 
             alert(
                 "Could not create PDF. Please try again."
@@ -843,6 +880,213 @@ function openImageToPDF() {
 
 
 // =====================================================
+/* =====================================================
+ * DOCPINCH COMMON IMAGE ORIENTATION NORMALIZER
+ * STEP 4.4
+ *
+ * Uses EXIF orientation when supported by the browser.
+ * Returns a normal HTMLImageElement for downstream tools.
+ * ===================================================== */
+
+async function loadOrientedImageFromFile(
+    file,
+    targetWidth = null,
+    targetHeight = null
+) {
+
+    if (!file) {
+        throw new Error(
+            "No image file was provided."
+        );
+    }
+
+    if (
+        !file.type ||
+        !file.type.startsWith("image/")
+    ) {
+        throw new Error(
+            "The selected file is not an image."
+        );
+    }
+
+    if (
+        typeof window.createImageBitmap ===
+        "function"
+    ) {
+
+        try {
+
+            const hasTargetSize =
+                Number(targetWidth) > 0 &&
+                Number(targetHeight) > 0;
+
+            const bitmapOptions = {
+                imageOrientation:
+                    "from-image"
+            };
+
+            if (hasTargetSize) {
+
+                bitmapOptions.resizeWidth =
+                    Math.round(
+                        Number(targetWidth)
+                    );
+
+                bitmapOptions.resizeHeight =
+                    Math.round(
+                        Number(targetHeight)
+                    );
+
+                bitmapOptions.resizeQuality =
+                    "high";
+
+            }
+
+            const bitmap =
+                await window.createImageBitmap(
+                    file,
+                    bitmapOptions
+                );
+
+            const canvas =
+                document.createElement(
+                    "canvas"
+                );
+
+            canvas.width =
+                bitmap.width;
+
+            canvas.height =
+                bitmap.height;
+
+            const ctx =
+                canvas.getContext(
+                    "2d"
+                );
+
+            if (!ctx) {
+
+                if (
+                    typeof bitmap.close ===
+                    "function"
+                ) {
+                    bitmap.close();
+                }
+
+                throw new Error(
+                    "Canvas is not supported."
+                );
+
+            }
+
+            ctx.drawImage(
+                bitmap,
+                0,
+                0
+            );
+
+            const dataUrl =
+                canvas.toDataURL(
+                    "image/png"
+                );
+
+            if (
+                typeof bitmap.close ===
+                "function"
+            ) {
+                bitmap.close();
+            }
+
+            return await new Promise(
+                (resolve, reject) => {
+
+                    const img =
+                        new Image();
+
+                    img.onload =
+                        function() {
+                            resolve(img);
+                        };
+
+                    img.onerror =
+                        function() {
+                            reject(
+                                new Error(
+                                    "Normalized image could not be loaded."
+                                )
+                            );
+                        };
+
+                    img.src =
+                        dataUrl;
+
+                }
+            );
+
+        }
+        catch (error) {
+
+            console.warn(
+                "EXIF orientation normalization failed. Using fallback.",
+                error
+            );
+
+        }
+
+    }
+
+    return await new Promise(
+        (resolve, reject) => {
+
+            const reader =
+                new FileReader();
+
+            reader.onload =
+                function(event) {
+
+                    const img =
+                        new Image();
+
+                    img.onload =
+                        function() {
+                            resolve(img);
+                        };
+
+                    img.onerror =
+                        function() {
+                            reject(
+                                new Error(
+                                    "Image could not be loaded."
+                                )
+                            );
+                        };
+
+                    img.src =
+                        event.target.result;
+
+                };
+
+            reader.onerror =
+                function() {
+
+                    reject(
+                        reader.error ||
+                        new Error(
+                            "Unable to read image file."
+                        )
+                    );
+
+                };
+
+            reader.readAsDataURL(
+                file
+            );
+
+        }
+    );
+
+}
+
 // IMAGE RESIZER
 // =====================================================
 
@@ -858,7 +1102,7 @@ function openImageResizer() {
             <div class="resize-header">
 
                 <span class="resize-icon">
-                    📏
+                    ðŸ“
                 </span>
 
                 <div>
@@ -883,7 +1127,7 @@ function openImageResizer() {
                 >
 
                     <span class="resize-upload-icon">
-                        🖼️
+                        ðŸ–¼ï¸
                     </span>
 
                     <strong>
@@ -913,12 +1157,12 @@ function openImageResizer() {
 
                 <div>
                     <span>Original Size</span>
-                    <strong id="resizeOriginalSize">—</strong>
+                    <strong id="resizeOriginalSize">â€”</strong>
                 </div>
 
                 <div>
                     <span>File</span>
-                    <strong id="resizeFileName">—</strong>
+                    <strong id="resizeFileName">â€”</strong>
                 </div>
 
             </div>
@@ -981,7 +1225,7 @@ function openImageResizer() {
                 id="resizeBtn"
                 class="resize-primary-btn"
             >
-                📏 Resize Image
+                ðŸ“ Resize Image
             </button>
 
 
@@ -1003,7 +1247,7 @@ function openImageResizer() {
                 id="resizeBackBtn"
                 class="resize-back-btn"
             >
-                ← Back to Tools
+                â† Back to Tools
             </button>
 
         </div>
@@ -1158,7 +1402,7 @@ function openImageResizer() {
                                 false;
 
                             originalSize.textContent =
-                                `${originalWidth} × ${originalHeight} px`;
+                                `${originalWidth} Ã— ${originalHeight} px`;
 
                             fileName.textContent =
                                 file.name;
@@ -1179,11 +1423,7 @@ function openImageResizer() {
                             );
 
                         };
-
-
-                    img.src =
-                        event.target.result;
-
+img.src = event.target.result;
                 };
 
 
@@ -1336,7 +1576,7 @@ if (!selectedFile) {
             );
 
             setStatus(
-                "⏳ Resizing image...",
+                "â³ Resizing image...",
                 "processing"
             );
 
@@ -1423,11 +1663,11 @@ if (!selectedFile) {
                                                 <span
                                                     class="resize-success-badge"
                                                 >
-                                                    ✓ Complete
+                                                    âœ“ Complete
                                                 </span>
 
                                                 <h3>
-                                                    ✅ Image Resized Successfully!
+                                                    âœ… Image Resized Successfully!
                                                 </h3>
 
                                             </div>
@@ -1435,7 +1675,7 @@ if (!selectedFile) {
                                             <span
                                                 class="resize-result-size"
                                             >
-                                                ${newWidth} × ${newHeight} px
+                                                ${newWidth} Ã— ${newHeight} px
                                             </span>
 
                                         </div>
@@ -1463,7 +1703,7 @@ if (!selectedFile) {
 
                                                 <strong>
                                                     ${originalWidth}
-                                                    ×
+                                                    Ã—
                                                     ${originalHeight}
                                                     px
                                                 </strong>
@@ -1474,7 +1714,7 @@ if (!selectedFile) {
 
                                                 <strong>
                                                     ${newWidth}
-                                                    ×
+                                                    Ã—
                                                     ${newHeight}
                                                     px
                                                 </strong>
@@ -1492,7 +1732,7 @@ if (!selectedFile) {
                                                 download="DocPinch-resized.jpg"
                                                 class="resize-download-btn"
                                             >
-                                                ⬇️ Download Resized Image
+                                                â¬‡ï¸ Download Resized Image
                                             </a>
 
 
@@ -1501,7 +1741,7 @@ if (!selectedFile) {
                                                 id="resizeAnotherBtn"
                                                 class="resize-another-btn"
                                             >
-                                                🔄 Resize Another
+                                                ðŸ”„ Resize Another
                                             </button>
 
                                         </div>
@@ -1514,7 +1754,7 @@ if (!selectedFile) {
                                 hideProcessing(resizeBtn);
 
                                 setStatus(
-                                    "✅ Resize complete.",
+                                    "âœ… Resize complete.",
                                     "success"
                                 );
 
@@ -1564,7 +1804,7 @@ if (!selectedFile) {
                                     "";
 
                                 setStatus(
-                                    "❌ Unable to resize this image.",
+                                    "âŒ Unable to resize this image.",
                                     "error"
                                 );
 
@@ -1582,16 +1822,12 @@ if (!selectedFile) {
                                 "";
 
                             setStatus(
-                                "❌ Unable to process this image.",
+                                "âŒ Unable to process this image.",
                                 "error"
                             );
 
                         };
-
-
-                    img.src =
-                        event.target.result;
-
+img.src = event.target.result;
                 };
 
 
@@ -1604,7 +1840,7 @@ if (!selectedFile) {
                         "";
 
                     setStatus(
-                        "❌ Unable to read the selected file.",
+                        "âŒ Unable to read the selected file.",
                         "error"
                     );
 
@@ -1623,9 +1859,7 @@ if (!selectedFile) {
     "click",
     () => {
 
-        window.location.replace(
-            "index.html#tools"
-        );
+        dpGoToTools();
 
     }
 );
@@ -1646,7 +1880,7 @@ function openImageCropper() {
 
         <div class="compressor cropper-tool">
 
-            <h2>✂️ Crop Image</h2>
+            <h2>âœ‚ï¸ Crop Image</h2>
 
             <p>
                 Select your image, drag the crop area and
@@ -1718,7 +1952,7 @@ function openImageCropper() {
                         <strong
                             id="cropOriginalSize"
                         >
-                            —
+                            â€”
                         </strong>
 
                     </div>
@@ -1733,7 +1967,7 @@ function openImageCropper() {
                         <strong
                             id="cropSelectedSize"
                         >
-                            —
+                            â€”
                         </strong>
 
                     </div>
@@ -1745,7 +1979,7 @@ function openImageCropper() {
                     type="button"
                     id="cropBtn"
                 >
-                    ✂️ Crop Image
+                    âœ‚ï¸ Crop Image
                 </button>
 
             </div>
@@ -1761,7 +1995,7 @@ function openImageCropper() {
                 type="button"
                 id="cropBackBtn"
             >
-                ← Back to Tools
+                â† Back to Tools
             </button>
 
         </div>
@@ -1885,7 +2119,7 @@ function openImageCropper() {
 
 
         selectedSize.textContent =
-            `${sourceWidth} × ${sourceHeight} px`;
+            `${sourceWidth} Ã— ${sourceHeight} px`;
 
     }
 
@@ -1978,8 +2212,7 @@ function openImageCropper() {
     };
 
 
-image.src =
-    event.target.result;
+loadOrientedImageFromFile(file).then(function(orientedImg){ image.src=orientedImg.src; }).catch(function(error){ console.error("Crop orientation error:",error); alert("Unable to process this image."); });
 
                 };
 
@@ -2052,7 +2285,7 @@ image.src =
 
 
         originalSize.textContent =
-            `${naturalWidth} × ${naturalHeight} px`;
+            `${naturalWidth} Ã— ${naturalHeight} px`;
 
 
         workspace.hidden =
@@ -2623,14 +2856,14 @@ image.src =
                         <div class="crop-result-box">
 
                             <h3>
-                                ✅ Image Cropped Successfully!
+                                âœ… Image Cropped Successfully!
                             </h3>
 
                             <p>
                                 <strong>
                                     New Size:
                                 </strong>
-                                ${sw} × ${sh} px
+                                ${sw} Ã— ${sh} px
                             </p>
 
 
@@ -2650,7 +2883,7 @@ image.src =
     download="DocPinch-cropped.jpg"
     class="crop-download-btn"
 >
-    ⬇️ Download Cropped Image
+    â¬‡ï¸ Download Cropped Image
 </a>
 
 
@@ -2658,7 +2891,7 @@ image.src =
                                     type="button"
                                     id="cropAnotherBtn"
                                 >
-                                    🔄 Crop Another
+                                    ðŸ”„ Crop Another
                                 </button>
 
                             </div>
@@ -2728,7 +2961,7 @@ image.src =
 
             }
 
-            window.location.reload();
+            dpGoToTools();
 
         }
     );
@@ -2744,7 +2977,7 @@ function openImageRotator() {
     document.querySelector("main").innerHTML = `
         <div class="compressor">
 
-            <h2>🔃 Rotate Image</h2>
+            <h2>ðŸ”ƒ Rotate Image</h2>
 
             <p>
                 Select an image and choose rotation.
@@ -2761,15 +2994,15 @@ function openImageRotator() {
             <br><br>
 
             <button id="rotate90">
-                ↻ Rotate 90°
+                â†» Rotate 90Â°
             </button>
 
             <button id="rotate180">
-                ↻ Rotate 180°
+                â†» Rotate 180Â°
             </button>
 
             <button id="rotate270">
-                ↻ Rotate 270°
+                â†» Rotate 270Â°
             </button>
 
             <div id="rotateResult"></div>
@@ -2777,7 +3010,7 @@ function openImageRotator() {
             <br>
 
             <button id="rotateBackBtn">
-                ← Back to Tools
+                â† Back to Tools
             </button>
 
         </div>
@@ -2896,12 +3129,12 @@ function openImageRotator() {
                             <div class="result-box">
 
                                 <h3>
-                                    ✅ Image Rotated Successfully!
+                                    âœ… Image Rotated Successfully!
                                 </h3>
 
                                 <p>
                                     <strong>Rotation:</strong>
-                                    ${degrees}°
+                                    ${degrees}Â°
                                 </p>
 
                                 <br>
@@ -2917,14 +3150,14 @@ function openImageRotator() {
                                 <a
                                     href="${rotatedImage}"
                                     download="DocPinch-rotated.jpg"
-                                >⬇️ Download Rotated Image</a>
+                                >â¬‡ï¸ Download Rotated Image</a>
 
                                 <br><br>
 
                                 <button
                                     onclick="openImageRotator()"
                                 >
-                                    🔄 Rotate Another
+                                    ðŸ”„ Rotate Another
                                 </button>
 
                             </div>
@@ -2971,7 +3204,7 @@ function openImageRotator() {
     backBtn.addEventListener(
         "click",
         () => {
-            window.location.reload();
+            dpGoToTools();
         }
     );
 
@@ -2986,7 +3219,7 @@ function openPDFCompressor() {
 
     document.querySelector("main").innerHTML = `
         <div class="compressor">
-        <h2>📄 Compress PDF</h2>
+        <h2>ðŸ“„ Compress PDF</h2>
 
         <div style="margin:25px 0;">
 
@@ -3026,6 +3259,18 @@ function openPDFCompressor() {
                 style="margin-top:20px;"
             ></p>
 
+            <div class="dp-progress-wrap">
+                <progress
+                    id="pdfCompressionProgress"
+                    max="100"
+                    value="0"
+                ></progress>
+
+                <span id="pdfCompressionProgressValue">
+                    0%
+                </span>
+            </div>
+
         </div>
 
         <div id="pdfResult"></div>
@@ -3033,7 +3278,7 @@ function openPDFCompressor() {
         <br>
 
         <button id="pdfBackBtn">
-            ⬅️ Back
+            â¬…ï¸ Back
         </button>
     
         </div>
@@ -3075,7 +3320,7 @@ function openPDFCompressor() {
         .addEventListener(
             "click",
             () => {
-                window.location.reload();
+                dpGoToTools();
             }
         );
 
@@ -3135,14 +3380,9 @@ function openPDFCompressor() {
             "Compressing PDF..."
         );
 
-        showProcessingBox(
-            result,
-            "Compressing your PDF..."
-        );
-
 
         status.innerText =
-            "⏳ Compressing PDF...";
+            "â³ Compressing PDF...";
 
 
         result.innerHTML = "";
@@ -3165,6 +3405,25 @@ function openPDFCompressor() {
             const totalPages =
                 pdf.numPages;
 
+            const progressBar =
+                document.getElementById(
+                    "pdfCompressionProgress"
+                );
+
+            const progressValue =
+                document.getElementById(
+                    "pdfCompressionProgressValue"
+                );
+
+            progressBar.max =
+                totalPages;
+
+            progressBar.value =
+                0;
+
+            progressValue.innerText =
+                "0%";
+
 
             const jsPDF =
                 window.jspdf.jsPDF;
@@ -3186,8 +3445,19 @@ function openPDFCompressor() {
                 pageNumber++
             ) {
 
+                const progressPercent =
+                    Math.round(
+                        (pageNumber / totalPages) * 100
+                    );
+
                 status.innerText =
-                    `⏳ Compressing page ${pageNumber} of ${totalPages}...`;
+                    `Compressing page ${pageNumber} of ${totalPages} (${progressPercent}%)...`;
+
+                progressBar.value =
+                    pageNumber;
+
+                progressValue.innerText =
+                    progressPercent + "%";
 
 
                 const page =
@@ -3350,7 +3620,7 @@ function openPDFCompressor() {
 
 
             status.innerText =
-                "✅ PDF Compression Complete!";
+                "âœ… PDF Compression Complete!";
 
 
             hideProcessing(compressBtn);
@@ -3361,7 +3631,7 @@ function openPDFCompressor() {
                 >
 
                     <h3>
-                        📊 Compression Result
+                        ðŸ“Š Compression Result
                     </h3>
 
                     <p>
@@ -3383,19 +3653,29 @@ function openPDFCompressor() {
                         }
                     </p>
 
+                    <p>
+                        <strong>PDF Pages:</strong>
+                        ${totalPages}
+                    </p>
+
+                    <p>
+                        <strong>Output File:</strong>
+                        DocPinch-compressed.pdf
+                    </p>
+
                     <br>
 
                     <a
                         href="${downloadURL}"
                         download="DocPinch-compressed.pdf"
-                    >⬇️ Download Compressed PDF</a>
+                    >â¬‡ï¸ Download Compressed PDF</a>
 
                     <br><br>
 
                     <button
                         onclick="openPDFCompressor()"
                     >
-                        🔄 Compress Another PDF
+                        ðŸ”„ Compress Another PDF
                     </button>
 
                 </div>
@@ -3408,7 +3688,7 @@ function openPDFCompressor() {
             console.error(error);
 
             status.innerText =
-                "❌ Error while compressing PDF.";
+                "âŒ Error while compressing PDF.";
 
             alert(
                 "PDF compression failed. Please try another PDF."
@@ -3429,44 +3709,75 @@ async function openPDFMerger() {
 
     document.querySelector("main").innerHTML = `
         <div class="compressor">
-        <h2>🔗 Merge PDF</h2>
 
-        <p style="margin:15px 0;">
-            Select multiple PDF files and combine them into one PDF.
-        </p>
+            <h2>ðŸ”— Merge PDF</h2>
 
-        <div style="margin:25px 0;">
+            <p style="margin:15px 0;">
+                Select multiple PDF files and combine them into one PDF.
+            </p>
 
-            <input
-                type="file"
-                id="mergePDFInput"
-                accept="application/pdf"
-                multiple
-            >
+            <div style="margin:25px 0;">
 
-            <br><br>
+                <input
+                    type="file"
+                    id="mergePDFInput"
+                    accept="application/pdf"
+                    multiple
+                >
 
-            <button id="mergePDFBtn">
-                🔗 Merge PDF
+                <br><br>
+
+                <button id="mergePDFBtn">
+                    ðŸ”— Merge PDF
+                </button>
+
+                <p
+                    id="mergeStatus"
+                    style="margin-top:20px;"
+                ></p>
+
+            </div>
+
+            <div id="mergeResult"></div>
+
+            <br>
+
+            <button id="mergeBackBtn">
+                â¬…ï¸ Back
             </button>
 
-            <p
-                id="mergeStatus"
-                style="margin-top:20px;"
-            ></p>
-
-        </div>
-
-        <div id="mergeResult"></div>
-
-        <br>
-
-        <button id="mergeBackBtn">
-            ⬅️ Back
-        </button>
-    
         </div>
     `;
+
+    const input =
+        document.getElementById("mergePDFInput");
+
+    const mergeBtn =
+        document.getElementById("mergePDFBtn");
+
+    const status =
+        document.getElementById("mergeStatus");
+
+    const result =
+        document.getElementById("mergeResult");
+
+    const nativeMergeAvailable =
+        typeof window.DocPinchPdfMerge !== "undefined"
+        &&
+        typeof window.DocPinchPdfMerge.openMergePicker === "function";
+
+
+    /*
+     * Android native merge mode
+     */
+    if (nativeMergeAvailable) {
+
+        input.style.display = "none";
+
+        status.innerText =
+            "ðŸ“± Android mode: tap Merge PDF to select multiple PDFs.";
+
+    }
 
 
     document
@@ -3482,29 +3793,526 @@ async function openPDFMerger() {
         .addEventListener(
             "click",
             () => {
-                window.location.reload();
+                dpGoToTools();
             }
         );
 
 
-    async function mergePDFs() {
+    /*
+     * Native Android progress callback
+     */
+    window.onNativePdfMergeProgress =
+    function (message) {
 
-        const input =
-            document.getElementById(
-                "mergePDFInput"
-            );
-
-        const status =
+        const currentStatus =
             document.getElementById(
                 "mergeStatus"
             );
 
-        const result =
+        const currentResult =
             document.getElementById(
                 "mergeResult"
             );
 
+        const currentButton =
+            document.getElementById(
+                "mergePDFBtn"
+            );
 
+
+        /*
+         * Keep ONE processing button.
+         */
+        if (currentButton) {
+
+            showProcessing(
+                currentButton,
+                "Merging PDFs..."
+            );
+
+        }
+
+
+        /*
+         * Keep ONE visible progress message.
+         */
+        if (currentStatus) {
+
+            currentStatus.innerText =
+                message ||
+                "â³ Merging PDFs...";
+
+        }
+
+
+        /*
+         * Do not repeat progress inside result box.
+         * Result box is reserved for final output.
+         */
+        if (currentResult) {
+
+            currentResult.innerHTML =
+                "";
+
+        }
+
+    };
+/*
+     * Native Android completion callback
+     */
+    window.onNativePdfMergeComplete =
+    function (payload) {
+
+        const currentStatus =
+            document.getElementById(
+                "mergeStatus"
+            );
+
+        const currentResult =
+            document.getElementById(
+                "mergeResult"
+            );
+
+        const currentButton =
+            document.getElementById(
+                "mergePDFBtn"
+            );
+
+
+        try {
+
+            const data =
+                typeof payload === "string"
+                    ? JSON.parse(payload)
+                    : payload;
+
+
+            if (currentButton) {
+
+                hideProcessing(
+                    currentButton
+                );
+
+            }
+
+
+            if (
+                !data ||
+                !data.success
+            ) {
+
+                if (currentStatus) {
+
+                    currentStatus.innerText =
+                        "âŒ PDF Merge Failed";
+
+                }
+
+
+                if (currentResult) {
+
+                    currentResult.innerHTML = `
+                        <div class="result-box">
+
+                            <h3>
+                                âŒ Merge Failed
+                            </h3>
+
+                            <p>
+                                ${
+                                    data?.error ||
+                                    "Unable to merge the selected PDF files."
+                                }
+                            </p>
+
+                            <br>
+
+                            <button
+                                type="button"
+                                onclick="openPDFMerger()"
+                            >
+                                ðŸ”„ Try Again
+                            </button>
+
+                        </div>
+                    `;
+
+                }
+
+                return;
+
+            }
+
+
+            if (currentStatus) {
+
+                currentStatus.innerText =
+                    "âœ… PDF Merge Complete!";
+
+            }
+
+
+            if (currentResult) {
+
+                currentResult.innerHTML = `
+                    <div class="result-box">
+
+                        <h3>
+                            âœ… Merge Complete
+                        </h3>
+
+                        <p>
+                            <strong>
+                                PDF Files:
+                            </strong>
+                            ${data.fileCount || 0}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Output Size:
+                            </strong>
+                            ${formatBytes(data.size || 0)}
+                        </p>
+
+                        <br>
+
+                        <button
+                            type="button"
+                            onclick="downloadNativeMergedPDF()"
+                        >
+                            â¬‡ï¸ Download Merged PDF
+                        </button>
+
+                        <br><br>
+
+                        <button
+                            type="button"
+                            onclick="openPDFMerger()"
+                        >
+                            ðŸ”„ Merge More PDFs
+                        </button>
+
+                    </div>
+                `;
+
+            }
+
+        }
+        catch (error) {
+
+            console.error(
+                "Native PDF merge callback error:",
+                error
+            );
+
+
+            if (currentButton) {
+
+                hideProcessing(
+                    currentButton
+                );
+
+            }
+
+
+            if (currentStatus) {
+
+                currentStatus.innerText =
+                    "âŒ PDF Merge Failed";
+
+            }
+
+
+            if (currentResult) {
+
+                currentResult.innerHTML = `
+                    <div class="result-box">
+
+                        <h3>
+                            âŒ Merge Failed
+                        </h3>
+
+                        <p>
+                            ${error?.message ||
+                            "Unable to display the merge result."}
+                        </p>
+
+                    </div>
+                `;
+
+            }
+
+        }
+
+    };
+/*
+     * Native Android download callback
+     */
+    window.onNativePdfMergeDownloadComplete =
+        function (payload) {
+
+            try {
+
+                const data =
+                    typeof payload === "string"
+                        ? JSON.parse(payload)
+                        : payload;
+
+                const currentStatus =
+                    document.getElementById(
+                        "mergeStatus"
+                    );
+
+                const currentResult =
+                    document.getElementById(
+                        "mergeResult"
+                    );
+
+                const currentButton =
+                    document.getElementById(
+                        "mergePDFBtn"
+                    );
+
+
+                if (currentButton) {
+
+                    hideProcessing(
+                        currentButton
+                    );
+                }
+
+
+                if (data && data.success) {
+
+                    if (currentStatus) {
+
+                        currentStatus.innerText =
+                            "PDF downloaded successfully.";
+                    }
+
+
+                    if (currentResult) {
+
+                        currentResult.innerHTML = `
+                            <div class="result-box">
+
+                                <h3>
+                                    Merge Complete
+                                </h3>
+
+                                <p>
+                                    Your merged PDF has been saved to:
+                                </p>
+
+                                <p>
+                                    <strong>
+                                        Downloads/DocPinch
+                                    </strong>
+                                </p>
+
+                                <br>
+
+                                <button
+                                    onclick="openPDFMerger()"
+                                >
+                                    Merge More PDFs
+                                </button>
+
+                            </div>
+                        `;
+                    }
+
+                } else {
+
+                    const errorMessage =
+                        data && data.error
+                            ? data.error
+                            : "Download failed.";
+
+                    if (currentStatus) {
+
+                        currentStatus.innerText =
+                            "Download failed.";
+                    }
+
+                    if (currentResult) {
+
+                        currentResult.innerHTML = `
+                            <div class="result-box">
+
+                                <h3>
+                                    Download Failed
+                                </h3>
+
+                                <p>
+                                    ${errorMessage}
+                                </p>
+
+                                <br>
+
+                                <button
+                                    type="button"
+                                    onclick="downloadNativeMergedPDF()"
+                                >
+                                    Download Again
+                                </button>
+
+                            </div>
+                        `;
+                    }
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Native PDF download callback error:",
+                    error
+                );
+
+                alert(
+                    "Download result could not be displayed."
+                );
+            }
+        };
+
+
+    /*
+     * Native Android download button handler
+     */
+    window.downloadNativeMergedPDF =
+        function () {
+
+            const mergeBtn =
+                document.getElementById(
+                    "mergePDFBtn"
+                );
+
+            const result =
+                document.getElementById(
+                    "mergeResult"
+                );
+
+            const status =
+                document.getElementById(
+                    "mergeStatus"
+                );
+
+
+            const nativeDownloadAvailable =
+                typeof window.DocPinchPdfMerge !== "undefined"
+                &&
+                typeof window.DocPinchPdfMerge.downloadMergedPdf === "function";
+
+
+            if (!nativeDownloadAvailable) {
+
+                alert(
+                    "Native download is not available."
+                );
+
+                return;
+            }
+
+
+            if (mergeBtn) {
+
+                showProcessing(
+                    mergeBtn,
+                    "Downloading..."
+                );
+            }
+
+
+            if (status) {
+
+                status.innerText =
+                    "Saving merged PDF...";
+            }
+
+
+            if (result) {
+
+                showProcessingBox(
+                    result,
+                    "Saving merged PDF to Downloads/DocPinch..."
+                );
+            }
+
+
+            try {
+
+                window.DocPinchPdfMerge
+                    .downloadMergedPdf();
+
+            } catch (error) {
+
+                console.error(
+                    "Native PDF download error:",
+                    error
+                );
+
+                if (mergeBtn) {
+                    hideProcessing(
+                        mergeBtn
+                    );
+                }
+
+                alert(
+                    "Could not download the merged PDF."
+                );
+            }
+        };
+    async function mergePDFs() {
+
+
+        /*
+         * ANDROID:
+         * Use native PDFBox merge.
+         */
+        if (nativeMergeAvailable) {
+
+            showProcessing(
+                mergeBtn,
+                "Selecting PDFs..."
+            );status.innerText =
+                "â³ Select your PDFs...";
+
+            try {
+
+                window.DocPinchPdfMerge
+                    .openMergePicker();
+
+            } catch (error) {
+
+                console.error(
+                    "Native PDF picker error:",
+                    error
+                );
+
+                hideProcessing(
+                    mergeBtn
+                );
+
+                status.innerText =
+                    "âŒ Could not open PDF picker.";
+
+                result.innerHTML = "";
+
+                alert(
+                    "Could not open PDF picker."
+                );
+            }
+
+            return;
+        }
+
+
+        /*
+         * WEBSITE / BROWSER:
+         * Keep existing pdf-lib merge.
+         */
         if (input.files.length < 2) {
 
             alert(
@@ -3527,33 +4335,16 @@ async function openPDFMerger() {
         }
 
 
-        const mergeBtn =
-            document.getElementById(
-                "mergePDFBtn"
-            );
-
-
         showProcessing(
             mergeBtn,
             "Merging PDFs..."
-        );
-
-        showProcessingBox(
-            result,
-            "Merging your PDF files..."
-        );
-
-
-        status.innerText =
-            "⏳ Merging PDFs...";
-
+        );status.innerText =
+            "â³ Merging PDFs...";
 
         result.innerHTML = "";
 
-        showProcessingBox(
-            result,
-            "Merging your PDF files..."
-        );
+
+        let currentMergeFileName = "";
 
 
         try {
@@ -3569,11 +4360,14 @@ async function openPDFMerger() {
             ) {
 
                 status.innerText =
-                    `⏳ Adding PDF ${i + 1} of ${input.files.length}...`;
+                    `â³ Adding PDF ${i + 1} of ${input.files.length}...`;
 
 
                 const file =
                     input.files[i];
+
+                currentMergeFileName =
+                    file.name;
 
 
                 const arrayBuffer =
@@ -3581,9 +4375,28 @@ async function openPDFMerger() {
 
 
                 const sourcePdf =
-                    await PDFLib.PDFDocument.load(
-                        arrayBuffer
-                    );
+                    await Promise.race([
+                        PDFLib.PDFDocument.load(
+                            arrayBuffer,
+                            {
+                                ignoreEncryption: true,
+                                throwOnInvalidObject: false,
+                                updateMetadata: false
+                            }
+                        ),
+                        new Promise(
+                            (_, reject) =>
+                                setTimeout(
+                                    () =>
+                                        reject(
+                                            new Error(
+                                                "PDF processing timed out after 60 seconds."
+                                            )
+                                        ),
+                                    60000
+                                )
+                        )
+                    ]);
 
 
                 const pages =
@@ -3598,12 +4411,11 @@ async function openPDFMerger() {
                         mergedPdf.addPage(page);
                     }
                 );
-
             }
 
 
             status.innerText =
-                "⏳ Creating merged PDF...";
+                "â³ Creating merged PDF...";
 
 
             const mergedBytes =
@@ -3626,16 +4438,19 @@ async function openPDFMerger() {
 
 
             status.innerText =
-                "✅ PDFs merged successfully!";
+                "âœ… PDFs merged successfully!";
 
 
-            hideProcessing(mergeBtn);
+            hideProcessing(
+                mergeBtn
+            );
+
 
             result.innerHTML = `
                 <div class="result-box">
 
                     <h3>
-                        ✅ Merge Complete
+                        âœ… Merge Complete
                     </h3>
 
                     <p>
@@ -3658,101 +4473,113 @@ async function openPDFMerger() {
                     <a
                         href="${downloadURL}"
                         download="DocPinch-merged.pdf"
-                    >⬇️ Download Merged PDF</a>
+                    >
+                        â¬‡ï¸ Download Merged PDF
+                    </a>
 
                     <br><br>
 
                     <button
                         onclick="openPDFMerger()"
                     >
-                        🔄 Merge More PDFs
+                        ðŸ”„ Merge More PDFs
                     </button>
 
                 </div>
             `;
 
         } catch (error) {
-            hideProcessing(mergeBtn);
 
+            hideProcessing(
+                mergeBtn
+            );
 
             console.error(error);
 
             status.innerText =
-                "❌ Error while merging PDFs.";
+                "âŒ Error while merging PDFs.";
 
             alert(
                 "PDF merge failed. Please check your PDF files."
             );
-
         }
-
     }
-
 }
 
-
 // =====================================================
-// PDF → JPG / PNG
+// PDF â†’ JPG / PNG
 // =====================================================
 
 function openPDFToImage() {
 
     document.querySelector("main").innerHTML = `
         <div class="compressor">
-        <h2>🖼️ PDF → JPG/PNG</h2>
 
-        <p style="margin:15px 0;">
-            Convert PDF pages into JPG images.
-        </p>
+            <h2>🖼️ PDF &rarr; JPG/PNG</h2>
 
-        <div style="margin:25px 0;">
+            <p style="margin:15px 0;">
+                Convert PDF pages into JPG or PNG images.
+            </p>
 
-            <input
-                type="file"
-                id="pdfToImageInput"
-                accept="application/pdf"
-            >
+            <div style="margin:25px 0;">
 
-            <br><br>
+                <input
+                    type="file"
+                    id="pdfToImageInput"
+                    accept="application/pdf"
+                >
 
-            <label>
-                Output Quality:
-                <strong id="pdfImageQualityValue">
-                    80%
-                </strong>
-            </label>
+                <br><br>
+
+                <label for="pdfImageFormat">
+                    Output Format:
+                </label>
+
+                <select id="pdfImageFormat">
+                    <option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+                </select>
+
+                <br><br>
+
+                <label for="pdfImageQuality">
+                    JPG Quality:
+                    <strong id="pdfImageQualityValue">
+                        80%
+                    </strong>
+                </label>
+
+                <br>
+
+                <input
+                    type="range"
+                    id="pdfImageQuality"
+                    min="40"
+                    max="100"
+                    value="80"
+                >
+
+                <br><br>
+
+                <button id="convertPDFBtn">
+                    🖼️ Convert PDF
+                </button>
+
+                <p
+                    id="pdfToImageStatus"
+                    style="margin-top:20px;"
+                ></p>
+
+            </div>
+
+            <div id="pdfToImageResult"></div>
 
             <br>
 
-            <input
-                type="range"
-                id="pdfImageQuality"
-                min="40"
-                max="100"
-                value="80"
-            >
-
-            <br><br>
-
-            <button id="convertPDFBtn">
-                🖼️ Convert PDF
+            <button id="pdfToImageBackBtn">
+                ⬅️ Back
             </button>
 
-            <p
-                id="pdfToImageStatus"
-                style="margin-top:20px;"
-            ></p>
-
-        </div>
-
-        <div id="pdfToImageResult"></div>
-
-        <br>
-
-        <button id="pdfToImageBackBtn">
-            ⬅️ Back
-        </button>
-    
         </div>
     `;
 
@@ -3767,6 +4594,11 @@ function openPDFToImage() {
             "pdfImageQualityValue"
         );
 
+    const formatSelect =
+        document.getElementById(
+            "pdfImageFormat"
+        );
+
 
     qualitySlider.addEventListener(
         "input",
@@ -3774,6 +4606,19 @@ function openPDFToImage() {
 
             qualityValue.innerText =
                 qualitySlider.value + "%";
+
+        }
+    );
+
+
+    formatSelect.addEventListener(
+        "change",
+        () => {
+
+            qualityValue.parentElement.style.opacity =
+                formatSelect.value === "png"
+                    ? "0.55"
+                    : "1";
 
         }
     );
@@ -3792,7 +4637,7 @@ function openPDFToImage() {
         .addEventListener(
             "click",
             () => {
-                window.location.reload();
+                dpGoToTools();
             }
         );
 
@@ -3813,6 +4658,9 @@ function openPDFToImage() {
             document.getElementById(
                 "pdfToImageResult"
             );
+
+        const format =
+            formatSelect.value;
 
 
         if (!input.files.length) {
@@ -3849,8 +4697,7 @@ function openPDFToImage() {
         );
 
         status.innerText =
-            "⏳ Loading PDF...";
-
+            "Loading PDF...";
 
         result.innerHTML = "";
 
@@ -3860,10 +4707,8 @@ function openPDFToImage() {
             const file =
                 input.files[0];
 
-
             const arrayBuffer =
                 await file.arrayBuffer();
-
 
             const pdf =
                 await pdfjsLib
@@ -3881,15 +4726,23 @@ function openPDFToImage() {
 
 
             result.innerHTML = `
-                <div
-                    class="result-box"
-                >
+                <div class="result-box">
 
                     <h3>
-                        📄 PDF Pages
+                        📄 PDF Pages (${pdf.numPages})
                     </h3>
 
-                    <div id="pdfPages"></div>
+                    <button
+                        id="pdfDownloadAllBtn"
+                        type="button"
+                    >
+                        ⬇️ Download All Pages
+                    </button>
+
+                    <div
+                        id="pdfPages"
+                        class="pdf-pages-grid"
+                    ></div>
 
                 </div>
             `;
@@ -3900,6 +4753,8 @@ function openPDFToImage() {
                     "pdfPages"
                 );
 
+            const downloadItems = [];
+
 
             for (
                 let pageNumber = 1;
@@ -3908,7 +4763,7 @@ function openPDFToImage() {
             ) {
 
                 status.innerText =
-                    `⏳ Converting page ${pageNumber} of ${pdf.numPages}...`;
+                    `Converting page ${pageNumber} of ${pdf.numPages}...`;
 
 
                 const page =
@@ -3927,7 +4782,6 @@ function openPDFToImage() {
                     document.createElement(
                         "canvas"
                     );
-
 
                 const context =
                     canvas.getContext(
@@ -3952,11 +4806,32 @@ function openPDFToImage() {
                 }).promise;
 
 
+                const mimeType =
+                    format === "png"
+                        ? "image/png"
+                        : "image/jpeg";
+
+                const extension =
+                    format === "png"
+                        ? "png"
+                        : "jpg";
+
+
                 const imageURL =
                     canvas.toDataURL(
-                        "image/jpeg",
+                        mimeType,
                         quality
                     );
+
+
+                const fileName =
+                    `DocPinch-page-${pageNumber}.${extension}`;
+
+
+                downloadItems.push({
+                    url: imageURL,
+                    name: fileName
+                });
 
 
                 const pageBox =
@@ -3964,46 +4839,29 @@ function openPDFToImage() {
                         "div"
                     );
 
-
-                pageBox.style.margin =
-                    "25px 0";
+                pageBox.className =
+                    "pdf-page-card";
 
 
                 pageBox.innerHTML = `
-                    <p>
-                        <strong>
-                            Page ${pageNumber}
-                        </strong>
-                    </p>
+
+                    <div class="pdf-page-number">
+                        Page ${pageNumber}
+                    </div>
 
                     <img
                         src="${imageURL}"
                         alt="PDF page ${pageNumber}"
-                        style="
-                            max-width:100%;
-                            border-radius:8px;
-                            margin:10px 0;
-                            box-shadow:0 3px 10px rgba(0,0,0,0.15);
-                        "
+                        loading="lazy"
                     >
-
-                    <br>
 
                     <a
                         href="${imageURL}"
-                        download="DocPinch-page-${pageNumber}.jpg"
-                        style="
-                            display:inline-block;
-                            padding:10px 18px;
-                            background:#111827;
-                            color:white;
-                            text-decoration:none;
-                            border-radius:8px;
-                            font-weight:bold;
-                        "
+                        download="${fileName}"
                     >
                         ⬇️ Download Page ${pageNumber}
                     </a>
+
                 `;
 
 
@@ -4014,14 +4872,93 @@ function openPDFToImage() {
             }
 
 
-            hideProcessing(convertBtn);
+            const downloadAllBtn =
+                document.getElementById(
+                    "pdfDownloadAllBtn"
+                );
+
+
+            downloadAllBtn.addEventListener(
+                "click",
+                async () => {
+
+                    if (!downloadItems.length) {
+                        return;
+                    }
+
+                    downloadAllBtn.disabled =
+                        true;
+
+                    downloadAllBtn.innerText =
+                        "⬇️ Starting downloads...";
+
+
+                    for (
+                        let i = 0;
+                        i < downloadItems.length;
+                        i++
+                    ) {
+
+                        const downloadLink =
+                            document.createElement(
+                                "a"
+                            );
+
+                        downloadLink.href =
+                            downloadItems[i].url;
+
+                        downloadLink.download =
+                            downloadItems[i].name;
+
+                        downloadLink.style.display =
+                            "none";
+
+                        document.body.appendChild(
+                            downloadLink
+                        );
+
+                        downloadLink.click();
+
+                        downloadLink.remove();
+
+                        await new Promise(
+                            resolve =>
+                                setTimeout(
+                                    resolve,
+                                    250
+                                )
+                        );
+
+                    }
+
+
+                    downloadAllBtn.disabled =
+                        false;
+
+                    downloadAllBtn.innerText =
+                        "⬇️ Download All Pages";
+
+                    status.innerText =
+                        `✅ ${downloadItems.length} page download requests started.`;
+
+                }
+            );
+
+
+            hideProcessing(
+                convertBtn
+            );
 
             status.innerText =
-                "✅ PDF converted successfully!";
+                `✅ PDF converted successfully! ${pdf.numPages} pages ready.`;
 
         } catch (error) {
-            hideProcessing(convertBtn);
 
+            hideProcessing(
+                document.getElementById(
+                    "convertPDFBtn"
+                )
+            );
 
             console.error(error);
 
@@ -4037,8 +4974,6 @@ function openPDFToImage() {
     }
 
 }
-
-
 // =====================================================
 // DOCUMENT SCANNER
 // =====================================================
@@ -4048,7 +4983,7 @@ function openDocumentScanner() {
     document.querySelector("main").innerHTML = `
         <div class="compressor">
 
-            <h2>📐 Document Scanner</h2>
+            <h2>ðŸ“ Document Scanner</h2>
 
             <p>
                 Upload a document, set 4 corners and scan.
@@ -4070,7 +5005,7 @@ function openDocumentScanner() {
             >
 
                 <p style="margin-bottom:15px;">
-                    🔵 Drag the 4 blue points to the document corners.
+                    ðŸ”µ Drag the 4 blue points to the document corners.
                 </p>
 
                 <div
@@ -4141,7 +5076,7 @@ function openDocumentScanner() {
 <br><br>
 
                 <button id="processScannerBtn">
-                    📐 Scan Document
+                    ðŸ“ Scan Document
                 </button>
 
                 <p
@@ -4156,7 +5091,7 @@ function openDocumentScanner() {
             <br>
 
             <button id="scannerBackBtn">
-                ⬅️ Back to Tools
+                â¬…ï¸ Back to Tools
             </button>
 
         </div>
@@ -4238,8 +5173,7 @@ function openDocumentScanner() {
                     image =
                         new Image();
 
-                    previewImage.src =
-                        event.target.result;
+                    
 
 
                     image.onload =
@@ -4324,14 +5258,13 @@ result.innerHTML =
     "";
 
 status.innerText =
-    "✅ Image loaded. Adjust the 4 corners, then scan.";
+    "âœ… Image loaded. Adjust the 4 corners, then scan.";
 
 
 /*
  * Make sure the visible image is loaded first.
  */
-previewImage.src =
-    event.target.result;
+
 
 
 previewImage.onload =
@@ -4359,8 +5292,7 @@ requestAnimationFrame(
                         };
 
 
-                    image.src =
-                        event.target.result;
+                    loadOrientedImageFromFile(file).then(function(orientedImg){ image.src=orientedImg.src; previewImage.src=orientedImg.src; }).catch(function(error){ console.error("Scanner orientation error:",error); alert("Unable to process this image."); });
 
                 };
 
@@ -4821,7 +5753,7 @@ requestAnimationFrame(
 
 
         status.innerText =
-            "⏳ Processing document...";
+            "â³ Processing document...";
 
 
         result.innerHTML =
@@ -5005,14 +5937,14 @@ requestAnimationFrame(
 
 
             status.innerText =
-                "✅ Document scanned successfully!";
+                "âœ… Document scanned successfully!";
 
 
             result.innerHTML = `
                 <div class="result-box">
 
                     <h3>
-                        ✅ Document Scanned
+                        âœ… Document Scanned
                     </h3>
 
                     <p>
@@ -5036,14 +5968,14 @@ requestAnimationFrame(
                     <a
                         href="${scannedURL}"
                         download="DocPinch-scanned-document.jpg"
-                    >⬇️ Download Document</a>
+                    >â¬‡ï¸ Download Document</a>
 
                     <br><br>
 
                     <button
                         onclick="openDocumentScanner()"
                     >
-                        🔄 Scan Another
+                        ðŸ”„ Scan Another
                     </button>
 
                 </div>
@@ -5054,7 +5986,7 @@ requestAnimationFrame(
             console.error(error);
 
             status.innerText =
-                "❌ Scanner failed.";
+                "âŒ Scanner failed.";
 
             alert(
                 "Document scanning failed. Please try again."
@@ -5076,7 +6008,7 @@ requestAnimationFrame(
         .addEventListener(
             "click",
             () => {
-                window.location.reload();
+                dpGoToTools();
             }
         );
 
@@ -5127,7 +6059,7 @@ function openDocumentEnhance() {
                         font-size:24px;
                     "
                 >
-                    ✨
+                    âœ¨
                 </div>
 
 
@@ -5178,7 +6110,7 @@ function openDocumentEnhance() {
                         margin-bottom:8px;
                     "
                 >
-                    🖼️
+                    ðŸ–¼ï¸
                 </span>
 
                 <strong
@@ -5253,7 +6185,7 @@ function openDocumentEnhance() {
                     <strong
                         id="enhanceFileName"
                     >
-                        —
+                        â€”
                     </strong>
 
                 </div>
@@ -5282,7 +6214,7 @@ function openDocumentEnhance() {
                     <strong
                         id="enhanceDimensions"
                     >
-                        —
+                        â€”
                     </strong>
 
                 </div>
@@ -5385,7 +6317,7 @@ function openDocumentEnhance() {
                         type="button"
                         id="cleanWhiteBtn"
                     >
-                        ✨ Clean White / Enhance
+                        âœ¨ Clean White / Enhance
                     </button>
 
 
@@ -5393,7 +6325,7 @@ function openDocumentEnhance() {
                         type="button"
                         id="bwDocumentBtn"
                     >
-                        🖤 B&W Document
+                        ðŸ–¤ B&W Document
                     </button>
 
 
@@ -5401,7 +6333,7 @@ function openDocumentEnhance() {
                         type="button"
                         id="originalDocumentBtn"
                     >
-                        🖼️ Original
+                        ðŸ–¼ï¸ Original
                     </button>
 
                 </div>
@@ -5438,7 +6370,7 @@ function openDocumentEnhance() {
                     margin-top:20px;
                 "
             >
-                ← Back to Tools
+                â† Back to Tools
             </button>
 
         </div>
@@ -5652,15 +6584,14 @@ function openDocumentEnhance() {
                                 img;
 
 
-                            preview.src =
-                                event.target.result;
+                            preview.src = img.src;
 
 
                             fileName.textContent =
                                 file.name;
 
                             dimensions.textContent =
-                                `${img.naturalWidth} × ${img.naturalHeight} px`;
+                                `${img.naturalWidth} Ã— ${img.naturalHeight} px`;
 
 
                             fileInfo.hidden =
@@ -5685,8 +6616,7 @@ function openDocumentEnhance() {
                         };
 
 
-                    img.src =
-                        event.target.result;
+                    loadOrientedImageFromFile(file).then(function(orientedImg){ img.src=orientedImg.src; }).catch(function(error){ console.error("Enhance orientation error:",error); alert("Unable to process this image."); });
 
                 };
 
@@ -5943,7 +6873,7 @@ function openDocumentEnhance() {
                                             color:#002B54;
                                         "
                                     >
-                                        ✅ ${title}
+                                        âœ… ${title}
                                     </h3>
 
 
@@ -5989,7 +6919,7 @@ function openDocumentEnhance() {
                                                 font-weight:700;
                                             "
                                         >
-                                            ⬇️ Download Document
+                                            â¬‡ï¸ Download Document
                                         </a>
 
                                     </div>
@@ -6023,7 +6953,7 @@ function openDocumentEnhance() {
                                 font-weight:700;
                             "
                         >
-                            ❌ Unable to process this image.
+                            âŒ Unable to process this image.
                         </div>
 
                     `;
@@ -6077,7 +7007,7 @@ function openDocumentEnhance() {
                         color:#002B54;
                     "
                 >
-                    🖼️ Original Document
+                    ðŸ–¼ï¸ Original Document
                 </h3>
 
 
@@ -6149,7 +7079,7 @@ function openDocumentEnhance() {
 
             clearResultURL();
 
-            window.location.reload();
+            dpGoToTools();
 
         }
     );
@@ -6157,7 +7087,7 @@ function openDocumentEnhance() {
 }
 
 // =====================================================
-// DOCPINCH — STEP 90
+// DOCPINCH â€” STEP 90
 // GLOBAL NAVIGATION FIX
 // =====================================================
 
@@ -6205,7 +7135,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             link.href = isHomePage
                 ? "#tools"
-                : "index.html#tools";
+                : "index.html?nav=tools#tools";
 
         }
 
@@ -6742,7 +7672,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         );
 
                         alert(
-                            "❌ Download failed. Please try again."
+                            "âŒ Download failed. Please try again."
                         );
 
                     }
@@ -6762,3 +7692,399 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 })();
+
+/* =====================================================
+ * DOCPINCH SEO TOOL ROUTER
+ * ===================================================== */
+(function(){
+    const tool=new URLSearchParams(window.location.search).get("tool");
+    const routes={
+        "compress-pdf":openPDFCompressor,
+        "compress-image":openImageCompressor,
+        "jpg-png-to-pdf":openImageToPDF,
+        "merge-pdf":openPDFMerger,
+        "pdf-to-image":openPDFToImage,
+        "document-scanner":openDocumentScanner,
+        "document-enhance":openDocumentEnhance,
+        "resize-image":function(){window.openImageResizer();},
+        "crop-image":openImageCropper,
+        "rotate-image":openImageRotator
+    };
+    if(tool&&routes[tool]){window.requestAnimationFrame(function(){routes[tool]();});}
+})();
+
+
+/* DOCPINCH_FINAL_RESIZER_NAV_FIX_START */
+(function () {
+  "use strict";
+
+  function dpMain() {
+    return document.querySelector("main") || document.body;
+  }
+
+  function dpSafeFileName(name) {
+    return (name || "resized-image").replace(/\.[^.]+$/, "") || "resized-image";
+  }
+
+  function dpResizeImage(file, targetW, targetH, quality) {
+    return new Promise(async function (resolve, reject) {
+      try {
+        if (!file) throw new Error("Please select an image.");
+        if (!targetW || !targetH || targetW < 1 || targetH < 1) {
+          throw new Error("Enter valid width and height.");
+        }
+
+        var bitmap = null;
+        var canvas = document.createElement("canvas");
+        var ctx = null;
+
+        // Decode directly at the target size. This is substantially lighter
+        // than decoding a huge phone photo at full resolution first.
+        if (window.createImageBitmap) {
+          try {
+            bitmap = await createImageBitmap(file, {
+              imageOrientation: "from-image",
+              resizeWidth: Math.round(targetW),
+              resizeHeight: Math.round(targetH),
+              resizeQuality: quality || "high"
+            });
+          } catch (e1) {
+            bitmap = null;
+          }
+        }
+
+        if (bitmap) {
+          canvas.width = Math.round(targetW);
+          canvas.height = Math.round(targetH);
+          ctx = canvas.getContext("2d", { alpha: true, willReadFrequently: false });
+          ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+          if (bitmap.close) bitmap.close();
+        } else {
+          var url = URL.createObjectURL(file);
+          try {
+            var img = new Image();
+            img.decoding = "async";
+            await new Promise(function (res, rej) {
+              img.onload = res;
+              img.onerror = function () { rej(new Error("Image decode failed.")); };
+              img.src = url;
+            });
+
+            canvas.width = Math.round(targetW);
+            canvas.height = Math.round(targetH);
+            ctx = canvas.getContext("2d", { alpha: true, willReadFrequently: false });
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          } finally {
+            URL.revokeObjectURL(url);
+          }
+        }
+
+        var mime = /^image\/(png|webp)$/i.test(file.type || "") ? (file.type || "image/jpeg") : "image/jpeg";
+        var qualityValue = Math.max(0.55, Math.min(0.92, Number(quality) || 0.86));
+
+        canvas.toBlob(function (blob) {
+          if (!blob) {
+            reject(new Error("Could not create the resized image."));
+            return;
+          }
+          resolve({
+            blob: blob,
+            mime: mime,
+            width: canvas.width,
+            height: canvas.height
+          });
+        }, mime, qualityValue);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  window.openImageResizer = function () {
+    var main = dpMain();
+
+    main.innerHTML = `
+      <div class="compressor" style="max-width:900px;margin:0 auto;">
+        <h2>ðŸ“ Resize Image</h2>
+        <p>Select an image, enter the output size, then resize.</p>
+
+        <input id="dpResizeInput" type="file" accept="image/*"
+          style="width:100%;padding:12px;margin:12px 0;">
+
+        <div id="dpResizeMeta" style="display:none;margin:10px 0;"></div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;">
+          <div>
+            <label for="dpResizeW">Width (px)</label>
+            <input id="dpResizeW" type="number" min="1" step="1"
+              style="width:100%;padding:10px;margin-top:5px;">
+          </div>
+          <div>
+            <label for="dpResizeH">Height (px)</label>
+            <input id="dpResizeH" type="number" min="1" step="1"
+              style="width:100%;padding:10px;margin-top:5px;">
+          </div>
+        </div>
+
+        <label style="display:flex;align-items:center;gap:8px;margin:10px 0;">
+          <input id="dpResizeLock" type="checkbox" checked>
+          Keep aspect ratio
+        </label>
+
+        <button id="dpResizeBtn" type="button"
+          style="width:100%;padding:13px;margin-top:8px;">
+          Resize Image
+        </button>
+
+        <div id="dpResizeStatus" style="margin:12px 0;"></div>
+        <div id="dpResizeResult" style="margin-top:12px;"></div>
+
+        <button
+          type="button"
+          class="dp-resize-bottom-back"
+          onclick="dpGoToTools(); return false;"
+          style="
+            display:block;
+            width:100%;
+            box-sizing:border-box;
+            margin-top:20px;
+            padding:13px;
+          "
+        >&larr; Back to Tools</button>
+
+        
+
+
+      </div>
+    `;
+
+    var input = document.getElementById("dpResizeInput");
+    var w = document.getElementById("dpResizeW");
+    var h = document.getElementById("dpResizeH");
+    var lock = document.getElementById("dpResizeLock");
+    var meta = document.getElementById("dpResizeMeta");
+    var btn = document.getElementById("dpResizeBtn");
+    var status = document.getElementById("dpResizeStatus");
+    var result = document.getElementById("dpResizeResult");
+
+    window.selectedFile = null;
+    var originalW = 0;
+    var originalH = 0;
+
+    input.addEventListener("change", async function () {
+      var file = input.files && input.files[0];
+      if (!file) return;
+
+      window.selectedFile = file;
+      status.textContent = "Reading imageâ€¦";
+      result.innerHTML = "";
+
+      try {
+        var url = URL.createObjectURL(file);
+        try {
+          var img = new Image();
+          img.decoding = "async";
+          await new Promise(function (resolve, reject) {
+            img.onload = resolve;
+            img.onerror = function () { reject(new Error("Image could not be opened.")); };
+            img.src = url;
+          });
+          originalW = img.naturalWidth || img.width;
+          originalH = img.naturalHeight || img.height;
+        } finally {
+          URL.revokeObjectURL(url);
+        }
+
+        w.value = originalW;
+        h.value = originalH;
+        meta.style.display = "block";
+        meta.textContent =
+          "Original: " + originalW + " Ã— " + originalH + " px â€¢ " +
+          Math.max(1, Math.round(file.size / 1024)) + " KB";
+        status.textContent = "";
+      } catch (err) {
+        window.selectedFile = null;
+        status.textContent = "âŒ " + (err.message || "Could not read image.");
+      }
+    });
+
+    function syncHeightFromWidth() {
+      if (!lock.checked || !originalW || !originalH) return;
+      var newW = Number(w.value);
+      if (newW > 0) h.value = Math.max(1, Math.round(newW * originalH / originalW));
+    }
+
+    function syncWidthFromHeight() {
+      if (!lock.checked || !originalW || !originalH) return;
+      var newH = Number(h.value);
+      if (newH > 0) w.value = Math.max(1, Math.round(newH * originalW / originalH));
+    }
+
+    w.addEventListener("input", syncHeightFromWidth);
+    h.addEventListener("input", syncWidthFromHeight);
+
+    btn.addEventListener("click", async function () {
+      var file = window.selectedFile || (input.files && input.files[0]);
+      var targetW = Number(w.value);
+      var targetH = Number(h.value);
+
+      if (!file) {
+        status.textContent = "âŒ Please select an image first.";
+        return;
+      }
+      if (!Number.isFinite(targetW) || !Number.isFinite(targetH) ||
+          targetW < 1 || targetH < 1) {
+        status.textContent = "âŒ Enter valid width and height.";
+        return;
+      }
+
+      if (targetW > 10000 || targetH > 10000) {
+        status.textContent = "âŒ Maximum supported size is 10000 Ã— 10000 px.";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Resizingâ€¦";
+      status.textContent = "Processingâ€¦";
+      result.innerHTML = "";
+
+      var started = Date.now();
+      try {
+        var output = await Promise.race([
+          dpResizeImage(file, targetW, targetH, "high"),
+          new Promise(function (_, reject) {
+            setTimeout(function () {
+              reject(new Error("Processing took too long. Try a smaller output size."));
+            }, 45000);
+          })
+        ]);
+
+        var ext = output.mime === "image/png" ? "png" :
+                  output.mime === "image/webp" ? "webp" : "jpg";
+        var outName = dpSafeFileName(file.name) + "-resized." + ext;
+        var url = URL.createObjectURL(output.blob);
+
+        result.innerHTML = `
+          <div style="margin-bottom:10px;">
+            <strong>Done:</strong> ${output.width} Ã— ${output.height} px
+            â€¢ ${Math.max(1, Math.round(output.blob.size / 1024))} KB
+            â€¢ ${(Date.now() - started) / 1000 | 0}s
+          </div>
+          <img src="${url}" alt="Resized preview"
+            style="max-width:100%;height:auto;display:block;margin:10px 0;border-radius:8px;">
+          <a download="${outName}" href="${url}"
+            style="display:inline-block;padding:12px 16px;text-decoration:none;">
+            â¬‡ï¸ Download Resized Image
+          </a>
+        `;
+
+        status.textContent = "âœ… Resize complete.";
+      } catch (err) {
+        status.textContent = "âŒ " + (err.message || "Resize failed.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Resize Image";
+      }
+    });
+  };
+
+
+})();
+
+/* DOCPINCH_FINAL_RESIZER_NAV_FIX_END */
+/* DOCPINCH APP PLUGIN ANDROID BACK FIX */
+(function () {
+
+    if (
+        typeof capacitorApp === "undefined" ||
+        !capacitorApp.App ||
+        typeof capacitorApp.App.addListener !== "function"
+    ) {
+        console.warn(
+            "DocPinch: capacitorApp.App not available."
+        );
+        return;
+    }
+
+    capacitorApp.App.addListener(
+        "backButton",
+        function () {
+
+            var isTool =
+                !document.querySelector(
+                    "main .tools"
+                );
+
+            if (isTool) {
+
+                /* Tool -> DocPinch Home */
+                window.location.replace(
+                    "index.html"
+                );
+
+                return;
+            }
+
+            /* Home -> Phone Home */
+            capacitorApp.App.minimizeApp();
+
+        }
+    );
+
+})();
+/* DOCPINCH TOOLS ABOUT CAPTURE NAV FINAL */
+(function () {
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            var link =
+                event.target &&
+                event.target.closest
+                    ? event.target.closest(
+                        "header a, .navbar a"
+                    )
+                    : null;
+
+            if (!link) {
+                return;
+            }
+
+            var label =
+                (link.textContent || "")
+                    .trim()
+                    .toLowerCase();
+
+            if (
+                label === "tools" ||
+                label === "about"
+            ) {
+
+                event.preventDefault();
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+
+                if (label === "tools") {
+
+                    window.location.assign(
+                        "index.html?nav=tools#tools"
+                    );
+
+                } else {
+
+                    window.location.assign(
+                        "index.html?nav=about#about"
+                    );
+
+                }
+            }
+
+        },
+        true
+    );
+
+})();
+
+
+
