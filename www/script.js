@@ -145,13 +145,13 @@ function formatBytes(bytes) {
 
 
 // =====================================================
-// DOCPINCH â€” COMMON PROCESSING SYSTEM
+// DOCPINCH — COMMON PROCESSING SYSTEM
 // STEP 94
 // =====================================================
 
 function showProcessing(
     button,
-    message = "â³ Processing..."
+    message = "⏳ Processing..."
 ) {
 
     if (!button) return;
@@ -199,7 +199,7 @@ function hideProcessing(button) {
 
 function showProcessingBox(
     container,
-    message = "â³ Processing..."
+    message = "⏳ Processing..."
 ) {
 
     if (!container) return;
@@ -233,7 +233,7 @@ function openImageCompressor() {
     document.querySelector("main").innerHTML = `
         <div class="compressor">
 
-            <h2>ðŸ–¼ï¸ Image Compressor</h2>
+            <h2>🖼️ Image Compressor</h2>
 
             <p>
                 Select an image and reduce its file size.
@@ -267,7 +267,7 @@ function openImageCompressor() {
             <br><br>
 
             <button id="compressBtn">
-                âš¡ Compress Image
+                ⚡ Compress Image
             </button>
 
             <div id="result"></div>
@@ -275,7 +275,7 @@ function openImageCompressor() {
             <br>
 
             <button id="backBtn">
-                â† Back to Tools
+                ← Back to Tools
             </button>
 
         </div>
@@ -409,7 +409,7 @@ function openImageCompressor() {
                     <div class="result-box">
 
                         <h3>
-                            âœ… Compression Complete
+                            ✅ Compression Complete
                         </h3>
 
                         <p>
@@ -445,14 +445,14 @@ function openImageCompressor() {
                         <a
                             href="${compressedData}"
                             download="DocPinch-compressed.jpg"
-                        >â¬‡ï¸ Download Image</a>
+                        >⬇️ Download Image</a>
 
                         <br><br>
 
                         <button
                             onclick="openImageCompressor()"
                         >
-                            ðŸ”„ Compress Another
+                            🔄 Compress Another
                         </button>
 
                     </div>
@@ -494,14 +494,14 @@ loadOrientedImageFromFile(file).then(function(orientedImg){ img.src=orientedImg.
 
 
 // =====================================================
-// JPG / PNG â†’ PDF
+// JPG / PNG → PDF
 // =====================================================
 
 function openImageToPDF() {
 
     document.querySelector("main").innerHTML = `
         <div class="compressor">
-        <h2>ðŸ”„ JPG/PNG â†’ PDF</h2>
+        <h2>🔄 JPG/PNG → PDF</h2>
 
         <p style="margin:15px 0;">
             Select one or multiple images to create a PDF.
@@ -519,7 +519,7 @@ function openImageToPDF() {
             <br><br>
 
             <button id="createPDFBtn">
-                ðŸ“„ Create PDF
+                📄 Create PDF
             </button>
 
             <p
@@ -534,7 +534,7 @@ function openImageToPDF() {
         <br>
 
         <button id="imagePDFBackBtn">
-            â¬…ï¸ Back
+            ⬅️ Back
         </button>
     
         </div>
@@ -600,7 +600,7 @@ function openImageToPDF() {
 
 
         status.innerText =
-            "â³ Creating PDF...";
+            "⏳ Creating PDF...";
 
         result.innerHTML = "";
 
@@ -634,7 +634,7 @@ function openImageToPDF() {
 
 
                 status.innerText =
-                    `â³ Adding image ${i + 1} of ${input.files.length}...`;
+                    `⏳ Adding image ${i + 1} of ${input.files.length}...`;
 
 
                 const imageURL =
@@ -736,7 +736,7 @@ function openImageToPDF() {
 
 
             status.innerText =
-                "âœ… PDF created successfully!";
+                "✅ PDF created successfully!";
 
 
             hideProcessing(createBtn);
@@ -753,7 +753,7 @@ function openImageToPDF() {
                 >
 
                     <h3>
-                        ðŸ“„ PDF Ready
+                        📄 PDF Ready
                     </h3>
 
                     <p style="margin-top:15px;">
@@ -786,7 +786,7 @@ function openImageToPDF() {
                             font-weight:bold;
                         "
                     >
-                        â¬‡ï¸ Download PDF
+                        ⬇️ Download PDF
                     </a>
 
                     <br><br>
@@ -794,7 +794,7 @@ function openImageToPDF() {
                     <button
                         onclick="openImageToPDF()"
                     >
-                        ðŸ”„ Create Another PDF
+                        🔄 Create Another PDF
                     </button>
 
                 </div>
@@ -807,7 +807,7 @@ function openImageToPDF() {
             console.error(error);
 
             status.innerText =
-                "âŒ PDF creation failed.";
+                "❌ PDF creation failed.";
 
             alert(
                 "Could not create PDF. Please try again."
@@ -1102,7 +1102,7 @@ function openImageResizer() {
             <div class="resize-header">
 
                 <span class="resize-icon">
-                    ðŸ“
+                    📏
                 </span>
 
                 <div>
@@ -1127,7 +1127,7 @@ function openImageResizer() {
                 >
 
                     <span class="resize-upload-icon">
-                        ðŸ–¼ï¸
+                        🖼️
                     </span>
 
                     <strong>
@@ -1157,12 +1157,12 @@ function openImageResizer() {
 
                 <div>
                     <span>Original Size</span>
-                    <strong id="resizeOriginalSize">â€”</strong>
+                    <strong id="resizeOriginalSize">—</strong>
                 </div>
 
                 <div>
                     <span>File</span>
-                    <strong id="resizeFileName">â€”</strong>
+                    <strong id="resizeFileName">—</strong>
                 </div>
 
             </div>
@@ -1225,7 +1225,7 @@ function openImageResizer() {
                 id="resizeBtn"
                 class="resize-primary-btn"
             >
-                ðŸ“ Resize Image
+                📏 Resize Image
             </button>
 
 
@@ -1247,7 +1247,7 @@ function openImageResizer() {
                 id="resizeBackBtn"
                 class="resize-back-btn"
             >
-                â† Back to Tools
+                ← Back to Tools
             </button>
 
         </div>
@@ -1402,7 +1402,7 @@ function openImageResizer() {
                                 false;
 
                             originalSize.textContent =
-                                `${originalWidth} Ã— ${originalHeight} px`;
+                                `${originalWidth} × ${originalHeight} px`;
 
                             fileName.textContent =
                                 file.name;
@@ -1576,7 +1576,7 @@ if (!selectedFile) {
             );
 
             setStatus(
-                "â³ Resizing image...",
+                "⏳ Resizing image...",
                 "processing"
             );
 
@@ -1663,11 +1663,11 @@ if (!selectedFile) {
                                                 <span
                                                     class="resize-success-badge"
                                                 >
-                                                    âœ“ Complete
+                                                    ✓ Complete
                                                 </span>
 
                                                 <h3>
-                                                    âœ… Image Resized Successfully!
+                                                    ✅ Image Resized Successfully!
                                                 </h3>
 
                                             </div>
@@ -1675,7 +1675,7 @@ if (!selectedFile) {
                                             <span
                                                 class="resize-result-size"
                                             >
-                                                ${newWidth} Ã— ${newHeight} px
+                                                ${newWidth} × ${newHeight} px
                                             </span>
 
                                         </div>
@@ -1703,7 +1703,7 @@ if (!selectedFile) {
 
                                                 <strong>
                                                     ${originalWidth}
-                                                    Ã—
+                                                    ×
                                                     ${originalHeight}
                                                     px
                                                 </strong>
@@ -1714,7 +1714,7 @@ if (!selectedFile) {
 
                                                 <strong>
                                                     ${newWidth}
-                                                    Ã—
+                                                    ×
                                                     ${newHeight}
                                                     px
                                                 </strong>
@@ -1732,7 +1732,7 @@ if (!selectedFile) {
                                                 download="DocPinch-resized.jpg"
                                                 class="resize-download-btn"
                                             >
-                                                â¬‡ï¸ Download Resized Image
+                                                ⬇️ Download Resized Image
                                             </a>
 
 
@@ -1741,7 +1741,7 @@ if (!selectedFile) {
                                                 id="resizeAnotherBtn"
                                                 class="resize-another-btn"
                                             >
-                                                ðŸ”„ Resize Another
+                                                🔄 Resize Another
                                             </button>
 
                                         </div>
@@ -1754,7 +1754,7 @@ if (!selectedFile) {
                                 hideProcessing(resizeBtn);
 
                                 setStatus(
-                                    "âœ… Resize complete.",
+                                    "✅ Resize complete.",
                                     "success"
                                 );
 
@@ -1804,7 +1804,7 @@ if (!selectedFile) {
                                     "";
 
                                 setStatus(
-                                    "âŒ Unable to resize this image.",
+                                    "❌ Unable to resize this image.",
                                     "error"
                                 );
 
@@ -1822,7 +1822,7 @@ if (!selectedFile) {
                                 "";
 
                             setStatus(
-                                "âŒ Unable to process this image.",
+                                "❌ Unable to process this image.",
                                 "error"
                             );
 
@@ -1840,7 +1840,7 @@ img.src = event.target.result;
                         "";
 
                     setStatus(
-                        "âŒ Unable to read the selected file.",
+                        "❌ Unable to read the selected file.",
                         "error"
                     );
 
@@ -1880,7 +1880,7 @@ function openImageCropper() {
 
         <div class="compressor cropper-tool">
 
-            <h2>âœ‚ï¸ Crop Image</h2>
+            <h2>✂️ Crop Image</h2>
 
             <p>
                 Select your image, drag the crop area and
@@ -1952,7 +1952,7 @@ function openImageCropper() {
                         <strong
                             id="cropOriginalSize"
                         >
-                            â€”
+                            —
                         </strong>
 
                     </div>
@@ -1967,7 +1967,7 @@ function openImageCropper() {
                         <strong
                             id="cropSelectedSize"
                         >
-                            â€”
+                            —
                         </strong>
 
                     </div>
@@ -1979,7 +1979,7 @@ function openImageCropper() {
                     type="button"
                     id="cropBtn"
                 >
-                    âœ‚ï¸ Crop Image
+                    ✂️ Crop Image
                 </button>
 
             </div>
@@ -1995,7 +1995,7 @@ function openImageCropper() {
                 type="button"
                 id="cropBackBtn"
             >
-                â† Back to Tools
+                ← Back to Tools
             </button>
 
         </div>
@@ -2119,7 +2119,7 @@ function openImageCropper() {
 
 
         selectedSize.textContent =
-            `${sourceWidth} Ã— ${sourceHeight} px`;
+            `${sourceWidth} × ${sourceHeight} px`;
 
     }
 
@@ -2285,7 +2285,7 @@ loadOrientedImageFromFile(file).then(function(orientedImg){ image.src=orientedIm
 
 
         originalSize.textContent =
-            `${naturalWidth} Ã— ${naturalHeight} px`;
+            `${naturalWidth} × ${naturalHeight} px`;
 
 
         workspace.hidden =
@@ -2856,14 +2856,14 @@ loadOrientedImageFromFile(file).then(function(orientedImg){ image.src=orientedIm
                         <div class="crop-result-box">
 
                             <h3>
-                                âœ… Image Cropped Successfully!
+                                ✅ Image Cropped Successfully!
                             </h3>
 
                             <p>
                                 <strong>
                                     New Size:
                                 </strong>
-                                ${sw} Ã— ${sh} px
+                                ${sw} × ${sh} px
                             </p>
 
 
@@ -2883,7 +2883,7 @@ loadOrientedImageFromFile(file).then(function(orientedImg){ image.src=orientedIm
     download="DocPinch-cropped.jpg"
     class="crop-download-btn"
 >
-    â¬‡ï¸ Download Cropped Image
+    ⬇️ Download Cropped Image
 </a>
 
 
@@ -2891,7 +2891,7 @@ loadOrientedImageFromFile(file).then(function(orientedImg){ image.src=orientedIm
                                     type="button"
                                     id="cropAnotherBtn"
                                 >
-                                    ðŸ”„ Crop Another
+                                    🔄 Crop Another
                                 </button>
 
                             </div>
@@ -2977,7 +2977,7 @@ function openImageRotator() {
     document.querySelector("main").innerHTML = `
         <div class="compressor">
 
-            <h2>ðŸ”ƒ Rotate Image</h2>
+            <h2>🔃 Rotate Image</h2>
 
             <p>
                 Select an image and choose rotation.
@@ -2994,15 +2994,15 @@ function openImageRotator() {
             <br><br>
 
             <button id="rotate90">
-                â†» Rotate 90Â°
+                ↻ Rotate 90°
             </button>
 
             <button id="rotate180">
-                â†» Rotate 180Â°
+                ↻ Rotate 180°
             </button>
 
             <button id="rotate270">
-                â†» Rotate 270Â°
+                ↻ Rotate 270°
             </button>
 
             <div id="rotateResult"></div>
@@ -3010,7 +3010,7 @@ function openImageRotator() {
             <br>
 
             <button id="rotateBackBtn">
-                â† Back to Tools
+                ← Back to Tools
             </button>
 
         </div>
@@ -3129,12 +3129,12 @@ function openImageRotator() {
                             <div class="result-box">
 
                                 <h3>
-                                    âœ… Image Rotated Successfully!
+                                    ✅ Image Rotated Successfully!
                                 </h3>
 
                                 <p>
                                     <strong>Rotation:</strong>
-                                    ${degrees}Â°
+                                    ${degrees}°
                                 </p>
 
                                 <br>
@@ -3150,14 +3150,14 @@ function openImageRotator() {
                                 <a
                                     href="${rotatedImage}"
                                     download="DocPinch-rotated.jpg"
-                                >â¬‡ï¸ Download Rotated Image</a>
+                                >⬇️ Download Rotated Image</a>
 
                                 <br><br>
 
                                 <button
                                     onclick="openImageRotator()"
                                 >
-                                    ðŸ”„ Rotate Another
+                                    🔄 Rotate Another
                                 </button>
 
                             </div>
@@ -3219,7 +3219,7 @@ function openPDFCompressor() {
 
     document.querySelector("main").innerHTML = `
         <div class="compressor">
-        <h2>ðŸ“„ Compress PDF</h2>
+        <h2>📄 Compress PDF</h2>
 
         <div style="margin:25px 0;">
 
@@ -3278,7 +3278,7 @@ function openPDFCompressor() {
         <br>
 
         <button id="pdfBackBtn">
-            â¬…ï¸ Back
+            ⬅️ Back
         </button>
     
         </div>
@@ -3382,7 +3382,7 @@ function openPDFCompressor() {
 
 
         status.innerText =
-            "â³ Compressing PDF...";
+            "⏳ Compressing PDF...";
 
 
         result.innerHTML = "";
@@ -3620,7 +3620,7 @@ function openPDFCompressor() {
 
 
             status.innerText =
-                "âœ… PDF Compression Complete!";
+                "✅ PDF Compression Complete!";
 
 
             hideProcessing(compressBtn);
@@ -3631,7 +3631,7 @@ function openPDFCompressor() {
                 >
 
                     <h3>
-                        ðŸ“Š Compression Result
+                        📊 Compression Result
                     </h3>
 
                     <p>
@@ -3668,14 +3668,14 @@ function openPDFCompressor() {
                     <a
                         href="${downloadURL}"
                         download="DocPinch-compressed.pdf"
-                    >â¬‡ï¸ Download Compressed PDF</a>
+                    >⬇️ Download Compressed PDF</a>
 
                     <br><br>
 
                     <button
                         onclick="openPDFCompressor()"
                     >
-                        ðŸ”„ Compress Another PDF
+                        🔄 Compress Another PDF
                     </button>
 
                 </div>
@@ -3688,7 +3688,7 @@ function openPDFCompressor() {
             console.error(error);
 
             status.innerText =
-                "âŒ Error while compressing PDF.";
+                "❌ Error while compressing PDF.";
 
             alert(
                 "PDF compression failed. Please try another PDF."
@@ -3710,7 +3710,7 @@ async function openPDFMerger() {
     document.querySelector("main").innerHTML = `
         <div class="compressor">
 
-            <h2>ðŸ”— Merge PDF</h2>
+            <h2>🔗 Merge PDF</h2>
 
             <p style="margin:15px 0;">
                 Select multiple PDF files and combine them into one PDF.
@@ -3728,7 +3728,7 @@ async function openPDFMerger() {
                 <br><br>
 
                 <button id="mergePDFBtn">
-                    ðŸ”— Merge PDF
+                    🔗 Merge PDF
                 </button>
 
                 <p
@@ -3743,7 +3743,7 @@ async function openPDFMerger() {
             <br>
 
             <button id="mergeBackBtn">
-                â¬…ï¸ Back
+                ⬅️ Back
             </button>
 
         </div>
@@ -3775,7 +3775,7 @@ async function openPDFMerger() {
         input.style.display = "none";
 
         status.innerText =
-            "ðŸ“± Android mode: tap Merge PDF to select multiple PDFs.";
+            "📱 Android mode: tap Merge PDF to select multiple PDFs.";
 
     }
 
@@ -3840,7 +3840,7 @@ async function openPDFMerger() {
 
             currentStatus.innerText =
                 message ||
-                "â³ Merging PDFs...";
+                "⏳ Merging PDFs...";
 
         }
 
@@ -3904,7 +3904,7 @@ async function openPDFMerger() {
                 if (currentStatus) {
 
                     currentStatus.innerText =
-                        "âŒ PDF Merge Failed";
+                        "❌ PDF Merge Failed";
 
                 }
 
@@ -3915,7 +3915,7 @@ async function openPDFMerger() {
                         <div class="result-box">
 
                             <h3>
-                                âŒ Merge Failed
+                                ❌ Merge Failed
                             </h3>
 
                             <p>
@@ -3931,7 +3931,7 @@ async function openPDFMerger() {
                                 type="button"
                                 onclick="openPDFMerger()"
                             >
-                                ðŸ”„ Try Again
+                                🔄 Try Again
                             </button>
 
                         </div>
@@ -3947,7 +3947,7 @@ async function openPDFMerger() {
             if (currentStatus) {
 
                 currentStatus.innerText =
-                    "âœ… PDF Merge Complete!";
+                    "✅ PDF Merge Complete!";
 
             }
 
@@ -3958,7 +3958,7 @@ async function openPDFMerger() {
                     <div class="result-box">
 
                         <h3>
-                            âœ… Merge Complete
+                            ✅ Merge Complete
                         </h3>
 
                         <p>
@@ -3981,7 +3981,7 @@ async function openPDFMerger() {
                             type="button"
                             onclick="downloadNativeMergedPDF()"
                         >
-                            â¬‡ï¸ Download Merged PDF
+                            ⬇️ Download Merged PDF
                         </button>
 
                         <br><br>
@@ -3990,7 +3990,7 @@ async function openPDFMerger() {
                             type="button"
                             onclick="openPDFMerger()"
                         >
-                            ðŸ”„ Merge More PDFs
+                            🔄 Merge More PDFs
                         </button>
 
                     </div>
@@ -4019,7 +4019,7 @@ async function openPDFMerger() {
             if (currentStatus) {
 
                 currentStatus.innerText =
-                    "âŒ PDF Merge Failed";
+                    "❌ PDF Merge Failed";
 
             }
 
@@ -4030,7 +4030,7 @@ async function openPDFMerger() {
                     <div class="result-box">
 
                         <h3>
-                            âŒ Merge Failed
+                            ❌ Merge Failed
                         </h3>
 
                         <p>
@@ -4277,7 +4277,7 @@ async function openPDFMerger() {
                 mergeBtn,
                 "Selecting PDFs..."
             );status.innerText =
-                "â³ Select your PDFs...";
+                "⏳ Select your PDFs...";
 
             try {
 
@@ -4296,7 +4296,7 @@ async function openPDFMerger() {
                 );
 
                 status.innerText =
-                    "âŒ Could not open PDF picker.";
+                    "❌ Could not open PDF picker.";
 
                 result.innerHTML = "";
 
@@ -4339,7 +4339,7 @@ async function openPDFMerger() {
             mergeBtn,
             "Merging PDFs..."
         );status.innerText =
-            "â³ Merging PDFs...";
+            "⏳ Merging PDFs...";
 
         result.innerHTML = "";
 
@@ -4360,7 +4360,7 @@ async function openPDFMerger() {
             ) {
 
                 status.innerText =
-                    `â³ Adding PDF ${i + 1} of ${input.files.length}...`;
+                    `⏳ Adding PDF ${i + 1} of ${input.files.length}...`;
 
 
                 const file =
@@ -4415,7 +4415,7 @@ async function openPDFMerger() {
 
 
             status.innerText =
-                "â³ Creating merged PDF...";
+                "⏳ Creating merged PDF...";
 
 
             const mergedBytes =
@@ -4438,7 +4438,7 @@ async function openPDFMerger() {
 
 
             status.innerText =
-                "âœ… PDFs merged successfully!";
+                "✅ PDFs merged successfully!";
 
 
             hideProcessing(
@@ -4450,7 +4450,7 @@ async function openPDFMerger() {
                 <div class="result-box">
 
                     <h3>
-                        âœ… Merge Complete
+                        ✅ Merge Complete
                     </h3>
 
                     <p>
@@ -4474,7 +4474,7 @@ async function openPDFMerger() {
                         href="${downloadURL}"
                         download="DocPinch-merged.pdf"
                     >
-                        â¬‡ï¸ Download Merged PDF
+                        ⬇️ Download Merged PDF
                     </a>
 
                     <br><br>
@@ -4482,7 +4482,7 @@ async function openPDFMerger() {
                     <button
                         onclick="openPDFMerger()"
                     >
-                        ðŸ”„ Merge More PDFs
+                        🔄 Merge More PDFs
                     </button>
 
                 </div>
@@ -4497,7 +4497,7 @@ async function openPDFMerger() {
             console.error(error);
 
             status.innerText =
-                "âŒ Error while merging PDFs.";
+                "❌ Error while merging PDFs.";
 
             alert(
                 "PDF merge failed. Please check your PDF files."
@@ -4507,7 +4507,7 @@ async function openPDFMerger() {
 }
 
 // =====================================================
-// PDF â†’ JPG / PNG
+// PDF → JPG / PNG
 // =====================================================
 
 function openPDFToImage() {
@@ -4983,7 +4983,7 @@ function openDocumentScanner() {
     document.querySelector("main").innerHTML = `
         <div class="compressor">
 
-            <h2>ðŸ“ Document Scanner</h2>
+            <h2>📐 Document Scanner</h2>
 
             <p>
                 Upload a document, set 4 corners and scan.
@@ -5005,7 +5005,7 @@ function openDocumentScanner() {
             >
 
                 <p style="margin-bottom:15px;">
-                    ðŸ”µ Drag the 4 blue points to the document corners.
+                    🔵 Drag the 4 blue points to the document corners.
                 </p>
 
                 <div
@@ -5076,7 +5076,7 @@ function openDocumentScanner() {
 <br><br>
 
                 <button id="processScannerBtn">
-                    ðŸ“ Scan Document
+                    📐 Scan Document
                 </button>
 
                 <p
@@ -5091,7 +5091,7 @@ function openDocumentScanner() {
             <br>
 
             <button id="scannerBackBtn">
-                â¬…ï¸ Back to Tools
+                ⬅️ Back to Tools
             </button>
 
         </div>
@@ -5258,7 +5258,7 @@ result.innerHTML =
     "";
 
 status.innerText =
-    "âœ… Image loaded. Adjust the 4 corners, then scan.";
+    "✅ Image loaded. Adjust the 4 corners, then scan.";
 
 
 /*
@@ -5753,7 +5753,7 @@ requestAnimationFrame(
 
 
         status.innerText =
-            "â³ Processing document...";
+            "⏳ Processing document...";
 
 
         result.innerHTML =
@@ -5937,14 +5937,14 @@ requestAnimationFrame(
 
 
             status.innerText =
-                "âœ… Document scanned successfully!";
+                "✅ Document scanned successfully!";
 
 
             result.innerHTML = `
                 <div class="result-box">
 
                     <h3>
-                        âœ… Document Scanned
+                        ✅ Document Scanned
                     </h3>
 
                     <p>
@@ -5968,14 +5968,14 @@ requestAnimationFrame(
                     <a
                         href="${scannedURL}"
                         download="DocPinch-scanned-document.jpg"
-                    >â¬‡ï¸ Download Document</a>
+                    >⬇️ Download Document</a>
 
                     <br><br>
 
                     <button
                         onclick="openDocumentScanner()"
                     >
-                        ðŸ”„ Scan Another
+                        🔄 Scan Another
                     </button>
 
                 </div>
@@ -5986,7 +5986,7 @@ requestAnimationFrame(
             console.error(error);
 
             status.innerText =
-                "âŒ Scanner failed.";
+                "❌ Scanner failed.";
 
             alert(
                 "Document scanning failed. Please try again."
@@ -6059,7 +6059,7 @@ function openDocumentEnhance() {
                         font-size:24px;
                     "
                 >
-                    âœ¨
+                    ✨
                 </div>
 
 
@@ -6110,7 +6110,7 @@ function openDocumentEnhance() {
                         margin-bottom:8px;
                     "
                 >
-                    ðŸ–¼ï¸
+                    🖼️
                 </span>
 
                 <strong
@@ -6185,7 +6185,7 @@ function openDocumentEnhance() {
                     <strong
                         id="enhanceFileName"
                     >
-                        â€”
+                        —
                     </strong>
 
                 </div>
@@ -6214,7 +6214,7 @@ function openDocumentEnhance() {
                     <strong
                         id="enhanceDimensions"
                     >
-                        â€”
+                        —
                     </strong>
 
                 </div>
@@ -6317,7 +6317,7 @@ function openDocumentEnhance() {
                         type="button"
                         id="cleanWhiteBtn"
                     >
-                        âœ¨ Clean White / Enhance
+                        ✨ Clean White / Enhance
                     </button>
 
 
@@ -6325,7 +6325,7 @@ function openDocumentEnhance() {
                         type="button"
                         id="bwDocumentBtn"
                     >
-                        ðŸ–¤ B&W Document
+                        🖤 B&W Document
                     </button>
 
 
@@ -6333,7 +6333,7 @@ function openDocumentEnhance() {
                         type="button"
                         id="originalDocumentBtn"
                     >
-                        ðŸ–¼ï¸ Original
+                        🖼️ Original
                     </button>
 
                 </div>
@@ -6370,7 +6370,7 @@ function openDocumentEnhance() {
                     margin-top:20px;
                 "
             >
-                â† Back to Tools
+                ← Back to Tools
             </button>
 
         </div>
@@ -6591,7 +6591,7 @@ function openDocumentEnhance() {
                                 file.name;
 
                             dimensions.textContent =
-                                `${img.naturalWidth} Ã— ${img.naturalHeight} px`;
+                                `${img.naturalWidth} × ${img.naturalHeight} px`;
 
 
                             fileInfo.hidden =
@@ -6873,7 +6873,7 @@ function openDocumentEnhance() {
                                             color:#002B54;
                                         "
                                     >
-                                        âœ… ${title}
+                                        ✅ ${title}
                                     </h3>
 
 
@@ -6919,7 +6919,7 @@ function openDocumentEnhance() {
                                                 font-weight:700;
                                             "
                                         >
-                                            â¬‡ï¸ Download Document
+                                            ⬇️ Download Document
                                         </a>
 
                                     </div>
@@ -6953,7 +6953,7 @@ function openDocumentEnhance() {
                                 font-weight:700;
                             "
                         >
-                            âŒ Unable to process this image.
+                            ❌ Unable to process this image.
                         </div>
 
                     `;
@@ -7007,7 +7007,7 @@ function openDocumentEnhance() {
                         color:#002B54;
                     "
                 >
-                    ðŸ–¼ï¸ Original Document
+                    🖼️ Original Document
                 </h3>
 
 
@@ -7087,7 +7087,7 @@ function openDocumentEnhance() {
 }
 
 // =====================================================
-// DOCPINCH â€” STEP 90
+// DOCPINCH — STEP 90
 // GLOBAL NAVIGATION FIX
 // =====================================================
 
@@ -7672,7 +7672,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         );
 
                         alert(
-                            "âŒ Download failed. Please try again."
+                            "❌ Download failed. Please try again."
                         );
 
                     }
@@ -7805,7 +7805,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     main.innerHTML = `
       <div class="compressor" style="max-width:900px;margin:0 auto;">
-        <h2>ðŸ“ Resize Image</h2>
+        <h2>📏 Resize Image</h2>
         <p>Select an image, enter the output size, then resize.</p>
 
         <input id="dpResizeInput" type="file" accept="image/*"
@@ -7876,7 +7876,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!file) return;
 
       window.selectedFile = file;
-      status.textContent = "Reading imageâ€¦";
+      status.textContent = "Reading image…";
       result.innerHTML = "";
 
       try {
@@ -7899,12 +7899,12 @@ document.addEventListener("DOMContentLoaded", () => {
         h.value = originalH;
         meta.style.display = "block";
         meta.textContent =
-          "Original: " + originalW + " Ã— " + originalH + " px â€¢ " +
+          "Original: " + originalW + " × " + originalH + " px • " +
           Math.max(1, Math.round(file.size / 1024)) + " KB";
         status.textContent = "";
       } catch (err) {
         window.selectedFile = null;
-        status.textContent = "âŒ " + (err.message || "Could not read image.");
+        status.textContent = "❌ " + (err.message || "Could not read image.");
       }
     });
 
@@ -7929,23 +7929,23 @@ document.addEventListener("DOMContentLoaded", () => {
       var targetH = Number(h.value);
 
       if (!file) {
-        status.textContent = "âŒ Please select an image first.";
+        status.textContent = "❌ Please select an image first.";
         return;
       }
       if (!Number.isFinite(targetW) || !Number.isFinite(targetH) ||
           targetW < 1 || targetH < 1) {
-        status.textContent = "âŒ Enter valid width and height.";
+        status.textContent = "❌ Enter valid width and height.";
         return;
       }
 
       if (targetW > 10000 || targetH > 10000) {
-        status.textContent = "âŒ Maximum supported size is 10000 Ã— 10000 px.";
+        status.textContent = "❌ Maximum supported size is 10000 × 10000 px.";
         return;
       }
 
       btn.disabled = true;
-      btn.textContent = "Resizingâ€¦";
-      status.textContent = "Processingâ€¦";
+      btn.textContent = "Resizing…";
+      status.textContent = "Processing…";
       result.innerHTML = "";
 
       var started = Date.now();
@@ -7966,21 +7966,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         result.innerHTML = `
           <div style="margin-bottom:10px;">
-            <strong>Done:</strong> ${output.width} Ã— ${output.height} px
-            â€¢ ${Math.max(1, Math.round(output.blob.size / 1024))} KB
-            â€¢ ${(Date.now() - started) / 1000 | 0}s
+            <strong>Done:</strong> ${output.width} × ${output.height} px
+            • ${Math.max(1, Math.round(output.blob.size / 1024))} KB
+            • ${(Date.now() - started) / 1000 | 0}s
           </div>
           <img src="${url}" alt="Resized preview"
             style="max-width:100%;height:auto;display:block;margin:10px 0;border-radius:8px;">
           <a download="${outName}" href="${url}"
             style="display:inline-block;padding:12px 16px;text-decoration:none;">
-            â¬‡ï¸ Download Resized Image
+            ⬇️ Download Resized Image
           </a>
         `;
 
-        status.textContent = "âœ… Resize complete.";
+        status.textContent = "✅ Resize complete.";
       } catch (err) {
-        status.textContent = "âŒ " + (err.message || "Resize failed.");
+        status.textContent = "❌ " + (err.message || "Resize failed.");
       } finally {
         btn.disabled = false;
         btn.textContent = "Resize Image";
@@ -8086,5 +8086,315 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })();
 
+/* =====================================================
+ * DOCPINCH MASTER STABILITY FIX 2026-10-04
+ * ===================================================== */
+(function () {
+    "use strict";
 
+    function dpNavLabel(link) {
+        return (
+            link.textContent ||
+            link.innerText ||
+            ""
+        )
+            .trim()
+            .replace(/\s+/g, " ")
+            .toLowerCase();
+    }
 
+    function dpNavigate(mode) {
+        if (mode === "home") {
+            window.location.assign("index.html");
+            return;
+        }
+
+        if (mode === "tools") {
+            window.location.assign(
+                "index.html?nav=tools#tools"
+            );
+            return;
+        }
+
+        if (mode === "about") {
+            window.location.assign(
+                "index.html?nav=about#about"
+            );
+        }
+    }
+
+    function dpIsToolView() {
+        const main = document.querySelector("main");
+        return !!(
+            main &&
+            main.querySelector(".compressor")
+        );
+    }
+
+    function dpUpdateActiveNav() {
+        const links = Array.from(
+            document.querySelectorAll(
+                "header .navbar a, header nav a, .navbar a"
+            )
+        );
+
+        if (!links.length) {
+            return;
+        }
+
+        links.forEach(function (link) {
+            link.classList.remove("active");
+            link.removeAttribute("aria-current");
+        });
+
+        const params = new URLSearchParams(
+            window.location.search
+        );
+
+        let mode = params.get("nav") || "";
+
+        if (dpIsToolView()) {
+            mode = "tools";
+        }
+        else if (window.location.hash === "#about") {
+            mode = "about";
+        }
+        else if (
+            window.location.hash === "#tools" ||
+            mode === "tools"
+        ) {
+            mode = "tools";
+        }
+        else {
+            mode = "home";
+        }
+
+        const active = links.find(function (link) {
+            return dpNavLabel(link) === mode;
+        });
+
+        if (active) {
+            active.classList.add("active");
+            active.setAttribute(
+                "aria-current",
+                "page"
+            );
+        }
+    }
+
+    function dpToolAction(button) {
+        const text = (
+            button.innerText ||
+            button.textContent ||
+            ""
+        )
+            .trim()
+            .toLowerCase();
+
+        if (
+            text.indexOf("compress pdf") !== -1
+        ) {
+            openPDFCompressor();
+            return true;
+        }
+
+        if (
+            text.indexOf("compress image") !== -1
+        ) {
+            openImageCompressor();
+            return true;
+        }
+
+        const jpgPngPos = text.indexOf("jpg/png");
+        const pdfPos = text.indexOf("pdf");
+
+        if (
+            jpgPngPos !== -1 &&
+            pdfPos !== -1 &&
+            jpgPngPos < pdfPos
+        ) {
+            openImageToPDF();
+            return true;
+        }
+
+        if (
+            jpgPngPos !== -1 &&
+            pdfPos !== -1 &&
+            pdfPos < jpgPngPos
+        ) {
+            openPDFToImage();
+            return true;
+        }
+
+        if (
+            text.indexOf("merge pdf") !== -1
+        ) {
+            openPDFMerger();
+            return true;
+        }
+
+        if (
+            text.indexOf("document scanner") !== -1
+        ) {
+            openDocumentScanner();
+            return true;
+        }
+
+        if (
+            text.indexOf("document enhance") !== -1
+        ) {
+            openDocumentEnhance();
+            return true;
+        }
+
+        if (
+            text.indexOf("resize image") !== -1
+        ) {
+            openImageResizer();
+            return true;
+        }
+
+        if (
+            text.indexOf("crop image") !== -1
+        ) {
+            openImageCropper();
+            return true;
+        }
+
+        if (
+            text.indexOf("rotate image") !== -1
+        ) {
+            openImageRotator();
+            return true;
+        }
+
+        return false;
+    }
+
+    document.addEventListener(
+        "click",
+        function (event) {
+            const target =
+                event.target &&
+                event.target.closest
+                    ? event.target.closest(
+                        "a, button"
+                    )
+                    : null;
+
+            if (!target) {
+                return;
+            }
+
+            const text = (
+                target.innerText ||
+                target.textContent ||
+                ""
+            )
+                .trim()
+                .replace(/\s+/g, " ");
+
+            const lower = text.toLowerCase();
+
+            /* HEADER: Home / Tools / About */
+            if (
+                target.tagName === "A" &&
+                target.closest("header")
+            ) {
+                const label = dpNavLabel(target);
+
+                if (
+                    label === "home" ||
+                    label === "tools" ||
+                    label === "about"
+                ) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    dpNavigate(label);
+                    return;
+                }
+            }
+
+            /* DYNAMIC TOOL BACK BUTTONS */
+            if (
+                target.closest("main .compressor") &&
+                !target.hasAttribute("download") &&
+                (
+                    target.classList.contains("back-btn") ||
+                    target.classList.contains("dp-final-back") ||
+                    lower.indexOf("back to tools") !== -1 ||
+                    /^back\b/.test(lower) ||
+                    lower.indexOf(" back") !== -1
+                )
+            ) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                dpNavigate("tools");
+                return;
+            }
+
+            /* HOME TOOL GRID - delegated routing */
+            if (
+                target.tagName === "BUTTON" &&
+                target.closest(".tools") &&
+                !target.closest("main .compressor")
+            ) {
+                if (dpToolAction(target)) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    dpUpdateActiveNav();
+                }
+            }
+        },
+        true
+    );
+
+    function dpInstallObservers() {
+        dpUpdateActiveNav();
+
+        const main = document.querySelector("main");
+
+        if (
+            main &&
+            !main.__dpMasterObserverInstalled
+        ) {
+            main.__dpMasterObserverInstalled = true;
+
+            const observer =
+                new MutationObserver(function () {
+                    window.requestAnimationFrame(
+                        dpUpdateActiveNav
+                    );
+                });
+
+            observer.observe(main, {
+                childList: true,
+                subtree: false
+            });
+        }
+    }
+
+    if (
+        document.readyState === "loading"
+    ) {
+        document.addEventListener(
+            "DOMContentLoaded",
+            dpInstallObservers
+        );
+    }
+    else {
+        dpInstallObservers();
+    }
+
+    window.addEventListener(
+        "hashchange",
+        dpUpdateActiveNav
+    );
+
+    window.addEventListener(
+        "popstate",
+        dpUpdateActiveNav
+    );
+})();
+
+/* DOCPINCH MASTER STABILITY FIX END */

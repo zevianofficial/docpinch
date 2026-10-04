@@ -1,6 +1,6 @@
 /* =========================================================
-   DOCPINCH â€” STYLE.CSS
-   STEP 89 â€” COMMON PROFESSIONAL UI
+   DOCPINCH — STYLE.CSS
+   STEP 89 — COMMON PROFESSIONAL UI
    ========================================================= */
 
 
@@ -1573,7 +1573,7 @@ select:focus-visible {
 
 
 /* =========================================================
-   MOBILE â€” 600px
+   MOBILE — 600px
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -1804,7 +1804,7 @@ select:focus-visible {
 
 
 /* =========================================================
-   VERY SMALL MOBILE â€” 420px
+   VERY SMALL MOBILE — 420px
    ========================================================= */
 
 @media (max-width: 420px) {
@@ -1893,7 +1893,7 @@ select:focus-visible {
 
 
 /* =========================================================
-   DOCPINCH â€” STEP 90
+   DOCPINCH — STEP 90
    ACTIVE NAVIGATION
    ========================================================= */
 
@@ -1913,7 +1913,7 @@ select:focus-visible {
 }
 
 /* =========================================================
-   DOCPINCH â€” STEP 91
+   DOCPINCH — STEP 91
    VISUAL IMAGE CROPPER
    ========================================================= */
 
@@ -2245,7 +2245,7 @@ select:focus-visible {
 
 
 /* =========================================================
-   DOCPINCH â€” STEP 93
+   DOCPINCH — STEP 93
    IMAGE RESIZER PROFESSIONAL UI
    ========================================================= */
 
@@ -2643,7 +2643,7 @@ select:focus-visible {
 
 
 /* =========================================================
-   DOCPINCH â€” STEP 94
+   DOCPINCH — STEP 94
    COMMON PROCESSING UI
    ========================================================= */
 
@@ -2725,7 +2725,7 @@ select:focus-visible {
 }
 
 
-/* DOCPINCH â€” MOBILE CROP HANDLE TOUCH TARGET */
+/* DOCPINCH — MOBILE CROP HANDLE TOUCH TARGET */
 @media (max-width: 700px) {
     .crop-handle {
         width: 22px;
@@ -3081,3 +3081,48 @@ select:focus-visible {
     }
 
 }
+
+/* =====================================================
+ * DOCPINCH MASTER TOUCH SAFETY 2026-10-04
+ * ===================================================== */
+html,
+body {
+    overflow-x: hidden;
+}
+
+header a,
+.navbar a,
+.tools button,
+.compressor button,
+.compressor a[download] {
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.compressor button,
+.compressor a[download] {
+    position: relative;
+    z-index: 2;
+    min-height: 44px;
+}
+
+.compressor {
+    width: calc(100% - 20px);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 520px) {
+    .compressor {
+        width: calc(100% - 12px);
+    }
+
+    .compressor button,
+    .compressor a[download] {
+        min-height: 46px;
+    }
+}
+
+/* DOCPINCH MASTER TOUCH SAFETY END */
