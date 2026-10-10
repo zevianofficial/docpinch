@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,15 +21,15 @@
     <meta property="og:url" content="https://zevianofficial.github.io/docpinch/">
     <meta property="og:site_name" content="DocPinch">
 
-    <!-- PDF libraries: synchronous loading -->
+    <!-- Load PDF libraries before the main application script. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
-    <!-- OpenCV: asynchronous loading -->
+    <!-- Load OpenCV asynchronously for document scanning. -->
     <script async src="https://docs.opencv.org/4.x/opencv.js"></script>
 
-    <!-- Website structured data -->
+    <!-- Describe the website for search engines. -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -39,7 +40,7 @@
     }
     </script>
 
-    <!-- Web application structured data -->
+    <!-- Describe DocPinch as a free web application. -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -58,7 +59,7 @@
     }
     </script>
 
-    <!-- All 10 tools -->
+    <!-- List all ten tools for search engines. -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -82,6 +83,7 @@
 </head>
 
 <body>
+    <!-- Site header and primary navigation. -->
     <header>
         <div class="brand">
             <a href="index.html" aria-label="DocPinch Home">
@@ -97,6 +99,7 @@
     </header>
 
     <main>
+        <!-- Introduce DocPinch and its main benefits. -->
         <section class="hero">
             <h1>Free PDF &amp; Image Tools Online</h1>
             <p class="tools-intro">
@@ -106,6 +109,7 @@
             </p>
         </section>
 
+        <!-- Display all ten tool buttons. -->
         <section aria-label="All DocPinch tools">
             <h2>Choose a Tool</h2>
             <div class="tools" id="tools">
@@ -122,24 +126,28 @@
             </div>
         </section>
 
+        <!-- Link to the PDF tools category. -->
         <section class="seo-section" id="pdf-tools">
             <h2>PDF Tools</h2>
             <p>Compress PDF files, merge multiple PDFs, convert PDF pages into images and create PDFs from JPG or PNG files.</p>
             <a href="pdf-tools.html">Explore PDF Tools →</a>
         </section>
 
+        <!-- Link to the image tools category. -->
         <section class="seo-section" id="image-tools">
             <h2>Image Tools</h2>
             <p>Compress, resize, crop and rotate JPG or PNG images with convenient online image tools.</p>
             <a href="image-tools.html">Explore Image Tools →</a>
         </section>
 
+        <!-- Link to the document tools category. -->
         <section class="seo-section" id="document-tools">
             <h2>Document Tools</h2>
             <p>Scan documents and enhance document images for cleaner, easier-to-read results.</p>
             <a href="document-tools.html">Explore Document Tools →</a>
         </section>
 
+        <!-- Explain the purpose of DocPinch. -->
         <section id="about" class="about">
             <h2>About DocPinch</h2>
             <p>
@@ -150,11 +158,13 @@
         </section>
     </main>
 
+    <!-- Site footer and copyright notice. -->
     <footer>
         <p>© 2026 DocPinch. All Rights Reserved.</p>
         <p class="footer-tagline">Free Online PDF &amp; Image Tools</p>
     </footer>
 
+    <!-- Initialize the website's tool interactions. -->
     <script src="script.js"></script>
 </body>
 </html>
